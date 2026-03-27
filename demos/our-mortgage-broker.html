@@ -1,0 +1,465 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Our Mortgage Broker - Expert mortgage advice and brokerage services in London. Get competitive rates and personalised solutions.">
+<title>Our Mortgage Broker — Mortgage Broker in London | Expert Advice</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .mortgage-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .mortgage-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .mortgage-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .mortgage-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+  .fca-badge { background: #1B4A8E; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-icon { font-size: 32px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* FEATURES */
+  .features { background: var(--cream); }
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .feature-item { display: flex; gap: 24px; }
+  .feature-icon { width: 56px; height: 56px; background: var(--teal); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; flex-shrink: 0; }
+  .feature-content h3 { margin-bottom: 8px; font-size: 18px; }
+  .feature-content p { color: var(--text-mid); font-size: 15px; line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: white; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .testimonial-card { background: var(--cream); border-radius: 16px; padding: 32px; border: 1px solid var(--border); }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--teal); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+  .testimonial-name { font-weight: 600; color: var(--navy); }
+  .testimonial-role { font-size: 13px; color: var(--text-light); }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; letter-spacing: 1px; margin-bottom: 12px; }
+  .testimonial-text { color: var(--text-mid); font-size: 15px; line-height: 1.6; }
+
+  /* MORTGAGE TYPES */
+  .mortgage-types { background: white; }
+  .mortgage-types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .mortgage-type-card {
+    background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px; text-align: center; transition: all 0.25s;
+  }
+  .mortgage-type-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--teal); }
+  .mortgage-type-card h4 { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .mortgage-type-card p { font-size: 14px; color: var(--text-mid); line-height: 1.5; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white; text-align: center; padding: 80px;
+    border-radius: 20px; margin: 0 80px 90px 80px;
+  }
+  .cta-section h2 { color: white; margin-bottom: 20px; }
+  .cta-section p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 32px; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 40px;
+  }
+  .footer-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { font-size: 15px; font-weight: 600; margin-bottom: 20px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--teal); }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+  .footer-desc { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6; }
+  .footer-divider { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--teal); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 24px; }
+    .nav-links { gap: 20px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { display: none; }
+    section { padding: 60px 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .mortgage-types-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-bar { padding: 20px 40px; }
+    .cta-section { margin: 0 40px 60px 40px; padding: 60px 40px; }
+    footer { padding: 40px; }
+    .footer-content { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 36px; }
+    .nav-links { display: none; }
+    section { padding: 40px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .mortgage-types-grid { grid-template-columns: 1fr; }
+    .hero-trust { flex-direction: column; gap: 16px; }
+    .cta-section { margin: 0 20px 40px 20px; padding: 40px 20px; }
+    .trust-bar { padding: 16px 20px; flex-direction: column; }
+    footer { padding: 30px 20px; }
+    .footer-content { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">💰</div>
+    <div>
+      <div class="logo-text">Our Mortgage Broker</div>
+      <div class="logo-sub">Mortgage Solutions</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <button class="btn btn-outline">Request Callback</button>
+    <button class="btn btn-primary">Get Quote</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      FCA Regulated & Authorised
+    </div>
+    <h1>Your <em>Perfect Mortgage</em> Awaits</h1>
+    <p>Access exclusive mortgage deals from over 90 lenders. Our expert brokers work for you, not the banks, to find the best rates and terms tailored to your financial goals.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary btn-lg">Get Your Quote Today</button>
+      <button class="btn btn-outline">Call: 020 3971 1234</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">90+</div>
+        <div class="trust-label">Mortgage Lenders</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Mortgages Arranged</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">£100M+</div>
+        <div class="trust-label">Mortgages Arranged</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="mortgage-card main">
+        <div class="card-avatar">👨‍💼</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">James Williams</div>
+        <div class="card-text">Our Mortgage Broker made the entire process seamless. They found us a fantastic rate!</div>
+        <div class="card-badge">First-time Buyer</div>
+      </div>
+      <div class="mortgage-card floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sarah Chen</div>
+        <div class="card-text">Expert advice and outstanding support throughout.</div>
+      </div>
+      <div class="mortgage-card floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Michael Adams</div>
+        <div class="card-text">Saved thousands on interest. Highly recommended!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span>FCA Authorised & Regulated</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🔒</div>
+    <span>100% Secure & Confidential</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⚡</div>
+    <span>Fast Track Processing</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">💼</div>
+    <span>Expert Broker Guidance</span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Comprehensive Mortgage Solutions</h2>
+  <p class="section-intro">From first-time buyers to property investors, we provide expert mortgage advice tailored to your specific circumstances and goals.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏡</div>
+      <h3>First-Time Buyer Mortgages</h3>
+      <p>Get expert advice on first-time buyer mortgages with access to exclusive schemes and the best rates available. We guide you through every step.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔄</div>
+      <h3>Remortgage Services</h3>
+      <p>Unlock equity, reduce your payments, or consolidate debts. Our brokers analyse your options to find the perfect remortgage deal for your situation.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Buy-to-Let Mortgages</h3>
+      <p>Specialised advice for property investors. Access exclusive buy-to-let products from dedicated lenders with competitive rates and flexible terms.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Joint Mortgages</h3>
+      <p>Combining finances? We structure joint mortgage applications to maximise your borrowing potential and secure the best available rates.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Portfolio Mortgages</h3>
+      <p>Sophisticated lending solutions for landlords with multiple properties. Access specialised portfolio mortgage products from specialist lenders.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Mortgage Advice</h3>
+      <p>Personalised guidance on mortgage selection, affordability, term length, and product type. Make informed decisions with our expert consultants.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="how-it-works">
+  <div class="section-label">Why Choose Us</div>
+  <h2>The Our Mortgage Broker Advantage</h2>
+  <p class="section-intro">We're committed to finding you the best mortgage deal possible while providing outstanding service every step of the way.</p>
+
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-content">
+        <h3>Access to 90+ Lenders</h3>
+        <p>We work with over 90 mortgage lenders, including high street banks, building societies, and specialist lenders, giving you unparalleled choice.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💷</div>
+      <div class="feature-content">
+        <h3>Expert Rate Negotiation</h3>
+        <p>Our brokers leverage relationships with lenders to negotiate competitive rates on your behalf, potentially saving you thousands of pounds.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⏱️</div>
+      <div class="feature-content">
+        <h3>Fast Track Processing</h3>
+        <p>We manage your entire application, liaising directly with lenders to expedite your mortgage approval and minimize delays.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-content">
+        <h3>100% Confidential</h3>
+        <p>Your financial information is handled with complete confidentiality and security in full compliance with FCA regulations and data protection laws.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">📞</div>
+      <div class="feature-content">
+        <h3>Dedicated Support</h3>
+        <p>Your personal broker is available throughout the process to answer questions, provide advice, and ensure smooth completion.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">✅</div>
+      <div class="feature-content">
+        <h3>FCA Regulated</h3>
+        <p>We are fully authorised and regulated by the Financial Conduct Authority, meeting the highest standards of professionalism and conduct.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mortgage-types">
+  <div class="section-label">Mortgage Products</div>
+  <h2>Flexible Mortgage Options</h2>
+  <p class="section-intro">We offer access to a wide range of mortgage products to suit your needs and circumstances.</p>
+
+  <div class="mortgage-types-grid">
+    <div class="mortgage-type-card">
+      <h4>2-Year Fixed</h4>
+      <p>Short-term rate certainty with potential to benefit from lower rates sooner.</p>
+    </div>
+    <div class="mortgage-type-card">
+      <h4>5-Year Fixed</h4>
+      <p>Popular choice offering medium-term rate protection and payment stability.</p>
+    </div>
+    <div class="mortgage-type-card">
+      <h4>10-Year Fixed</h4>
+      <p>Extended rate protection for long-term payment security and peace of mind.</p>
+    </div>
+    <div class="mortgage-type-card">
+      <h4>Variable Rates</h4>
+      <p>Flexible options including tracker and discount rates for rate-sensitive borrowers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client Testimonials</div>
+  <h2>Trusted by Hundreds of Happy Clients</h2>
+  <p class="section-intro">See what our clients say about their experience with Our Mortgage Broker.</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">JW</div>
+        <div>
