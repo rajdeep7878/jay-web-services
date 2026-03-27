@@ -1,0 +1,481 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="UWM Accountants, Leeds - Expert chartered accountants and tax advisors in Garforth, Leeds. Professional accounting services, tax planning, and financial advice for businesses and individuals.">
+<title>UWM Accountants, Leeds — Chartered Accountants & Tax Advisors</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1a2f47;
+    --navy-light: #243b55;
+    --gold: #C9A84C;
+    --gold-dark: #a8882f;
+    --gold-light: #FEF8E8;
+    --gold-bg: #FDF6E3;
+    --cream: #FAFAF7;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.16);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--navy); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 18px; font-weight: 700; font-family: 'Playfair Display', serif;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; font-family: 'DM Sans', sans-serif; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: white; }
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-primary:hover { background: var(--gold-dark); color: white; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-navy { background: var(--navy); color: white; }
+  .btn-navy:hover { background: var(--navy-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(13,27,42,0.35); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f47 55%, #1c2d1a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.4);
+    color: #e8c96a; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 60px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* HERO RIGHT PANEL — floating review cards */
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1a2f1a 0%, #0d2010 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; height: 500px; }
+  .review-float {
+    background: white; border-radius: 20px; padding: 24px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .review-float.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .review-float.floating-1 {
+    width: 210px; top: 40px; right: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite;
+  }
+  .review-float.floating-2 {
+    width: 220px; bottom: 40px; left: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite 2s;
+  }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-light); color: var(--gold-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+  .icaew-badge { background: #1A3A5C; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--gold-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 720px; margin-bottom: 54px; line-height: 1.8; }
+
+  /* SERVICES */
+  .services { background: var(--cream); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .service-card {
+    background: white; padding: 40px 36px; border-radius: 16px; box-shadow: var(--shadow);
+    transition: all 0.3s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .service-icon {
+    width: 56px; height: 56px; background: var(--gold-light); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 18px;
+  }
+  .service-card h3 { margin-bottom: 14px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* ABOUT */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-content { }
+  .about-img {
+    width: 100%; height: 480px; background: linear-gradient(135deg, var(--gold-light) 0%, #f5f0e8 100%);
+    border-radius: 20px; box-shadow: var(--shadow-lg); position: relative;
+  }
+  .about-img::after {
+    content: '📊'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 120px; opacity: 0.3;
+  }
+  .about-content p { font-size: 16px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.8; }
+  .about-list { list-style: none; margin: 30px 0; }
+  .about-list li {
+    display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;
+    font-size: 15px; color: var(--text-mid);
+  }
+  .about-list li::before { content: '✓'; color: var(--gold); font-weight: 700; font-size: 18px; flex-shrink: 0; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color: white; text-align: center; padding: 80px 60px;
+    border-radius: 20px; margin: 0 80px;
+  }
+  .cta-section h2 { color: white; margin-bottom: 16px; }
+  .cta-section p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 36px; }
+
+  /* CONTACT */
+  .contact { background: var(--cream); }
+  .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+  .contact-info h3 { margin-bottom: 30px; }
+  .contact-item {
+    display: flex; gap: 18px; margin-bottom: 28px; align-items: flex-start;
+  }
+  .contact-icon {
+    width: 48px; height: 48px; background: var(--gold-light); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
+  }
+  .contact-detail h4 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .contact-detail p { font-size: 15px; color: var(--text-mid); }
+  .contact-detail a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .contact-detail a:hover { text-decoration: underline; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; }
+  .form-group label { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { outline: none; border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit { margin-top: 8px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 30px;
+  }
+  .footer-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-section h4 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 18px; }
+  .footer-section a { display: block; color: rgba(255,255,255,0.7); font-size: 14px; margin-bottom: 10px; text-decoration: none; transition: color 0.2s; }
+  .footer-section a:hover { color: var(--gold); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,0.6); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero, .about, .contact-content { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    nav { padding: 0 20px; }
+    section { padding: 60px 40px; }
+    .hero-content { padding: 60px 40px; }
+    .trust-bar { padding: 20px 40px; }
+    .cta-section { margin: 0 40px; padding: 60px 40px; }
+    .footer-content { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero h1 { font-size: 40px; }
+    .hero-badge { font-size: 12px; }
+    section { padding: 50px 20px; }
+    .hero-content { padding: 50px 20px; }
+    .trust-bar { padding: 15px 20px; flex-direction: column; align-items: flex-start; }
+    .services-grid { grid-template-columns: 1fr; gap: 20px; }
+    .about-img { height: 300px; }
+    .hero-trust { flex-direction: column; gap: 16px; }
+    .cta-section { margin: 0 20px; padding: 50px 20px; }
+    .footer-content { gap: 20px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    h2 { font-size: 32px; }
+    .section-intro { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">U</div>
+    <div>
+      <div class="logo-text">UWM Accountants</div>
+      <div class="logo-sub">Leeds</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:01132310202" class="btn btn-outline">Call Us</a>
+    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Trusted by businesses across Yorkshire
+    </div>
+    <h1>Expert <em>accounting & tax</em> advice for your business</h1>
+    <p>UWM Accountants provides comprehensive accounting, tax planning, and financial advisory services to businesses and individuals in Leeds and beyond.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Schedule Consultation</a>
+      <a href="tel:01132310202" class="btn btn-outline btn-lg">📞 0113 231 0202</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Clients Served</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">100%</div>
+        <div class="trust-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="review-float main">
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div class="card-avatar">👨‍💼</div>
+          <div style="flex: 1;">
+            <div class="stars">★★★★★</div>
+            <div class="card-name">James Mitchell</div>
+            <div class="card-text">Excellent service and professional advice. Highly recommended.</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-float floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sarah Johnson</div>
+        <div class="card-text">They've saved us thousands on tax planning.</div>
+        <div class="card-badge">Verified Client</div>
+      </div>
+      <div class="review-float floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">David Brown</div>
+        <div class="card-text">Professional, efficient, and very knowledgeable team.</div>
+        <div class="card-badge">Verified Client</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span>Chartered Accountants</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🔒</div>
+    <span>Data Protection Compliant</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📊</div>
+    <span>Advanced Tax Planning</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏱</div>
+    <span>Timely & Reliable Service</span>
+  </div>
+</div>
+
+<!-- SERVICES SECTION -->
+<section class="services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Comprehensive accounting solutions</h2>
+  <p class="section-intro">We offer a full range of accounting and financial services tailored to meet the unique needs of your business.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Bookkeeping & Accounts</h3>
+      <p>Professional bookkeeping and financial statement preparation for small to medium-sized businesses. We ensure accurate records and regulatory compliance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💰</div>
+      <h3>Tax Planning & Compliance</h3>
+      <p>Strategic tax planning to minimize your tax liability. From corporation tax to self-assessment, we handle all your tax obligations professionally.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Financial Advisory</h3>
+      <p>Expert financial advice to help your business grow. We provide strategic guidance on business planning, cash flow management, and financial forecasting.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Business Formation</h3>
+      <p>Complete support for setting up your business. From company registration to initial accounting setup, we'll guide you through every step.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Payroll & VAT Services</h3>
+      <p>Comprehensive payroll management and VAT compliance services. We ensure your business stays compliant with all employment and tax regulations.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Audit & Assurance</h3>
+      <p>Independent audit and assurance services to verify the accuracy of your financial records and provide stakeholder confidence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about" id="about">
+  <div class="about-img"></div>
+  <div class="about-content">
+    <div class="section-label">About Us</div>
+    <h2>Your trusted accounting partner in Leeds</h2>
+    <p>UWM Accountants is a forward-thinking firm dedicated to providing exceptional accounting and financial services to businesses and individuals across Yorkshire. With over 15 years of experience, we've built a reputation for professionalism, expertise, and client-focused service.</p>
+    <p>Our team of chartered accountants combines technical expertise with a practical, business-minded approach to help you make informed financial decisions.</p>
+    <ul class="about-list">
+      <li>Experienced chartered accountants and tax advisors</li>
+      <li>Personalized service tailored to your business needs</li>
+      <li>Proactive tax planning and strategies</li>
+      <li>Modern technology for efficient service delivery</li>
+      <li>Committed to your business growth and success</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<div class="cta-section">
+  <h2>Ready to optimize your finances?</h2>
+  <p>Let UWM Accountants help you achieve your financial goals. Schedule a consultation with our team today.</p>
+  <a href="#contact" class="btn btn-primary btn-lg">Get Your Free Consultation</a>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="contact" id="contact">
+  <div class="section-label">Contact Us</div>
+  <h2>Get in touch with our team</h2>
+  <p class="section-intro">Have questions about our services? Contact UWM Accountants in Leeds today. We're here to help with all your accounting and tax needs.</p>
+  
+  <div class="contact-content">
+    <div class="contact-info">
+      <h3>Our Details</h3>
+      
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail">
+          <h4>Address</h4>
+          <p>UWM House<br>6 Fusion Court<br>Garforth<br>Leeds LS25 2GH<br>UK</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div class="contact-detail">
+          <h4>Phone</h4>
+          <p><a href="tel:01132310202">0113 231 0202</a></p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div class="contact-detail">
+          <h4>Email</h4>
+          <p><a href="mailto:info@uwmaccountants.co.uk">info@uwmaccountants.co.uk</a></p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">⏰</div>
+        <div class="contact-detail">
+          <h4>Office Hours</h4>
+          <p>Monday - Friday: 9:00 AM - 5:00 PM<br>Saturday & Sunday: Closed</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="
