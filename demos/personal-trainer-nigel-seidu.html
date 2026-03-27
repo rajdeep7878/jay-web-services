@@ -1,0 +1,505 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Trainer Nigel Seidu — Personal Training in London</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-icon { font-size: 36px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* BENEFITS */
+  .benefits { background: var(--cream); }
+  .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 48px; }
+  .benefit-item { display: flex; gap: 20px; }
+  .benefit-icon {
+    width: 56px; height: 56px; background: var(--teal); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 28px; color: white;
+    flex-shrink: 0;
+  }
+  .benefit-content h3 { margin-bottom: 8px; }
+  .benefit-content p { color: var(--text-mid); font-size: 15px; line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .testimonial-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 28px;
+    transition: all 0.25s;
+  }
+  .testimonial-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; letter-spacing: 2px; margin-bottom: 12px; }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .testimonial-name { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-light); }
+
+  /* CONTACT */
+  .contact { background: var(--navy); color: white; }
+  .contact h2 { color: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+  .contact-method { display: flex; gap: 16px; }
+  .contact-method-icon {
+    width: 48px; height: 48px; background: rgba(27,153,139,0.2); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--teal); flex-shrink: 0;
+  }
+  .contact-method h3 { color: white; margin-bottom: 4px; }
+  .contact-method p { font-size: 15px; color: rgba(255,255,255,0.7); }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 13px; font-weight: 600; }
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05); color: white; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; transition: all 0.2s;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none; background: rgba(255,255,255,0.08); border-color: var(--teal);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0A131F; border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 40px 80px; text-align: center; color: rgba(255,255,255,0.6); font-size: 14px;
+  }
+  footer p { margin: 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; font-size: 13px; }
+    section { padding: 60px 40px; }
+    .hero { grid-template-columns: 1fr; padding-top: 70px; }
+    .hero-content { padding: 40px; }
+    .hero h1 { font-size: 42px; }
+    .hero-img { display: none; }
+    .services-grid,
+    .testimonials-grid,
+    .benefits-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .trust-bar { padding: 20px 40px; }
+    footer { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">💪</div>
+    <div>
+      <div class="logo-text">Nigel Seidu</div>
+      <div class="logo-sub">Personal Training</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#benefits">Benefits</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:07516696960" class="btn btn-outline">Call</a>
+    <a href="#contact" class="btn btn-primary">Book Session</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Personal Training in East London
+    </div>
+    <h1>Transform Your Body With <em>Expert Coaching</em></h1>
+    <p>Professional personal training tailored to your fitness goals. Specialising in strength, conditioning, and lifestyle transformation in London.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Start Your Journey</a>
+      <a href="tel:07516696960" class="btn btn-outline btn-lg">07516 696960</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Clients Trained</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">12+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9★</div>
+        <div class="trust-label">Client Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div class="card-avatar">💪</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sarah Mitchell</div>
+        <div class="card-text">"Nigel transformed my fitness journey. Professional, motivating, and results-driven coaching."</div>
+        <div class="card-badge">Strength Training</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="card-avatar">✓</div>
+        <div style="font-weight: 600; color: var(--navy);">Certified Professional</div>
+        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Qualifications & Credentials</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="card-avatar">📍</div>
+        <div style="font-weight: 600; color: var(--navy);">20 Tench St</div>
+        <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">London E1W 2QD, UK</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span>Certified Personal Trainer</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <span>Based in East London</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⭐</div>
+    <span>4.9/5 Client Reviews</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">💯</div>
+    <span>Personalised Programs</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Our Expertise</div>
+  <h2>Training Services</h2>
+  <p class="section-intro">Comprehensive personal training services designed to meet your specific fitness goals and lifestyle.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">💪</div>
+      <h3>Strength Training</h3>
+      <p>Build muscle, increase power, and develop functional strength with progressive resistance programs tailored to your level.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏃</div>
+      <h3>Conditioning</h3>
+      <p>Improve cardiovascular fitness, endurance, and athletic performance with scientifically-designed conditioning protocols.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Goal-Oriented Coaching</h3>
+      <p>Specialised coaching to help you achieve your specific fitness goals, whether weight loss, muscle gain, or athletic performance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥗</div>
+      <h3>Nutrition Guidance</h3>
+      <p>Personalised nutrition advice and meal planning to support your training goals and lifestyle transformation.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Progress Tracking</h3>
+      <p>Comprehensive assessment and tracking systems to monitor your progress and adjust programs for optimal results.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Group Sessions</h3>
+      <p>Dynamic group training sessions for clients who thrive in a supportive, motivating community environment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="benefits">
+  <div class="section-label">Why Choose Nigel Seidu</div>
+  <h2>What You'll Experience</h2>
+  <p class="section-intro">Professional personal training focused on delivering real results through expert guidance and proven methods.</p>
+  
+  <div class="benefits-grid">
+    <div class="benefit-item">
+      <div class="benefit-icon">✓</div>
+      <div class="benefit-content">
+        <h3>Expert Assessment</h3>
+        <p>Initial comprehensive fitness assessment to establish baseline metrics and create your customised training plan.</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">📈</div>
+      <div class="benefit-content">
+        <h3>Progressive Programming</h3>
+        <p>Carefully structured training programs that progressively challenge you and adapt to your improvements.</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">💡</div>
+      <div class="benefit-content">
+        <h3>Expert Technique</h3>
+        <p>Professional form correction and exercise technique coaching to maximize results and prevent injury.</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">🎯</div>
+      <div class="benefit-content">
+        <h3>Accountability</h3>
+        <p>Ongoing support and motivation to keep you committed to your fitness goals and lifestyle changes.</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">⚡</div>
+      <div class="benefit-content">
+        <h3>Flexible Scheduling</h3>
+        <p>Sessions tailored to your schedule with options for one-to-one or group training at convenient times.</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">🏆</div>
+      <div class="benefit-content">
+        <h3>Real Results</h3>
+        <p>Proven track record of helping clients achieve significant fitness transformations and lifestyle improvements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client Reviews</div>
+  <h2>What Clients Say</h2>
+  <p class="section-intro">Real feedback from clients who have experienced the benefits of professional personal training.</p>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Nigel is an exceptional trainer. His knowledge, professionalism, and genuine care for his clients' progress is outstanding. Highly recommended."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👩</div>
+        <div>
+          <div class="testimonial-name">Emma Thompson</div>
+          <div class="testimonial-role">Strength Training Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"I've trained with Nigel for two years and the results speak for themselves. Expert programming and constant motivation."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👨</div>
+        <div>
+          <div class="testimonial-name">James Rodriguez</div>
+          <div class="testimonial-role">Fitness Goals Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Transformed my life. Nigel created a program that fit perfectly into my schedule and delivered incredible results in just 6 months."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👩</div>
+        <div>
+          <div class="testimonial-name">Lisa Chen</div>
+          <div class="testimonial-role">Body Transformation Client</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>Get Started Today</h2>
+  <p class="section-intro" style="color: rgba(255,255,255,0.7);">Ready to transform your fitness? Contact Nigel Seidu to discuss your goals and book your first session.</p>
+  
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-method">
+        <div class="contact-method-icon">📍</div>
+        <div>
+          <h3>Location</h3>
+          <p>20 Tench St<br>London E1W 2QD<br>United Kingdom</p>
+        </div>
+      </div>
+      <div class="contact-method">
+        <div class="contact-method-icon">📱</div>
+        <div>
+          <h3>Phone</h3>
+          <p><a href="tel:07516696960" style="color: var(--teal); text-decoration: none;">07516 696960</a></p>
+        </div>
+      </div>
+      <div class="contact-method">
+        <div class="contact-method-icon">⏰</div>
+        <div>
+          <h3>Availability</h3>
+          <p>Monday - Friday: 6am - 8pm<br>Saturday - Sunday: 8am - 6pm</p>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for your interest. Nigel will contact you soon!');">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" placeholder="Your phone number">
+      </div>
