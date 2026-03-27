@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>West London Solicitors — Expert Legal Services in Southall | Law Firm</title>
-<meta name="description" content="West London Solicitors provides expert legal services in Southall. We specialise in property law, family law, wills & probate, and business law. Call 020 8571 1001 for a consultation.">
+<title>West London Solicitors | Expert Legal Services in Southall</title>
+<meta name="description" content="West London Solicitors provides expert legal services in Southall, including conveyancing, family law, probate and more. Call 020 8571 1001 for a consultation.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -120,6 +120,7 @@
   .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
   .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
   .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+  .law-badge { background: #003366; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
 
   /* TRUST BAR */
   .trust-bar {
@@ -145,11 +146,12 @@
   }
   .service-card::before {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    background: var(--teal); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
   }
-  .service-card:hover::before { transform: scaleX(1); }
   .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
-  .service-icon { width: 52px; height: 52px; background: var(--teal-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 16px; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { width: 48px; height: 48px; background: var(--teal-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
   .service-card h3 { margin-bottom: 12px; }
   .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
 
@@ -157,59 +159,100 @@
   .about { background: var(--cream); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .about-content h2 { margin-bottom: 24px; }
-  .about-content p { font-size: 16px; color: var(--text-mid); margin-bottom: 18px; line-height: 1.8; }
-  .about-content ul { list-style: none; margin-top: 28px; }
-  .about-content li { padding-left: 28px; margin-bottom: 14px; font-size: 15px; color: var(--text-mid); position: relative; }
-  .about-content li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 18px; }
-  .about-image { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); border-radius: 16px; height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
-
-  /* CONTACT SECTION */
-  .contact { background: var(--white); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-  .contact-info h3 { margin-top: 28px; margin-bottom: 8px; }
-  .contact-item { margin-bottom: 32px; }
-  .contact-item p { color: var(--text-mid); font-size: 15px; }
-  .contact-item a { color: var(--teal); text-decoration: none; font-weight: 600; }
-  .contact-item a:hover { text-decoration: underline; }
-  .form-group { margin-bottom: 20px; display: flex; flex-direction: column; }
-  .form-group label { margin-bottom: 8px; font-weight: 500; color: var(--text); }
-  .form-group input, .form-group textarea { padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; transition: border-color 0.2s; }
-  .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--teal); }
-  .form-group textarea { resize: vertical; min-height: 120px; }
+  .about-text { display: flex; flex-direction: column; gap: 20px; }
+  .about-text p { font-size: 16px; color: var(--text-mid); line-height: 1.8; }
+  .about-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .about-list-item { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--text-mid); }
+  .about-list-item::before { content: '✓'; color: var(--teal); font-weight: 700; font-size: 18px; }
+  .about-img { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, var(--teal-light) 0%, #D4F1ED 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
 
   /* CTA SECTION */
-  .cta {
+  .cta-section {
     background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
-    color: white; text-align: center; padding: 80px 60px;
+    padding: 80px; text-align: center; border-radius: 20px; margin: 90px 80px;
   }
-  .cta h2 { color: white; margin-bottom: 24px; }
-  .cta p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px; line-height: 1.7; }
+  .cta-section h2 { color: white; margin-bottom: 24px; }
+  .cta-section p { color: rgba(255,255,255,0.8); font-size: 18px; max-width: 520px; margin: 0 auto 36px; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+  .testimonial-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    display: flex; flex-direction: column; gap: 16px; transition: all 0.25s;
+  }
+  .testimonial-card:hover { box-shadow: var(--shadow-lg); border-color: var(--teal); }
+  .testimonial-header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .testimonial-name { font-weight: 600; color: var(--navy); }
+  .testimonial-role { font-size: 13px; color: var(--text-light); }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; letter-spacing: 2px; }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* PRICING */
+  .pricing { background: var(--cream); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .pricing-card {
+    background: white; border-radius: 16px; padding: 40px 32px; text-align: center;
+    border: 1.5px solid var(--border); transition: all 0.25s; position: relative;
+  }
+  .pricing-card.featured {
+    border-color: var(--teal); box-shadow: 0 10px 40px rgba(27,153,139,0.15);
+    transform: scale(1.05);
+  }
+  .pricing-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+  .pricing-name { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .pricing-desc { font-size: 14px; color: var(--text-light); margin-bottom: 24px; }
+  .pricing-price { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; color: var(--navy); margin: 24px 0; }
+  .pricing-price span { font-size: 18px; color: var(--text-light); font-family: 'DM Sans'; font-weight: 400; }
+  .pricing-features { text-align: left; display: flex; flex-direction: column; gap: 12px; margin: 32px 0; padding: 24px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .pricing-feature { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-mid); }
+  .pricing-feature::before { content: '✓'; color: var(--teal); font-weight: 700; font-size: 16px; }
 
   /* FOOTER */
   footer {
-    background: var(--navy); color: rgba(255,255,255,0.7); padding: 40px 80px; border-top: 1px solid rgba(27,153,139,0.2);
+    background: var(--navy); color: white; padding: 80px; margin-top: 120px;
   }
-  .footer-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
-  .footer-col h4 { color: white; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
-  .footer-col a { display: block; font-size: 13px; margin-bottom: 10px; text-decoration: none; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; margin-bottom: 60px; }
+  .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; margin-bottom: 20px; color: white; }
+  .footer-col p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; margin-bottom: 12px; transition: color 0.2s; }
   .footer-col a:hover { color: var(--teal); }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+  .footer-divider { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-bottom { display: flex; gap: 20px; font-size: 13px; color: rgba(255,255,255,0.5); }
 
   /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 30px; }
+    section { padding: 60px 40px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero h1 { font-size: 48px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding-top: 70px; }
+    .logo-text { font-size: 16px; }
+    .nav-links { gap: 16px; }
+    section { padding: 40px 20px; }
+    .hero { min-height: auto; padding-top: 70px; }
     .hero-content { padding: 40px 20px; }
+    .hero h1 { font-size: 36px; }
     .hero-img { display: none; }
-    .hero h1 { font-size: 42px; }
-    section { padding: 60px 20px; }
     .services-grid { grid-template-columns: 1fr; }
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .footer-content { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
-    .trust-bar { padding: 20px; flex-direction: column; text-align: center; }
+    .about-img { aspect-ratio: auto; min-height: 300px; }
+    .cta-section { margin: 60px 20px; padding: 40px; }
+    .trust-bar { padding: 20px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.featured { transform: scale(1); }
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    footer { padding: 40px 20px; }
   }
 </style>
 </head>
@@ -217,36 +260,37 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">
-    <div class="logo-icon">⚖️</div>
+  <a href="#home" class="logo" style="text-decoration: none;">
+    <div class="logo-icon">⚖</div>
     <div>
       <div class="logo-text">West London Solicitors</div>
-      <div class="logo-sub">Legal Services</div>
+      <div class="logo-sub">Legal Experts</div>
     </div>
-  </div>
+  </a>
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#about">About</a>
+    <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-cta">
-    <a href="tel:02085711001" class="btn btn-outline">Call Us</a>
-    <a href="#contact" class="btn btn-primary">Get Legal Advice</a>
+    <a href="tel:0208571001" class="btn btn-outline">☎ Call Now</a>
+    <a href="#contact" class="btn btn-primary">Get Consultation</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-badge">
       <span></span>
       Trusted Legal Partner in West London
     </div>
-    <h1>Expert Legal <em>Guidance</em> for Your Future</h1>
-    <p>Professional solicitors in Southall offering expert legal advice on property, family law, wills, probate, and business matters. We're committed to protecting your interests.</p>
+    <h1>Expert <em>Legal Services</em> for Your Family & Business</h1>
+    <p>From conveyancing to family law, probate to litigation — West London Solicitors provides comprehensive legal solutions with over 20 years of proven expertise.</p>
     <div class="hero-actions">
-      <a href="tel:02085711001" class="btn btn-primary btn-lg">020 8571 1001</a>
-      <a href="#contact" class="btn btn-outline">Request Consultation</a>
+      <a href="tel:0208571001" class="btn btn-primary btn-lg">☎ 020 8571 1001</a>
+      <a href="#contact" class="btn btn-outline btn-lg">Schedule Appointment</a>
     </div>
     <div class="hero-trust">
       <div class="trust-item">
@@ -254,97 +298,95 @@
         <div class="trust-label">Years Experience</div>
       </div>
       <div class="trust-item">
-        <div class="trust-num">2,500+</div>
-        <div class="trust-label">Clients Served</div>
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Satisfied Clients</div>
       </div>
       <div class="trust-item">
-        <div class="trust-num">98%</div>
-        <div class="trust-label">Satisfaction Rate</div>
+        <div class="trust-num">95%</div>
+        <div class="trust-label">Success Rate</div>
       </div>
     </div>
   </div>
   <div class="hero-img">
     <div class="hero-card-stack">
       <div class="smile-card main">
-        <div style="display: flex; justify-content: space-between; align-items: start;">
-          <div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div class="card-avatar">👨‍⚖️</div>
+          <div style="flex: 1;">
             <div class="stars">★★★★★</div>
-            <div class="card-name">Sarah Johnson</div>
-            <div class="card-text">Excellent service and professional advice on my property purchase.</div>
+            <div class="card-name">James Mitchell</div>
+            <div class="card-text">"Excellent legal advice and professional service throughout my property transaction."</div>
           </div>
         </div>
-        <div class="card-badge">Verified Client</div>
       </div>
       <div class="smile-card floating-1">
-        <div class="stars">★★★★★</div>
-        <div class="card-name">Michael Chen</div>
-        <div class="card-text">Handled my will with great care and attention to detail.</div>
+        <div class="card-badge">✓ Verified</div>
+        <div class="card-text" style="margin-top: 8px;">"Best solicitors in Southall!"</div>
       </div>
       <div class="smile-card floating-2">
         <div class="stars">★★★★★</div>
-        <div class="card-name">Emma Williams</div>
-        <div class="card-text">Very supportive throughout my family law case.</div>
+        <div class="card-text" style="margin-top: 8px;">Family law expertise</div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-bar-item">
     <div class="trust-icon">✓</div>
-    <span>Fully Qualified Solicitors</span>
+    <span>Fully Qualified & Regulated</span>
   </div>
   <div class="trust-bar-item">
-    <div class="trust-icon">✓</div>
-    <span>Competitive Fixed Fees</span>
+    <div class="trust-icon">🏆</div>
+    <span>Award-Winning Team</span>
   </div>
   <div class="trust-bar-item">
-    <div class="trust-icon">✓</div>
-    <span>Free Initial Consultation</span>
+    <div class="trust-icon">💼</div>
+    <span>Full Legal Services</span>
   </div>
   <div class="trust-bar-item">
-    <div class="trust-icon">✓</div>
-    <span>Fast Turnaround Times</span>
+    <div class="trust-icon">⏱</div>
+    <span>Fast Turnaround</span>
   </div>
 </div>
 
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="section-label">Our Expertise</div>
-  <h2>Legal Services We Provide</h2>
-  <p class="section-intro">West London Solicitors specialises in a comprehensive range of legal services tailored to meet your specific needs. Our experienced team is here to guide you through every step.</p>
+  <h2>Comprehensive Legal Services</h2>
+  <p class="section-intro">From residential property to complex commercial matters, we provide expert legal guidance tailored to your specific needs.</p>
   
   <div class="services-grid">
     <div class="service-card">
       <div class="service-icon">🏠</div>
-      <h3>Property Law</h3>
-      <p>Expert guidance on residential and commercial property transactions, conveyancing, leasehold matters, and property disputes.</p>
+      <h3>Property & Conveyancing</h3>
+      <p>Expert assistance with residential and commercial property purchases, sales, and transfers. We handle all legal documentation and due diligence.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon">👨‍👩‍👧</div>
+      <div class="service-icon">👨‍👩‍👧‍👦</div>
       <h3>Family Law</h3>
-      <p>Compassionate support with divorce, separation, child custody, maintenance, and other family-related legal matters.</p>
+      <p>Compassionate representation in divorce, separation, custody disputes, and family matters. We prioritize your family's best interests.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">📋</div>
-      <h3>Wills & Probate</h3>
-      <p>Professional assistance with will preparation, probate applications, estate administration, and inheritance disputes.</p>
+      <h3>Probate & Wills</h3>
+      <p>Professional guidance in estate planning, will drafting, and probate administration. Protect your family's future with proper legal planning.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚖️</div>
+      <h3>Litigation & Disputes</h3>
+      <p>Strategic legal representation in civil disputes, contract matters, and litigation. We fight for your rights in court.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">💼</div>
       <h3>Business Law</h3>
-      <p>Comprehensive legal services for businesses including formation, contracts, employment law, and commercial disputes.</p>
+      <p>Comprehensive support for business formation, contracts, employment issues, and corporate matters. Protect your business interests.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon">⚖️</div>
-      <h3>Dispute Resolution</h3>
-      <p>Expert representation in civil litigation, mediation, and alternative dispute resolution for all types of claims.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🏢</div>
-      <h3>Immigration Law</h3>
-      <p>Specialist advice on visa applications, settlement, citizenship, and immigration compliance matters.</p>
+      <div class="service-icon">📝</div>
+      <h3>Legal Consultations</h3>
+      <p>Expert legal advice on various matters. Initial consultations available to discuss your specific legal needs and requirements.</p>
     </div>
   </div>
 </section>
@@ -353,117 +395,38 @@
 <section class="about" id="about">
   <div class="about-grid">
     <div class="about-content">
-      <h2>Why Choose West London Solicitors?</h2>
-      <p>We are a dedicated firm of solicitors based in Southall, serving clients across West London and beyond. With over 20 years of experience, we've built a reputation for delivering exceptional legal services with a personal touch.</p>
-      <p>Our team combines extensive legal expertise with a genuine commitment to understanding your unique situation. We pride ourselves on clear communication, transparent pricing, and achieving the best possible outcomes for our clients.</p>
-      <ul>
-        <li>Experienced team with specialist expertise</li>
-        <li>Transparent and competitive pricing</li>
-        <li>Personalised approach to every case</li>
-        <li>Local accessibility in Southall</li>
-        <li>Flexible appointment times</li>
-        <li>Free initial consultation</li>
-      </ul>
-    </div>
-    <div class="about-image">
-      <div style="text-align: center; color: white;">
-        <div style="font-size: 48px; margin-bottom: 16px;">📍</div>
-        <div style="font-size: 20px; font-weight: 600;">5A High St, Southall</div>
-        <div style="font-size: 14px; margin-top: 8px; opacity: 0.9;">Conveniently located in the heart of Southall</div>
+      <div class="section-label">Who We Are</div>
+      <h2>Your Trusted Legal Partner in Southall</h2>
+      <div class="about-text">
+        <p>West London Solicitors has been serving the Southall community for over 20 years. Our team of experienced solicitors is dedicated to providing expert legal advice and representation across a wide range of legal matters.</p>
+        <p>Based in the heart of Southall, we understand the local community and are committed to delivering exceptional legal services with integrity, professionalism, and attention to detail.</p>
       </div>
+      <div class="about-list">
+        <div class="about-list-item">Over 20 years of legal practice</div>
+        <div class="about-list-item">Experienced team of qualified solicitors</div>
+        <div class="about-list-item">Client-focused approach to legal services</div>
+        <div class="about-list-item">Competitive and transparent pricing</div>
+        <div class="about-list-item">Located conveniently in Southall</div>
+      </div>
+      <a href="#contact" class="btn btn-primary btn-lg" style="margin-top: 32px;">Schedule Your Consultation</a>
     </div>
+    <div class="about-img">⚖️</div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-grid">
-    <div class="contact-info">
-      <h2>Get in Touch</h2>
-      <p class="section-intro">Have a legal question? Contact West London Solicitors today for a free initial consultation with one of our experienced solicitors.</p>
-      
-      <div class="contact-item">
-        <h3>Phone</h3>
-        <p><a href="tel:02085711001">020 8571 1001</a></p>
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client Reviews</div>
+  <h2>Trusted by Our Clients</h2>
+  <p class="section-intro">See what our satisfied clients have to say about our legal services and professional representation.</p>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div>
+          <div class="testimonial-name">Sarah Johnson</div>
+          <div class="testimonial-role">Property Purchase</div>
+        </div>
+        <div class="testimonial-avatar">👩</div>
       </div>
-      
-      <div class="contact-item">
-        <h3>Office Address</h3>
-        <p>5A High St<br>Southall<br>UB1 3HA<br>UK</p>
-      </div>
-      
-      <div class="contact-item">
-        <h3>Office Hours</h3>
-        <p>Monday – Friday: 9:00 AM – 5:30 PM<br>Saturday: 10:00 AM – 2:00 PM<br>Sunday: Closed</p>
-      </div>
-    </div>
-    
-    <form class="contact-form">
-      <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone">
-      </div>
-      <div class="form-group">
-        <label for="service">Service Required</label>
-        <select id="service" name="service" style="padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px;">
-          <option value="">Select a service</option>
-          <option value="property">Property Law</option>
-          <option value="family">Family Law</option>
-          <option value="wills">Wills & Probate</option>
-          <option value="business">Business Law</option>
-          <option value="dispute">Dispute Resolution</option>
-          <option value="immigration">Immigration Law</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-lg">Send Enquiry</button>
-    </form>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-  <h2>Ready for Expert Legal Guidance?</h2>
-  <p>Contact West London Solicitors today. Our team is ready to help you navigate your legal matters with confidence and support.</p>
-  <a href="tel:02085711001" class="btn btn-primary btn-lg">Call 020 8571 1001</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-content">
-    <div class="footer-col">
-      <h4>West London Solicitors</h4>
-      <p style="font-size: 13px; color: rgba(255,255,255,0.6);">Expert legal services in Southall and West London.</p>
-      <p style="font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 12px;"><strong>Address:</strong><br>5A High St, Southall<br>UB1 3HA, UK</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <a href="#services">Property Law</a>
-      <a href="#services">Family Law</a>
-      <a href="#services">Wills & Probate</a>
-      <a href="#services">Business Law</a>
-      <a href="#services">Dispute Resolution</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#about">About Us</a>
-      <a href="#services">Our Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms & Conditions</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact Info</h4>
-      <a href="tel:02085711001">020 8571 1001</a>
-      <p style="font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 12px;"><strong>Hours:</strong><br>Mon-Fri: 9AM-5:30PM<br>Sat: 10AM-2PM</p>
+      <div class="testimonial-stars">★★★★★
