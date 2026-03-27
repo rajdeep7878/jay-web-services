@@ -1,0 +1,470 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pall Mall Dental London offers comprehensive NHS and private dental care in London's prestigious Pall Mall. Expert dentists, modern treatments, and patient-focused care.">
+<title>Pall Mall Dental London — Dentist in London | NHS & Private Dental Care</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+  .nhs-badge { background: #002F87; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 52px; height: 52px; background: var(--teal-light); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px;
+  }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-img {
+    width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, var(--teal-light) 0%, #d4f1ed 100%);
+    border-radius: 16px; display: flex; align-items: center; justify-content: center;
+    font-size: 64px; color: var(--teal);
+  }
+  .about-list { list-style: none; }
+  .about-list li {
+    display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start;
+  }
+  .about-list li::before {
+    content: '✓'; font-size: 20px; font-weight: 700; color: var(--teal); flex-shrink: 0;
+  }
+  .about-list li p { font-size: 16px; color: var(--text-mid); line-height: 1.6; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white; text-align: center;
+    padding: 80px;
+  }
+  .cta-section h2 { color: white; margin-bottom: 24px; }
+  .cta-section p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .contact-form input, .contact-form textarea {
+    padding: 14px 18px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 15px; transition: border-color 0.2s;
+  }
+  .contact-form input:focus, .contact-form textarea:focus {
+    outline: none; border-color: var(--teal);
+  }
+  .contact-form textarea { resize: vertical; min-height: 140px; }
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+  .contact-item {
+    display: flex; gap: 16px;
+  }
+  .contact-item-icon {
+    width: 48px; height: 48px; background: var(--teal-light); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
+  }
+  .contact-item h4 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .contact-item p { color: var(--text-mid); font-size: 15px; }
+  .contact-item a { color: var(--teal); text-decoration: none; font-weight: 500; }
+  .contact-item a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 40px;
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 50px; }
+  .footer-col h4 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--teal); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,0.5); }
+  .footer-social { display: flex; gap: 16px; }
+  .social-link { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); text-decoration: none; transition: all 0.2s; }
+  .social-link:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 30px; }
+    section { padding: 60px 40px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { display: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 48px; }
+    h2 { font-size: 32px; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; height: 60px; }
+    .nav-links { display: none; }
+    section { padding: 40px 20px; }
+    .hero { padding-top: 60px; }
+    .hero-content { padding: 40px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 16px; }
+    h2 { font-size: 28px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .trust-bar { padding: 16px 20px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🦷</div>
+    <div>
+      <div class="logo-text">Pall Mall Dental</div>
+      <div class="logo-sub">London</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:02077667150" class="btn btn-outline">Call Us</a>
+    <a href="#contact" class="btn btn-primary">Book Appointment</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Now Accepting New Patients
+    </div>
+    <h1>Your Smile Deserves <em>Expert Care</em></h1>
+    <p>Comprehensive dental care in the heart of London. We combine modern techniques with personalised attention to create beautiful, healthy smiles. Both NHS and private treatments available.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Book Your Appointment</a>
+      <a href="tel:02077667150" class="btn btn-outline btn-lg">020 7766 7150</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">20+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">5,000+</div>
+        <div class="trust-label">Happy Patients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9★</div>
+        <div class="trust-label">Patient Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div class="card-avatar">😊</div>
+          <div>
+            <div class="card-name">Sarah M.</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="card-text">"Exceptional care and highly professional team. My teeth have never looked better!"</div>
+        <div class="card-badge">Patient Review</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
+          <div class="nhs-badge">NHS Approved</div>
+        </div>
+        <div class="stars" style="margin-bottom: 8px;">★★★★★</div>
+        <div class="card-text">"Professional, friendly and welcoming. Highly recommended!"</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="card-text" style="margin-bottom: 8px;">Modern facilities and latest dental technology for your comfort.</div>
+        <div style="font-size: 12px; color: var(--teal); font-weight: 600;">✓ CQC Registered</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span>CQC Registered</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🛡️</div>
+    <span>GDC Registered Dentists</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🏥</div>
+    <span>NHS & Private Care</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏰</div>
+    <span>Flexible Appointment Times</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Comprehensive Dental Solutions</h2>
+  <p class="section-intro">From routine check-ups to advanced cosmetic procedures, we offer a complete range of dental services tailored to your needs and budget.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>General Dentistry</h3>
+      <p>Regular check-ups, cleanings, and preventative care to keep your teeth and gums healthy. Early detection of dental issues saves time and money.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Cosmetic Dentistry</h3>
+      <p>Teeth whitening, veneers, and smile makeovers to enhance your appearance and boost your confidence with a brighter, more radiant smile.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🦴</div>
+      <h3>Restorative Dentistry</h3>
+      <p>Fillings, crowns, bridges, and implants to restore damaged or missing teeth and maintain proper jaw alignment and function.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚨</div>
+      <h3>Emergency Dentistry</h3>
+      <p>Same-day appointments for dental emergencies. We understand pain and provide rapid, effective relief when you need it most.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧬</div>
+      <h3>Orthodontics</h3>
+      <p>Braces, aligners, and corrective treatments for misaligned teeth. Achieve the perfect bite and straight smile you've always wanted.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🦷</div>
+      <h3>Specialist Care</h3>
+      <p>Root canals, extractions, and advanced surgical procedures performed by experienced specialists with the latest equipment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img">
+      <span style="font-size: 100px;">👨‍⚕️</span>
+    </div>
+    <div>
+      <div class="section-label">About Pall Mall Dental London</div>
+      <h2>Excellence in Dental Care Since Day One</h2>
+      <p style="font-size: 17px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.8;">Based in prestigious Pall Mall, our practice combines traditional values with cutting-edge technology. Our team of experienced, registered dentists is committed to providing exceptional patient care in a comfortable, welcoming environment.</p>
+      
+      <ul class="about-list">
+        <li><p><strong>Expert Team:</strong> Qualified GDC-registered dentists with extensive experience across all dental disciplines</p></li>
+        <li><p><strong>Modern Technology:</strong> State-of-the-art equipment for accurate diagnosis and efficient treatment</p></li>
+        <li><p><strong>Flexible Options:</strong> Both NHS and private treatments to suit your preferences and budget</p></li>
+        <li><p><strong>Patient Focus:</strong> Personalised treatment plans and compassionate care for every patient</p></li>
+        <li><p><strong>Convenient Location:</strong> Located on prestigious Pall Mall in central London with easy transport links</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready for Your Best Smile?</h2>
+  <p>Take the first step towards excellent dental health. Schedule your appointment with Pall Mall Dental London today.</p>
+  <a href="#contact" class="btn btn-primary btn-lg">Book Appointment Now</a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Contact Pall Mall Dental London</h2>
+  <p class="section-intro">Have a question or ready to book? Reach out to us and we'll be happy to help.</p>
+
+  <div class="contact-grid">
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="tel" placeholder="Your Phone Number">
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div>
+          <h4>Our Address</h4>
+          <p>15 Pall Mall<br>London SW1Y 5LU<br>United Kingdom</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div>
+          <h4>Phone</h4>
+          <p><a href="tel:02077667150">020 7766 7150</a></p>
+          <p style="font-size: 13px; color: var(--text-light); margin-top: 6px;">Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 3:00 PM<br>Sunday: Closed</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <p><a href="mailto:hello@pallmalldental.com">hello@pallmalldental.com</a></p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">🗺️</div>
+        <div>
+          <h4>Emergency Service</h4>
+          <p>Urgent dental care available. Call <strong>020 7766 7150</strong> for same-day appointments.</p>
+        </div>
+      </div>
