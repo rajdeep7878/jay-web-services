@@ -1,0 +1,467 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TAJ Accountants: Chartered Management Accountants in London. Expert tax advisory, financial planning, and accounting services for businesses. Based at 69 Vallance Rd, London E1 5BS. Call 020 3355 4947.">
+<title>TAJ Accountants: Chartered Management Accountants — London Tax & Accounting Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1a2f47;
+    --navy-light: #243b55;
+    --gold: #C9A84C;
+    --gold-dark: #a8882f;
+    --gold-light: #FEF8E8;
+    --gold-bg: #FDF6E3;
+    --cream: #FAFAF7;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.16);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--navy); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 18px; font-weight: 700; font-family: 'Playfair Display', serif;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; font-family: 'DM Sans', sans-serif; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: white; }
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-primary:hover { background: var(--gold-dark); color: white; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-navy { background: var(--navy); color: white; }
+  .btn-navy:hover { background: var(--navy-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(13,27,42,0.35); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f47 55%, #1c2d1a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.4);
+    color: #e8c96a; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 60px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* HERO RIGHT PANEL — floating review cards */
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1a2f1a 0%, #0d2010 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; height: 500px; }
+  .review-float {
+    background: white; border-radius: 20px; padding: 24px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .review-float.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .review-float.floating-1 {
+    width: 210px; top: 40px; right: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite;
+  }
+  .review-float.floating-2 {
+    width: 220px; bottom: 40px; left: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite 2s;
+  }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-light); color: var(--gold-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+  .icaew-badge { background: #1A3A5C; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--gold-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 40px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 620px; margin-bottom: 48px; line-height: 1.7; }
+
+  /* SERVICES */
+  .services {
+    background: var(--white);
+  }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px;
+  }
+  .service-card {
+    background: var(--cream); border: 1px solid var(--border); border-radius: 16px;
+    padding: 40px; transition: all 0.3s;
+  }
+  .service-card:hover {
+    border-color: var(--gold); background: var(--gold-bg); box-shadow: var(--shadow);
+    transform: translateY(-4px);
+  }
+  .service-icon {
+    width: 56px; height: 56px; background: var(--gold-light); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 24px;
+  }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color: white;
+  }
+  .about h2, .about .section-label { color: white; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; align-items: center;
+  }
+  .about-text p { margin-bottom: 16px; font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.7; }
+  .about-features {
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .feature {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .feature-icon {
+    width: 44px; height: 44px; background: rgba(201,168,76,0.2); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 22px; flex-shrink: 0; margin-top: 2px;
+  }
+  .feature-text h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; color: white; }
+  .feature-text p { font-size: 14px; color: rgba(255,255,255,0.7); }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--cream);
+  }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px;
+  }
+  .testimonial-card {
+    background: white; border-radius: 16px; padding: 36px; border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .testimonial-card:hover {
+    box-shadow: var(--shadow-lg); border-color: var(--gold);
+  }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .testimonial-meta { display: flex; flex-direction: column; }
+  .testimonial-name { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-light); }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; letter-spacing: 2px; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color: white; text-align: center; padding: 100px 60px;
+  }
+  .cta-section h2 { color: white; font-size: 44px; margin-bottom: 20px; }
+  .cta-section p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 36px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 40px 30px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px;
+  }
+  .footer-col h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: white; }
+  .footer-col p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 12px; }
+  .footer-col a { text-decoration: none; color: rgba(255,255,255,0.6); font-size: 14px; transition: color 0.2s; display: block; margin-bottom: 8px; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-contact { margin-top: 12px; }
+  .contact-line { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 14px; }
+  .contact-icon { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; background: rgba(201,168,76,0.2); border-radius: 4px; color: var(--gold); font-size: 12px; }
+  .footer-divider { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { text-decoration: none; color: rgba(255,255,255,0.5); font-size: 13px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding-top: 70px; }
+    .hero-content { padding: 40px 20px; }
+    .hero-img { display: none; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 16px; }
+    section { padding: 60px 20px; }
+    h2 { font-size: 32px; }
+    .trust-bar { padding: 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 60px 20px; }
+    .cta-section h2 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">TAJ</div>
+    <div>
+      <div class="logo-text">TAJ Accountants</div>
+      <div class="logo-sub">Chartered Management Accountants</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:02033554947" class="btn btn-outline">Call Us</a>
+    <a href="#contact" class="btn btn-primary">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      CMA Qualified & Regulated
+    </div>
+    <h1>Expert <em>Accounting & Tax</em> Solutions for Your Business</h1>
+    <p>TAJ Accountants provides comprehensive chartered management accounting services, tax advisory, and financial planning. We help London businesses maximize profitability and minimize tax burden.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Schedule Consultation</a>
+      <a href="tel:02033554947" class="btn btn-outline btn-lg">020 3355 4947</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">200+</div>
+        <div class="trust-label">Clients Served</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">£50M</div>
+        <div class="trust-label">Tax Savings Generated</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="review-float main">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Sarah Mitchell</div>
+            <div class="card-text" style="margin-top: 8px;">Exceptional service and expert tax advice. Saved us thousands this year.</div>
+          </div>
+        </div>
+        <div class="card-badge">Verified Client</div>
+      </div>
+      <div class="review-float floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">James Chen</div>
+        <div class="card-text">Professional, knowledgeable, and always available. Highly recommend.</div>
+      </div>
+      <div class="review-float floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Emma Johnson</div>
+        <div class="card-text">Best accountants we've worked with. Outstanding support.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span><strong>CMA Regulated</strong> — Chartered Management Accountant</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <span><strong>London Based</strong> — 69 Vallance Rd, E1 5BS</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📞</div>
+    <span><strong>Call Now</strong> — 020 3355 4947</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⚡</div>
+    <span><strong>Fast Response</strong> — Same-day support</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="section-label">Our Services</div>
+  <h2>Comprehensive Accounting Solutions</h2>
+  <p class="section-intro">From tax planning to financial reporting, TAJ Accountants delivers expert services tailored to your business needs. We specialize in helping growing companies optimize their finances.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Tax Planning & Advisory</h3>
+      <p>Strategic tax optimization to reduce your corporation tax, VAT, and personal tax liabilities while maintaining full compliance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Management Accounting</h3>
+      <p>Professional financial management accounting services including budgeting, forecasting, and cost analysis for better decision-making.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Business Finance Planning</h3>
+      <p>Comprehensive financial planning to help you grow profitably. Advice on cash flow, financing options, and investment strategies.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Bookkeeping & Accounts</h3>
+      <p>Complete bookkeeping services, payroll processing, and statutory accounts preparation in accordance with UK regulations.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>Financial Audit & Review</h3>
+      <p>Independent audit and review services for verification, compliance, and stakeholder confidence in your financial statements.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💼</div>
+      <h3>Startup & Growth Support</h3>
+      <p>Expert guidance for new businesses and growing companies. From incorporation through scaling, we support every stage of growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-label">Why Choose Us</div>
+  <h2>Trusted by London Businesses</h2>
+  
+  <div class="about-grid">
+    <div class="about-text">
+      <p>TAJ Accountants is a team of Chartered Management Accountants based in the heart of London's business district. We bring 15+ years of experience in helping businesses of all sizes optimize their finances, reduce tax burden, and achieve their growth objectives.</p>
+      <p>Located at 69 Vallance Rd, London E1 5BS, we serve small startups through to established companies across all sectors. Our client-focused approach ensures you receive personalized, strategic advice tailored to your unique situation.</p>
+      <p>We're committed to transparency, accessibility, and delivering real value. Call us today at 020 3355 4947 to discuss how we can help your business succeed.</p>
+    </div>
+    
+    <div class="about-features">
+      <div class="feature">
+        <div class="feature-icon">✓</div>
+        <div class="feature-text">
+          <h4>CMA Qualified Team</h4>
+          <p>All our accountants are Chartered Management Accountants with extensive professional experience and continuing education.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-text">
+          <h4>Quick Response Times</h4>
+          <p>We prioritize communication. Most queries answered within 24 hours. Same-day support for urgent matters.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💡</div>
+        <div class="feature-text">
+          <h4>Strategic Advice</h4>
+          <p>We don't just prepare accounts. We provide strategic guidance to help you make better business decisions.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-text">
+          <h4>Competitive Pricing</h4>
+          <p>Transparent, fair pricing with no hidden fees. We offer packages suitable for all business sizes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="section-label">Client Reviews</div>
+  <h2>What Our Clients Say</h2>
+  <p class="section-intro">We're proud of the relationships we've built with our clients across London. Here's what they have to say about working with TAJ Accountants.</p>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">SM</div>
+        <div class="testimonial-meta">
+          <div class="testimonial-name">Sarah Mitchell</div>
+          <div class="testimonial-role">Managing Director, Tech Startup</div>
+        </div>
+      </div>
+      <div class="testimonial-text">"TAJ Accountants completely transformed our financial management. Their strategic tax advice saved us over £15,000 last year. Highly professional and responsive team."</div>
+    </div>
+    
+    <div class="
