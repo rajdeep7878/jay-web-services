@@ -1,0 +1,465 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Accounts Ltd — Chartered Accountants & Tax Advisors</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1a2f47;
+    --navy-light: #243b55;
+    --gold: #C9A84C;
+    --gold-dark: #a8882f;
+    --gold-light: #FEF8E8;
+    --gold-bg: #FDF6E3;
+    --cream: #FAFAF7;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.16);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--navy); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 18px; font-weight: 700; font-family: 'Playfair Display', serif;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; font-family: 'DM Sans', sans-serif; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: white; }
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-primary:hover { background: var(--gold-dark); color: white; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-navy { background: var(--navy); color: white; }
+  .btn-navy:hover { background: var(--navy-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(13,27,42,0.35); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f47 55%, #1c2d1a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.4);
+    color: #e8c96a; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 60px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* HERO RIGHT PANEL — floating review cards */
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1a2f1a 0%, #0d2010 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; height: 500px; }
+  .review-float {
+    background: white; border-radius: 20px; padding: 24px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .review-float.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .review-float.floating-1 {
+    width: 210px; top: 40px; right: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite;
+  }
+  .review-float.floating-2 {
+    width: 220px; bottom: 40px; left: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite 2s;
+  }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-light); color: var(--gold-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+  .icaew-badge { background: #1A3A5C; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--gold-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 650px; margin-bottom: 48px; line-height: 1.8; }
+
+  /* SERVICES SECTION */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .service-card {
+    background: var(--cream); border: 1px solid var(--border); border-radius: 16px;
+    padding: 40px; transition: all 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .service-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: var(--shadow); }
+  .service-icon { width: 48px; height: 48px; background: var(--gold-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { color: var(--text-mid); font-size: 15px; line-height: 1.7; flex-grow: 1; margin-bottom: 20px; }
+  .service-card a { color: var(--gold); font-weight: 600; font-size: 14px; text-decoration: none; transition: gap 0.2s; display: inline-flex; align-items: center; gap: 8px; width: fit-content; }
+  .service-card a:hover { gap: 12px; }
+
+  /* WHY CHOOSE US */
+  .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .why-item { display: flex; gap: 20px; }
+  .why-icon { width: 56px; height: 56px; background: var(--gold-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+  .why-content h3 { margin-top: 0; }
+  .why-content p { color: var(--text-mid); line-height: 1.7; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color: white; text-align: center; padding: 80px 60px;
+    border-radius: 20px; margin: 80px 80px;
+  }
+  .cta-section h2 { color: white; margin-bottom: 20px; }
+  .cta-section p { font-size: 18px; margin-bottom: 40px; color: rgba(255,255,255,0.8); max-width: 700px; margin-left: auto; margin-right: auto; }
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 80px;
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; margin-bottom: 60px; }
+  .footer-col h4 { font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+  .footer-col p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 16px; }
+  .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 12px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-contact { display: flex; align-items: start; gap: 12px; margin-bottom: 16px; }
+  .footer-contact-icon { width: 32px; height: 32px; background: rgba(201,168,76,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 16px; flex-shrink: 0; }
+  .footer-contact-text { font-size: 14px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.6); }
+  .footer-socials { display: flex; gap: 16px; }
+  .footer-socials a { width: 40px; height: 40px; background: rgba(201,168,76,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none; font-size: 18px; transition: all 0.2s; }
+  .footer-socials a:hover { background: var(--gold); color: var(--navy); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1200px) {
+    .hero { grid-template-columns: 1fr; padding-top: 70px; }
+    .hero-img { display: none; }
+    .hero-content { padding: 60px 60px; }
+    section { padding: 60px 40px; }
+    .cta-section { margin: 60px 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero h1 { font-size: 40px; }
+    .hero-content { padding: 60px 30px; }
+    section { padding: 40px 20px; }
+    h2 { font-size: 28px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .cta-section { margin: 40px 20px; padding: 50px 30px; }
+    .trust-bar { padding: 20px; flex-direction: column; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">S</div>
+    <div>
+      <div class="logo-text">Secure Accounts Ltd</div>
+      <div class="logo-sub">Accountants</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <button class="btn btn-outline">Get Quote</button>
+    <a href="tel:01212852534" class="btn btn-primary">Call Now</a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Professional Accounting Services
+    </div>
+    <h1>Expert Financial Guidance for <em>Your Success</em></h1>
+    <p>Comprehensive accounting, tax planning, and business advisory services tailored to your unique needs. Secure Accounts Ltd has been helping businesses across Birmingham and the UK for over 20 years.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary btn-lg">Schedule Consultation</button>
+      <button class="btn btn-outline btn-lg">Learn More</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">1000+</div>
+        <div class="trust-label">Clients Served</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">20+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">98%</div>
+        <div class="trust-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="review-float main">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">James Thompson</div>
+          </div>
+          <div class="card-badge">Verified</div>
+        </div>
+        <div class="card-text">"Secure Accounts transformed our financial management. Their team is knowledgeable, responsive, and genuinely cares about our growth."</div>
+      </div>
+      <div class="review-float floating-1">
+        <div class="card-avatar">💼</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sarah Williams</div>
+        <div class="card-text">Exceptional service and expert advice</div>
+      </div>
+      <div class="review-float floating-2">
+        <div class="card-avatar">📊</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Michael Chen</div>
+        <div class="card-text">Best accountants in Birmingham</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span>Full SSL Security & Data Protection</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📋</div>
+    <span>Fully Compliant Tax Services</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🏆</div>
+    <span>Award-Winning Team</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🔒</div>
+    <span>Confidentiality Guaranteed</span>
+  </div>
+</div>
+
+<!-- SERVICES SECTION -->
+<section id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Comprehensive Accounting Solutions</h2>
+  <p class="section-intro">From tax planning and bookkeeping to business advisory and payroll management, Secure Accounts Ltd provides tailored solutions to meet your unique financial needs.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Bookkeeping & Accounts</h3>
+      <p>Professional bookkeeping services to keep your records accurate and up-to-date. We handle VAT, PAYE, and year-end accounts preparation.</p>
+      <a href="#contact">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💰</div>
+      <h3>Tax Planning & Compliance</h3>
+      <p>Strategic tax planning to minimize liabilities while ensuring full compliance. From personal tax returns to corporation tax, we've got you covered.</p>
+      <a href="#contact">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Business Advisory</h3>
+      <p>Strategic guidance to help your business grow. Our advisors work with you to improve profitability, efficiency, and long-term financial planning.</p>
+      <a href="#contact">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Payroll Management</h3>
+      <p>Complete payroll services including processing, PAYE, RTI reporting, and pension administration. Fully compliant and hassle-free.</p>
+      <a href="#contact">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Company Formation</h3>
+      <p>Expert guidance on setting up your limited company, sole trader, or partnership. We handle the paperwork and provide ongoing compliance support.</p>
+      <a href="#contact">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Accountancy for Contractors</h3>
+      <p>Specialized services for contractors and freelancers. We help you maximize deductions and manage your tax obligations efficiently.</p>
+      <a href="#contact">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US SECTION -->
+<section id="why" style="background: var(--gold-bg);">
+  <div class="section-label">Why Choose Us</div>
+  <h2>The Secure Accounts Ltd Difference</h2>
+  <p class="section-intro">We're not just accountants—we're your financial partners. With over 20 years of experience and a commitment to excellence, we help businesses thrive.</p>
+  
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">💡</div>
+      <div class="why-content">
+        <h3>Expert Knowledge</h3>
+        <p>Our team consists of qualified accountants with deep expertise across multiple industries. We stay current with tax law changes and best practices.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🚀</div>
+      <div class="why-content">
+        <h3>Proactive Approach</h3>
+        <p>We don't just react to problems—we identify opportunities to save you money and help your business grow strategically.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🤝</div>
+      <div class="why-content">
+        <h3>Personal Service</h3>
+        <p>You'll work directly with experienced accountants, not offshore call centers. We take time to understand your business inside and out.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🔐</div>
+      <div class="why-content">
+        <h3>Security & Compliance</h3>
+        <p>Full SSL encryption, data protection, and strict confidentiality protocols ensure your financial information is always secure.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">📱</div>
+      <div class="why-content">
+        <h3>Modern Technology</h3>
+        <p>We use the latest accounting software and cloud-based solutions to streamline processes and provide real-time financial insights.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">⭐</div>
+      <div class="why-content">
+        <h3>Award-Winning Service</h3>
+        <p>Recognized for excellence in accounting services across Birmingham and the UK, with consistently excellent client testimonials.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<div class="cta-section">
+  <h2>Ready to Transform Your Finances?</h2>
+  <p>Let's discuss how Secure Accounts Ltd can help your business succeed. Whether you're a startup, SME, or established company, we have the expertise to support your growth.</p>
+  <div class="cta-actions">
+    <a href="tel:01212852534" class="btn btn-primary btn-lg">Call Now: 0121 285 2534</a>
+    <button class="btn btn-outline btn-lg" style="border-color: white; color: white;">Schedule Free Consultation</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <div style="width: 36px; height: 36px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: 700;">S</div>
+        <h4 style="margin: 0; font-family: 'Playfair Display', serif;">Secure Accounts Ltd</h4>
+      </div>
+      <p>Professional accounting and tax services for businesses across Birmingham and the UK. Your trusted financial partner since we started.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Bookkeeping & Accounts</a>
+      <a href="#">Tax Planning</a>
+      <a href="#">Business Advisory</a>
+      <a href="#">Payroll Management</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <div class="footer-contact-icon">📍</div>
+        <div class="footer-contact-text">
+          Suite 2A, 6 Floor<br>
+          Cobalt Square<br>
+          83-85 Hagley Rd<br>
+          Birmingham B16 8QG<br>
+          UK
+        </div>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-contact-icon">📞
