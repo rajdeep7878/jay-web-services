@@ -1,0 +1,467 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Frank Fitness - Personal trainer in Manchester specializing in bespoke fitness coaching, strength training, and personalized workout programs. Located at 74 Princess St, Manchester M1 6JD.">
+<title>Frank Fitness — Personal Trainer in Manchester | Bespoke Fitness Coaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-icon { font-size: 32px; margin-bottom: 16px; }
+  .service-card h3 { color: var(--navy); margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-text { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 28px; }
+  .about-list { display: flex; flex-direction: column; gap: 18px; margin-bottom: 36px; }
+  .about-item { display: flex; gap: 16px; }
+  .about-item-icon {
+    width: 32px; height: 32px; background: var(--teal); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; font-size: 16px;
+  }
+  .about-item-text { display: flex; flex-direction: column; }
+  .about-item-title { font-weight: 600; color: var(--navy); font-size: 14px; }
+  .about-item-desc { font-size: 13px; color: var(--text-light); }
+  .about-image { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); border-radius: 16px; height: 480px; display: flex; align-items: center; justify-content: center; color: white; font-size: 64px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: white; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card {
+    background: var(--cream); border-radius: 16px; padding: 36px;
+    border: 1px solid var(--border); transition: all 0.3s;
+  }
+  .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .testimonial-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .testimonial-avatar {
+    width: 48px; height: 48px; border-radius: 50%; background: var(--teal); color: white;
+    display: flex; align-items: center; justify-content: center; font-weight: 700;
+  }
+  .testimonial-info { display: flex; flex-direction: column; }
+  .testimonial-name { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-light); }
+  .stars { color: #F6BE00; font-size: 12px; letter-spacing: 1px; margin-bottom: 12px; }
+  .testimonial-text { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+  /* CTA SECTION */
+  .cta {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white; text-align: center; padding: 100px 80px;
+    border-radius: 0;
+  }
+  .cta h2 { color: white; margin-bottom: 16px; }
+  .cta p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px;
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 50px; }
+  .footer-col h3 { font-size: 15px; font-weight: 600; margin-bottom: 20px; color: white; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--teal); }
+  .footer-col-brand .logo-text { color: white; margin-bottom: 12px; }
+  .footer-col-brand p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+  .footer-contact { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+  .footer-divider { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .social-links { display: flex; gap: 16px; }
+  .social-icon {
+    width: 36px; height: 36px; border-radius: 8px; background: rgba(27,153,139,0.2);
+    display: flex; align-items: center; justify-content: center; color: var(--teal);
+    text-decoration: none; transition: all 0.2s;
+  }
+  .social-icon:hover { background: var(--teal); color: white; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 70px; }
+    .hero-content { padding: 60px 20px; }
+    .hero-img { display: none; }
+    .hero h1 { font-size: 42px; }
+    h2 { font-size: 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-bar { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">💪</div>
+    <div>
+      <div class="logo-text">Frank Fitness</div>
+      <div class="logo-sub">Personal Trainer</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:07467435330" class="btn btn-outline">Call Now</a>
+    <a href="#contact" class="btn btn-primary">Book Session</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Professional Personal Training
+    </div>
+    <h1>Transform Your <em>Fitness</em> Journey</h1>
+    <p>Personalized training programs tailored to your goals. Whether you're looking to build strength, lose weight, or improve overall fitness, Frank Fitness provides expert coaching and nutritional guidance.</p>
+    <div class="hero-actions">
+      <a href="tel:07467435330" class="btn btn-primary btn-lg">Schedule Consultation</a>
+      <a href="#services" class="btn btn-outline">Learn More</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Clients Transformed</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">98%</div>
+        <div class="trust-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; gap: 12px; align-items: start;">
+          <div class="card-avatar">💯</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Results Driven</div>
+            <div class="card-text">Proven methods that deliver real transformation</div>
+          </div>
+        </div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="card-badge">✓ Certified Trainer</div>
+        <div class="card-text" style="margin-top: 8px;">NASM & ISSA Certified Professional</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sarah M.</div>
+        <div class="card-text">"Lost 3 stone in 6 months with personalized coaching"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">🎯</div>
+    <div><strong>Personalized Plans</strong> - Tailored to your specific goals</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📊</div>
+    <div><strong>Progress Tracking</strong> - Regular assessments & adjustments</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">💪</div>
+    <div><strong>Expert Coaching</strong> - Certified fitness professional</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Comprehensive Training Solutions</h2>
+  <p class="section-intro">From one-on-one personal training to group fitness classes, Frank Fitness offers flexible options to fit your lifestyle and help you achieve your goals.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏋️</div>
+      <h3>One-On-One Training</h3>
+      <p>Bespoke personal training sessions with complete focus on your fitness journey, form, and progression. Tailored to your specific goals and fitness level.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥗</div>
+      <h3>Nutrition Coaching</h3>
+      <p>Expert nutritional guidance integrated with your training program. Personalized meal plans and lifestyle coaching to support your fitness goals.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Fitness Assessment</h3>
+      <p>Comprehensive fitness evaluations including strength testing, body composition analysis, and fitness level assessment to establish your baseline and track progress.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Group Fitness Classes</h3>
+      <p>High-energy group training sessions including strength, conditioning, and functional fitness classes. Great for motivation and community support.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏃</div>
+      <h3>Specialized Programs</h3>
+      <p>Targeted programs for specific goals including weight loss, muscle building, athletic performance, and injury recovery under expert guidance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Online Coaching</h3>
+      <p>Remote training sessions and virtual coaching programs. Perfect for busy schedules while maintaining professional guidance and accountability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-label">About Frank Fitness</div>
+      <h2>Your Dedicated Fitness Partner</h2>
+      <p class="about-text">With over 15 years of experience in personal training, Frank Fitness has helped hundreds of clients achieve their fitness goals. Specializing in strength training, weight loss, and athletic performance, I provide expert coaching with a focus on sustainable results and long-term lifestyle change.</p>
+      <p class="about-text">Located in Manchester, my training studio is fully equipped with state-of-the-art fitness equipment. I work with clients of all fitness levels, from beginners to advanced athletes, creating personalized programs that deliver real transformation.</p>
+      <div class="about-list">
+        <div class="about-item">
+          <div class="about-item-icon">✓</div>
+          <div class="about-item-text">
+            <div class="about-item-title">Certified Professional</div>
+            <div class="about-item-desc">NASM & ISSA certified with continuing education</div>
+          </div>
+        </div>
+        <div class="about-item">
+          <div class="about-item-icon">✓</div>
+          <div class="about-item-text">
+            <div class="about-item-title">Proven Track Record</div>
+            <div class="about-item-desc">500+ successful client transformations</div>
+          </div>
+        </div>
+        <div class="about-item">
+          <div class="about-item-icon">✓</div>
+          <div class="about-item-text">
+            <div class="about-item-title">Flexible Approach</div>
+            <div class="about-item-desc">In-person and online coaching options available</div>
+          </div>
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-primary btn-lg">Get Started Today</a>
+    </div>
+    <div class="about-image">🏋️‍♂️</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Success Stories</div>
+  <h2>Client Testimonials</h2>
+  <p class="section-intro">Real results from real clients. See how Frank Fitness has transformed lives and helped people achieve their fitness goals.</p>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">SM</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Sarah Mitchell</div>
+          <div class="testimonial-role">Weight Loss Goal</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Lost 3 stone in 6 months with Frank's personalized program. His nutrition coaching and consistent motivation made all the difference. Highly recommend!"</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">JC</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">James Cooper</div>
+          <div class="testimonial-role">Strength Training</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Incredible results. Increased my bench press by 50kg in 4 months. Frank's expertise in proper form and progression is unmatched in Manchester."</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">ER</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Emma Roberts</div>
+          <div class="testimonial-role">Fitness Transformation</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"From fitness novice to confident gym-goer. Frank's supportive approach and expert guidance changed my relationship with fitness. Worth every penny!"</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>Ready to Transform Your Fitness?</h2>
+  <p>Start your journey today with a personalized consultation. Schedule your free fitness assessment and let's create your path to success.</p>
+  <a href="tel:07467435330" class="btn btn-primary btn-lg">Call 07467 435330</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col footer-col-brand">
+      <div class="logo-text">Frank Fitness</div>
+      <p>Professional personal training in Manchester. Expert fitness coaching with proven results.</p>
+      <div class="footer-contact">📍 74 Princess St<br>Manchester M1 6JD, UK</div>
+      <div class="footer-contact">📞 <a href="tel:07467435330" style
