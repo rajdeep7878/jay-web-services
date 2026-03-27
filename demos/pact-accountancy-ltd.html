@@ -1,0 +1,478 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PACT ACCOUNTANCY LTD - Professional accountancy and tax advisory services in Manchester. Expert chartered accountants serving businesses across the UK.">
+<title>PACT ACCOUNTANCY LTD — Chartered Accountants & Tax Advisors</title>
+<link rel="canonical" href="https://pactaccountancy.co.uk">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1a2f47;
+    --navy-light: #243b55;
+    --gold: #C9A84C;
+    --gold-dark: #a8882f;
+    --gold-light: #FEF8E8;
+    --gold-bg: #FDF6E3;
+    --cream: #FAFAF7;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.16);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--navy); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 18px; font-weight: 700; font-family: 'Playfair Display', serif;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; font-family: 'DM Sans', sans-serif; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: white; }
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-primary:hover { background: var(--gold-dark); color: white; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-navy { background: var(--navy); color: white; }
+  .btn-navy:hover { background: var(--navy-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(13,27,42,0.35); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f47 55%, #1c2d1a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.4);
+    color: #e8c96a; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 60px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* HERO RIGHT PANEL — floating review cards */
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1a2f1a 0%, #0d2010 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; height: 500px; }
+  .review-float {
+    background: white; border-radius: 20px; padding: 24px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .review-float.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .review-float.floating-1 {
+    width: 210px; top: 40px; right: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite;
+  }
+  .review-float.floating-2 {
+    width: 220px; bottom: 40px; left: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite 2s;
+  }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-light); color: var(--gold-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+  .icaew-badge { background: #1A3A5C; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--gold-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 700px; margin-bottom: 48px; line-height: 1.7; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  }
+  .service-card {
+    background: var(--cream); border: 1px solid var(--border); border-radius: 16px;
+    padding: 40px; transition: all 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--gold);
+  }
+  .service-icon {
+    width: 56px; height: 56px; background: var(--gold-light); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px;
+  }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* ABOUT */
+  .about {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .about-img {
+    width: 100%; height: 500px; background: linear-gradient(135deg, var(--navy-light) 0%, var(--gold-light) 100%);
+    border-radius: 16px;
+  }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-content p { font-size: 16px; color: var(--text-mid); margin-bottom: 16px; line-height: 1.8; }
+  .about-list { list-style: none; margin: 32px 0; }
+  .about-list li { display: flex; gap: 12px; margin-bottom: 12px; font-size: 15px; color: var(--text-mid); }
+  .about-list li:before { content: '✓'; color: var(--gold); font-weight: 700; font-size: 18px; flex-shrink: 0; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  }
+  .testimonial {
+    background: var(--cream); border: 1px solid var(--border); border-radius: 16px;
+    padding: 32px; display: flex; flex-direction: column; gap: 16px;
+  }
+  .testimonial-header { display: flex; align-items: center; gap: 16px; }
+  .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .testimonial-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .testimonial-role { font-size: 13px; color: var(--text-light); }
+  .testimonial-stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f47 100%);
+    color: white; border-radius: 16px; text-align: center;
+  }
+  .cta-section h2 { color: white; margin-bottom: 24px; }
+  .cta-section p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 32px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 40px;
+  }
+  .footer-content {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px;
+  }
+  .footer-section h4 { margin-bottom: 16px; font-size: 16px; font-weight: 600; }
+  .footer-section p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+  .footer-section a { display: block; font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-section a:hover { color: var(--gold); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+  .footer-contact { display: flex; gap: 24px; }
+  .contact-item { display: flex; align-items: center; gap: 8px; }
+  .contact-icon { width: 32px; height: 32px; background: rgba(201,168,76,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 16px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 20px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 40px; }
+    .hero-img { display: none; }
+    .hero h1 { font-size: 44px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .about { grid-template-columns: 1fr; gap: 40px; }
+    section { padding: 60px 40px; }
+    .footer-content { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 30px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 16px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    section { padding: 40px 20px; }
+    .footer-content { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+    h2 { font-size: 32px; }
+    .trust-bar { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">P</div>
+    <div>
+      <div class="logo-text">PACT</div>
+      <div class="logo-sub">Accountancy</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:07597227464" class="btn btn-outline">Call Us</a>
+    <a href="#contact" class="btn btn-primary">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Professional Accountancy Services
+    </div>
+    <h1>Expert <em>Accountancy</em> Solutions for Your Business</h1>
+    <p>PACT ACCOUNTANCY LTD provides comprehensive tax planning, audit, and business advisory services. We help businesses grow with strategic financial guidance and expert compliance support.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Schedule Consultation</a>
+      <a href="tel:07597227464" class="btn btn-outline btn-lg">Call: 07597 227464</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">20+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Clients Served</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9★</div>
+        <div class="trust-label">Client Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="review-float main">
+        <div style="display: flex; gap: 12px; align-items: start;">
+          <div class="card-avatar">📊</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Outstanding Service</div>
+            <div class="card-text">"PACT transformed our tax strategy and saved us thousands."</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-float floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Jane Mitchell</div>
+        <div class="card-text">Professional and highly recommended for business accounting.</div>
+      </div>
+      <div class="review-float floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">David Thompson</div>
+        <div class="card-text">Excellent advisory on VAT compliance and planning.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span>ICAEW Qualified</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🔒</div>
+    <span>Fully Insured</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⚡</div>
+    <span>Fast Turnaround</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">💼</div>
+    <span>Confidential Service</span>
+  </div>
+</div>
+
+<!-- SERVICES SECTION -->
+<section id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Comprehensive Accountancy Solutions</h2>
+  <p class="section-intro">PACT ACCOUNTANCY LTD offers a full range of professional accounting and tax services designed to support your business growth and financial success.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Tax Planning & Compliance</h3>
+      <p>Strategic tax planning to minimize liabilities and ensure full compliance with HMRC regulations and deadlines.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Audit & Assurance</h3>
+      <p>Professional audit services providing independent assurance on your financial statements and internal controls.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💰</div>
+      <h3>Business Advisory</h3>
+      <p>Expert guidance on business strategy, growth planning, and financial decision-making for sustained success.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Bookkeeping & Accounts</h3>
+      <p>Accurate bookkeeping, monthly accounts, and year-end reporting to keep your finances on track.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Payroll Management</h3>
+      <p>Complete payroll processing, PAYE administration, and employee compliance solutions for growing businesses.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>VAT Services</h3>
+      <p>VAT registration, returns preparation, and optimization strategies to manage your VAT obligations effectively.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+  <div class="about">
+    <div class="about-img"></div>
+    <div class="about-content">
+      <div class="section-label">About Us</div>
+      <h2>Why Choose PACT ACCOUNTANCY LTD</h2>
+      <p>Based in Manchester at Peter House, Oxford Street, PACT ACCOUNTANCY LTD has been serving businesses across the UK with professional accountancy services for over 20 years. Our team of experienced accountants is committed to delivering exceptional value and personalized service.</p>
+      <ul class="about-list">
+        <li>ICAEW qualified and regulated accountants</li>
+        <li>Personalized service tailored to your business</li>
+        <li>Proactive tax planning and strategy</li>
+        <li>Technology-driven accounting solutions</li>
+        <li>Transparent pricing and clear communication</li>
+        <li>Local expertise with national reach</li>
+      </ul>
+      <p>We take time to understand your business goals and provide strategic financial advice that drives growth and profitability. Our client-focused approach ensures you receive practical solutions that make a real difference.</p>
+      <a href="#contact" class="btn btn-primary btn-lg">Get In Touch Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section id="testimonials">
+  <div class="section-label">Client Testimonials</div>
+  <h2>Trusted by Hundreds of Businesses</h2>
+  <p class="section-intro">Our clients appreciate our professional service, attention to detail, and commitment to maximizing their financial success.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"PACT has been incredible. They simplified our tax situation and provided strategies that saved us significant money. Highly professional and responsive."</p>
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">👨‍💼</div>
+        <div>
+          <div class="testimonial-name">Michael Singh</div>
+          <div class="testimonial-role">Director, Tech Solutions Ltd</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Working with PACT has been a game changer. They proactively identify opportunities and ensure we stay compliant. Highly recommended for growing businesses."</p>
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">👩‍💼</div>
+        <div>
+          <div class="testimonial-name">Sarah Williams</div>
+          <div class="testimonial-role">Owner, Williams Consulting</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Excellent advice on business structure and tax efficiency. The team at PACT are knowledgeable, accessible, and genuinely care about our success."</p>
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">👨‍🔧</div>
+        <div>
+          <div class="testimonial-name">James O'Brien</div>
+          <div class="testimonial-role">Managing Partner, OB Contractors</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section style="padding: 80px;">
+  <div class="cta-section" style="padding: 80px;">
+    <h2>Ready to Transform Your Accountancy?</h2>
+    <p>Let PACT ACCOUNTANCY LTD help you achieve your financial goals with expert guidance and comprehensive accounting services.</p>
+    <a href="#contact" class="btn btn-primary btn-lg">Schedule Your Free Consultation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>PACT ACCOUNTANCY LTD</h4>
+      <p>Professional accountancy and tax advisory services serving businesses across the UK with integrity, expertise, and commitment to your financial success.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Services</h4>
+      <a href="#services">Tax Planning</a>
+      <a href="#services">Audit & Assurance</a>
+      <a href="#services">Business Advisory</a>
+      <a href="#services">Bookkeeping</a>
+      <a href="#services">Payroll Services</a>
+      <a href="#services">VAT Services</a>
+    </div>
+    <div class="footer-section">
+      <h4>Company</h4>
+      <a href="#about">About Us</a>
+      <a href="#testimonials">Testimonials</a>
