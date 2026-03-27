@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="GigaLegal Solicitors in City of London. Expert legal services including corporate law, litigation, and commercial advice. Based at 330 High Holborn, London.">
-<title>GigaLegal Solicitors, City of London | Legal Services</title>
+<meta name="description" content="GigaLegal Solicitors in City of London. Expert legal services at 330 High Holborn, London. Call 020 7406 7654 for professional solicitor advice.">
+<title>GigaLegal Solicitors, City of London — Expert Legal Services</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -120,7 +120,7 @@
   .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
   .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
   .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
-  .law-badge { background: #002F87; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+  .verified-badge { background: #002F87; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
 
   /* TRUST BAR */
   .trust-bar {
@@ -146,83 +146,92 @@
   }
   .service-card::before {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    background: var(--teal); opacity: 0; transition: opacity 0.25s;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
   }
   .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
-  .service-card:hover::before { opacity: 1; }
-  .service-icon { font-size: 28px; margin-bottom: 16px; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { font-size: 32px; margin-bottom: 16px; }
   .service-card h3 { margin-bottom: 12px; }
-  .service-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
 
   /* ABOUT */
   .about { background: var(--cream); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-  .about-content p { font-size: 16px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.8; }
-  .about-list { list-style: none; margin: 30px 0; }
-  .about-list li { display: flex; gap: 12px; margin-bottom: 16px; font-size: 15px; }
-  .about-list li::before { content: '✓'; color: var(--teal); font-weight: 700; min-width: 20px; }
-  .about-img { width: 100%; height: 400px; background: linear-gradient(135deg, var(--teal-light) 0%, rgba(27,153,139,0.1) 100%); border-radius: 16px; }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-content p { font-size: 15px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.7; }
+  .about-img {
+    width: 100%; height: 400px; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 48px;
+  }
+
+  /* WHY CHOOSE */
+  .why-choose { background: white; }
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 48px; }
+  .feature-item { display: flex; gap: 20px; }
+  .feature-icon {
+    width: 48px; height: 48px; min-width: 48px; background: var(--teal-light); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--teal);
+  }
+  .feature-content h3 { font-size: 18px; margin-bottom: 8px; }
+  .feature-content p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* CTA */
+  .cta { background: linear-gradient(135deg, var(--navy) 0%, #1a3f3a 100%); color: white; text-align: center; }
+  .cta h2 { color: white; margin-bottom: 24px; }
+  .cta p { font-size: 18px; margin-bottom: 36px; color: rgba(255,255,255,0.8); max-width: 600px; margin-left: auto; margin-right: auto; }
 
   /* CONTACT */
-  .contact { background: var(--white); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-  .contact-form { display: flex; flex-direction: column; gap: 20px; }
-  .form-group { display: flex; flex-direction: column; gap: 8px; }
-  .form-group label { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .contact { background: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; }
+  .contact-info h3 { margin-bottom: 24px; font-size: 18px; }
+  .contact-item { display: flex; gap: 16px; margin-bottom: 24px; }
+  .contact-icon {
+    width: 44px; height: 44px; min-width: 44px; background: var(--teal-light); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--teal);
+  }
+  .contact-details { display: flex; flex-direction: column; }
+  .contact-label { font-size: 13px; color: var(--text-light); font-weight: 500; margin-bottom: 4px; }
+  .contact-value { font-size: 16px; color: var(--navy); font-weight: 600; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; }
+  .form-group label { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
   .form-group input,
   .form-group textarea {
     padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px;
-    font-family: 'DM Sans', sans-serif; font-size: 14px; transition: border-color 0.2s;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+    transition: border-color 0.2s;
   }
   .form-group input:focus,
   .form-group textarea:focus { outline: none; border-color: var(--teal); }
   .form-group textarea { resize: vertical; min-height: 120px; }
-  .contact-info { display: flex; flex-direction: column; gap: 32px; }
-  .contact-item { display: flex; gap: 16px; }
-  .contact-icon { width: 48px; height: 48px; background: var(--teal-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-  .contact-item h3 { font-size: 16px; margin-bottom: 4px; }
-  .contact-item p { font-size: 14px; color: var(--text-mid); }
-  .contact-item a { color: var(--teal); text-decoration: none; font-weight: 600; }
 
   /* FOOTER */
   footer {
-    background: var(--navy); color: white; padding: 60px 80px 30px;
+    background: var(--navy); color: white; padding: 60px 80px 24px;
   }
   .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
-  .footer-col h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 12px; }
-  .footer-col ul li a { color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none; transition: color 0.2s; }
-  .footer-col ul li a:hover { color: white; }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+  .footer-col h4 { font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+  .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 12px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--teal); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,0.6); }
 
   /* RESPONSIVE */
-  @media (max-width: 1024px) {
-    nav { padding: 0 30px; }
-    section { padding: 60px 40px; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-content { padding: 60px 40px; }
-    .hero h1 { font-size: 48px; }
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .about-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: repeat(2, 1fr); }
-    .trust-bar { padding: 20px 40px; }
-  }
-
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
-    section { padding: 40px 20px; }
-    .hero h1 { font-size: 36px; }
+    .hero { grid-template-columns: 1fr; }
     .hero-content { padding: 40px 20px; }
+    .hero-img { display: none; }
+    .hero h1 { font-size: 42px; }
+    section { padding: 60px 20px; }
+    h2 { font-size: 32px; }
     .services-grid { grid-template-columns: 1fr; }
-    .hero-actions { flex-direction: column; }
-    .hero-trust { flex-direction: column; gap: 16px; }
-    .footer-grid { grid-template-columns: 1fr; }
+    .trust-bar { padding: 20px; flex-direction: column; gap: 16px; }
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    .features-grid { grid-template-columns: 1fr; gap: 30px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-    h2 { font-size: 28px; }
-    .trust-bar { padding: 20px; flex-direction: column; }
   }
 </style>
 </head>
@@ -231,7 +240,7 @@
 <!-- NAV -->
 <nav>
   <div class="logo">
-    <div class="logo-icon">⚖</div>
+    <div class="logo-icon">⚖️</div>
     <div>
       <div class="logo-text">GigaLegal</div>
       <div class="logo-sub">Solicitors</div>
@@ -240,35 +249,36 @@
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#about">About</a>
+    <a href="#why">Why Us</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-cta">
-    <a href="tel:02074067654" class="btn btn-outline">Call</a>
-    <a href="#contact" class="btn btn-primary">Consult</a>
+    <a href="tel:02074067654" class="btn btn-outline">Call Now</a>
+    <a href="#contact" class="btn btn-primary">Get Legal Advice</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<div class="hero">
   <div class="hero-content">
     <div class="hero-badge">
       <span></span>
-      Trusted Legal Services
+      City of London's Trusted Legal Partner
     </div>
-    <h1>Expert Legal <em>Solutions</em> for Your Business</h1>
-    <p>Comprehensive legal services including corporate law, commercial disputes, and contract negotiation. Based in the City of London with over 15 years of experience.</p>
+    <h1>Expert <em>Legal Services</em> for Your Peace of Mind</h1>
+    <p>Experienced solicitors providing comprehensive legal advice to individuals and businesses across London. From corporate law to personal matters, we're here to help.</p>
     <div class="hero-actions">
-      <a href="tel:02074067654" class="btn btn-primary btn-lg">Call 020 7406 7654</a>
-      <a href="#contact" class="btn btn-outline">Get Started</a>
+      <a href="tel:02074067654" class="btn btn-primary btn-lg">020 7406 7654</a>
+      <a href="#contact" class="btn btn-outline">Book Consultation</a>
     </div>
     <div class="hero-trust">
       <div class="trust-item">
-        <div class="trust-num">15+</div>
+        <div class="trust-num">20+</div>
         <div class="trust-label">Years Experience</div>
       </div>
       <div class="trust-item">
-        <div class="trust-num">500+</div>
-        <div class="trust-label">Cases Resolved</div>
+        <div class="trust-num">2k+</div>
+        <div class="trust-label">Clients Served</div>
       </div>
       <div class="trust-item">
         <div class="trust-num">98%</div>
@@ -279,221 +289,192 @@
   <div class="hero-img">
     <div class="hero-card-stack">
       <div class="smile-card main">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div class="card-avatar">👨‍💼</div>
+        <div style="display: flex; justify-content: space-between; align-items: start;">
           <div>
             <div class="stars">★★★★★</div>
-            <div class="card-name">John Mitchell</div>
+            <div class="card-name">Sarah Mitchell</div>
+            <div class="card-text">Excellent service and expert guidance throughout my case.</div>
           </div>
+          <div class="card-avatar">👩</div>
         </div>
-        <div class="card-text">"Exceptional legal expertise. GigaLegal handled our complex merger seamlessly."</div>
-        <div class="card-badge">Verified Client</div>
       </div>
       <div class="smile-card floating-1">
-        <div class="stars">★★★★★</div>
-        <div class="card-name">Sarah Chen</div>
-        <div class="card-text">"Professional, thorough, and results-driven."</div>
+        <div class="card-avatar">📋</div>
+        <div class="card-name">Corporate Law</div>
+        <div class="card-text">Specialized solutions for business needs</div>
+        <div class="card-badge">✓ Verified</div>
       </div>
       <div class="smile-card floating-2">
+        <div class="card-avatar">👨</div>
+        <div class="card-name">James Harrison</div>
+        <div class="card-text">Highly professional team. Highly recommend!</div>
         <div class="stars">★★★★★</div>
-        <div class="card-name">David Wright</div>
-        <div class="card-text">"Outstanding legal representation for our company."</div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-bar-item">
-    <div class="trust-icon">⚖</div>
-    <div>SRA Regulated</div>
+    <div class="trust-icon">✓</div>
+    <span>Regulated by Solicitors Regulation Authority</span>
   </div>
   <div class="trust-bar-item">
-    <div class="trust-icon">🏆</div>
-    <div>Award Winning</div>
+    <div class="trust-icon">🛡️</div>
+    <span>Professional Indemnity Insurance</span>
   </div>
   <div class="trust-bar-item">
-    <div class="trust-icon">🔒</div>
-    <div>Client Confidentiality</div>
+    <div class="trust-icon">⏰</div>
+    <span>Same-Day Consultations Available</span>
   </div>
   <div class="trust-bar-item">
     <div class="trust-icon">💼</div>
-    <div>Corporate Specialists</div>
+    <span>Confidential & Secure</span>
   </div>
 </div>
 
 <!-- SERVICES -->
-<section id="services" class="services">
+<section class="services" id="services">
   <div class="section-label">Our Expertise</div>
   <h2>Comprehensive Legal Services</h2>
-  <p class="section-intro">We provide specialist legal services across multiple practice areas to meet all your business needs.</p>
+  <p class="section-intro">We provide specialized legal advice across a range of practice areas to meet your unique needs and requirements.</p>
   
   <div class="services-grid">
     <div class="service-card">
-      <div class="service-icon">📋</div>
-      <h3>Corporate Law</h3>
-      <p>Mergers, acquisitions, company formation, and corporate governance. We guide businesses through complex transactions and regulatory requirements.</p>
+      <div class="service-icon">💼</div>
+      <h3>Corporate & Commercial Law</h3>
+      <p>Business formation, contracts, mergers, acquisitions, and ongoing corporate advice for growing enterprises.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>Property & Real Estate</h3>
+      <p>Conveyancing, leasehold matters, landlord & tenant disputes, and property transaction support.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👨‍👩‍👧‍👦</div>
+      <h3>Family Law</h3>
+      <p>Divorce, custody matters, prenuptial agreements, and sensitive family law issues handled with care.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">⚖️</div>
-      <h3>Commercial Litigation</h3>
-      <p>Expert dispute resolution for contract breaches, commercial disagreements, and business conflicts. Strategic representation in court and arbitration.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📝</div>
-      <h3>Contract Law</h3>
-      <p>Drafting, review, and negotiation of commercial contracts. We ensure your agreements protect your interests and comply with all legal requirements.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🏢</div>
       <h3>Employment Law</h3>
-      <p>Comprehensive employment advice for businesses and individuals. From contracts to disputes, we handle all employment matters professionally.</p>
+      <p>Workplace disputes, contract negotiations, redundancy issues, and discrimination claims.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon">💼</div>
-      <h3>Business Advisory</h3>
-      <p>Strategic legal counsel for business growth. We provide proactive advice on regulatory compliance, risk management, and commercial strategy.</p>
+      <div class="service-icon">📊</div>
+      <h3>Intellectual Property</h3>
+      <p>Trademark registration, copyright protection, patents, and IP disputes for creators and businesses.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon">🔐</div>
-      <h3>IP & Intellectual Property</h3>
-      <p>Protection and enforcement of intellectual property rights. Trademark registration, patent advice, and IP dispute resolution.</p>
+      <div class="service-icon">✍️</div>
+      <h3>Wills & Probate</h3>
+      <p>Estate planning, will drafting, probate administration, and inheritance advice for your family's future.</p>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="about">
+<section class="about" id="about">
   <div class="about-grid">
-    <div>
-      <div class="section-label">Who We Are</div>
-      <h2>Your Trusted Legal Partner</h2>
-      <p>GigaLegal Solicitors is a premier legal practice based in the City of London. With a team of experienced solicitors and legal professionals, we specialise in delivering exceptional legal services to businesses of all sizes.</p>
-      <p>Our commitment to excellence, attention to detail, and client-focused approach has earned us a reputation as one of London's most trusted legal firms.</p>
-      
-      <ul class="about-list">
-        <li>SRA regulated and fully compliant</li>
-        <li>Over 15 years combined experience</li>
-        <li>Specialist teams across multiple practice areas</li>
-        <li>Transparent fee structures</li>
-        <li>Available for emergency legal matters</li>
-      </ul>
-      
-      <a href="#contact" class="btn btn-primary btn-lg">Schedule Consultation</a>
+    <div class="about-img">📚</div>
+    <div class="about-content">
+      <div class="section-label">About Us</div>
+      <h2>Dedicated Legal Excellence in the Heart of London</h2>
+      <p>GigaLegal Solicitors is a forward-thinking law firm based in the City of London. With over 20 years of combined experience, our team of qualified solicitors is committed to delivering exceptional legal solutions tailored to each client's unique circumstances.</p>
+      <p>Our mission is to make quality legal advice accessible and understandable. We pride ourselves on clear communication, timely advice, and results-driven representation across all our practice areas.</p>
+      <p>Located at 330 High Holborn, we serve clients throughout London and beyond, from major corporations to private individuals. Your legal success is our priority.</p>
+      <a href="#contact" class="btn btn-primary btn-lg" style="margin-top: 24px;">Schedule a Consultation</a>
     </div>
-    <div class="about-img"></div>
   </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-choose" id="why">
+  <div class="section-label">Why Choose Us</div>
+  <h2>What Sets GigaLegal Apart</h2>
+  <p class="section-intro">We combine legal expertise with a client-focused approach to deliver results that matter.</p>
+  
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-content">
+        <h3>Personalized Approach</h3>
+        <p>We treat every case individually, understanding your specific circumstances and goals to provide tailored solutions.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💡</div>
+      <div class="feature-content">
+        <h3>Expert Guidance</h3>
+        <p>Our experienced solicitors stay current with legal developments to provide informed, strategic advice.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⏱️</div>
+      <div class="feature-content">
+        <h3>Efficiency & Speed</h3>
+        <p>We work diligently to resolve matters promptly while maintaining the highest standards of care and attention.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💎</div>
+      <div class="feature-content">
+        <h3>Competitive Pricing</h3>
+        <p>Transparent fee structures and flexible payment options to suit your budget without compromising quality.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🤝</div>
+      <div class="feature-content">
+        <h3>Client Communication</h3>
+        <p>Regular updates, clear explanations, and accessible advice. We keep you informed at every stage.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🏆</div>
+      <div class="feature-content">
+        <h3>Track Record</h3>
+        <p>Proven success across diverse practice areas with consistent positive feedback from satisfied clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready for Expert Legal Guidance?</h2>
+  <p>Contact GigaLegal Solicitors today for a confidential consultation. Our team is ready to help you navigate your legal matters with confidence and expertise.</p>
+  <a href="tel:02074067654" class="btn btn-gold btn-lg">Call 020 7406 7654</a>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact">
-  <div class="section-label">Get In Touch</div>
+<section class="contact" id="contact">
+  <div class="section-label">Get in Touch</div>
   <h2>Contact GigaLegal Solicitors</h2>
+  <p class="section-intro">Reach out to our team with any legal questions or to schedule your consultation.</p>
   
   <div class="contact-grid">
-    <form class="contact-form">
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" placeholder="Your name" required>
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="your@email.com" required>
-      </div>
-      <div class="form-group">
-        <label>Phone</label>
-        <input type="tel" placeholder="020 XXXX XXXX">
-      </div>
-      <div class="form-group">
-        <label>Message</label>
-        <textarea placeholder="Tell us about your legal matter..." required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-lg">Send Enquiry</button>
-    </form>
-    
     <div class="contact-info">
+      <h3>Our Details</h3>
+      
       <div class="contact-item">
         <div class="contact-icon">📍</div>
-        <div>
-          <h3>Office Location</h3>
-          <p>330 High Holborn<br>London WC1V 7QH<br>United Kingdom</p>
+        <div class="contact-details">
+          <div class="contact-label">Office Location</div>
+          <div class="contact-value">330 High Holborn<br>London WC1V 7QH<br>United Kingdom</div>
         </div>
       </div>
-      
+
       <div class="contact-item">
         <div class="contact-icon">📞</div>
-        <div>
-          <h3>Phone</h3>
-          <p><a href="tel:02074067654">020 7406 7654</a></p>
-          <p style="font-size: 13px; color: var(--text-light); margin-top: 4px;">Monday - Friday, 9am - 5:30pm</p>
+        <div class="contact-details">
+          <div class="contact-label">Phone</div>
+          <a href="tel:02074067654" style="text-decoration: none; color: var(--navy); font-size: 16px; font-weight: 600;">020 7406 7654</a>
         </div>
       </div>
-      
-      <div class="contact-item">
-        <div class="contact-icon">✉️</div>
-        <div>
-          <h3>Email</h3>
-          <p><a href="mailto:enquiries@gigalegal.co.uk">enquiries@gigalegal.co.uk</a></p>
-          <p style="font-size: 13px; color: var(--text-light); margin-top: 4px;">We typically respond within 24 hours</p>
-        </div>
-      </div>
-      
-      <div class="contact-item">
-        <div class="contact-icon">⚖️</div>
-        <div>
-          <h3>Regulated By</h3>
-          <p>Solicitors Regulation Authority (SRA)<br>Firm Reference: [Your SRA Number]</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <h4>GigaLegal Solicitors</h4>
-      <p style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6;">Expert legal services in the City of London. Specialising in corporate law, litigation, and commercial advice.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="#services">Corporate Law</a></li>
-        <li><a href="#services">Commercial Litigation</a></li>
-        <li><a href="#services">Contract Law</a></li>
-        <li><a href="#services">Employment Law</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <p style="font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 12px;">
-        330 High Holborn<br>
-        London WC1V 7QH<br>
-        United Kingdom
-      </p>
-      <p style="font-size: 13px;">
-        <a href="tel:02074067654" style="color: var(--teal); text-decoration: none;">020 7406 7654</a>
-      </p>
-    </div>
-  </div>
-  
-  <div class="footer-bottom">
-    <p>&copy; 2024 GigaLegal Solicitors, City of London. All rights reserved.</p>
-    <p>SRA Regulated | Data Protection Compliant</p>
-  </div>
-</footer>
-
-</body>
-</html>
-```
+      <div class="contact-item">
+        <div class="contact-icon">⏰</div>
+        <div class="contact-details">
+          <div class="contact-
