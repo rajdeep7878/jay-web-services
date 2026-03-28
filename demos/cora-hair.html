@@ -1,0 +1,461 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cora Hair — Professional Hair Salon in Birmingham</title>
+<meta name="description" content="Cora Hair is a professional hair salon in Birmingham city centre offering cutting, styling, colouring, treatments and more. Visit us at 16-18 Temple Row, Birmingham B2 5HG. Call 0121 233 9993 to book.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { font-size: 32px; margin-bottom: 12px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
+  .service-link { display: inline-flex; align-items: center; gap: 6px; color: var(--teal); font-size: 13px; font-weight: 600; text-decoration: none; transition: gap 0.2s; }
+  .service-link:hover { gap: 10px; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-list { list-style: none; margin-top: 28px; }
+  .about-list li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px; font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+  .about-list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+  .about-image { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); border-radius: 16px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 28px;
+    display: flex; flex-direction: column; gap: 16px; transition: all 0.25s;
+  }
+  .testimonial-card:hover { box-shadow: var(--shadow); border-color: var(--teal-light); }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; letter-spacing: 2px; }
+  .testimonial-text { font-size: 14px; color: var(--text-mid); line-height: 1.7; font-style: italic; }
+  .testimonial-author { display: flex; gap: 12px; align-items: center; margin-top: 12px; }
+  .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-weight: 600; color: var(--teal-dark); }
+  .testimonial-info { display: flex; flex-direction: column; }
+  .testimonial-name { font-weight: 600; font-size: 13px; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-light); }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white; text-align: center; padding: 80px; border-radius: 20px; margin: 0 80px;
+  }
+  .cta h2 { color: white; margin-bottom: 20px; }
+  .cta p { font-size: 18px; max-width: 500px; margin: 0 auto 36px; line-height: 1.6; color: rgba(255,255,255,0.8); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { margin-bottom: 16px; font-weight: 600; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: white; }
+  .footer-col p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6; }
+  .footer-contact { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: rgba(255,255,255,0.8); font-size: 14px; }
+  .footer-divider { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 40px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+  .footer-social { display: flex; gap: 12px; }
+  .social-icon { width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 14px; transition: background 0.2s; }
+  .social-icon:hover { background: rgba(27,153,139,0.4); }
+
+  @media (max-width: 1024px) {
+    nav { padding: 0 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 24px; }
+    .hero-img { display: none; }
+    section { padding: 60px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .cta { margin: 0 24px; padding: 60px 40px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .trust-bar { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">✂️</div>
+    <div>
+      <div class="logo-text">Cora Hair</div>
+      <div class="logo-sub">Birmingham</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:01212339993" class="btn btn-outline">Call Us</a>
+    <a href="#book" class="btn btn-primary">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Award-Winning Hair Salon
+    </div>
+    <h1>Expert Hair Care & <em>Beautiful Styling</em></h1>
+    <p>Cora Hair is Birmingham's premier destination for professional haircuts, colouring, treatments and styling. Our experienced stylists are dedicated to bringing out your best look.</p>
+    <div class="hero-actions">
+      <a href="tel:01212339993" class="btn btn-primary btn-lg">Call 0121 233 9993</a>
+      <a href="#book" class="btn btn-outline">Book Appointment</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">1000+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">5★</div>
+        <div class="trust-label">Rated Service</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sarah M.</div>
+        <div class="card-text">"Absolutely fantastic experience. The team at Cora Hair truly care about getting your hair perfect."</div>
+        <div class="card-badge">✓ Verified Client</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-text">Best salon in Birmingham!</div>
+        <div class="card-name">Emma</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-text">Wonderful styling & very welcoming</div>
+        <div class="card-name">Lisa T.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <strong>16-18 Temple Row, Birmingham B2 5HG</strong>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📞</div>
+    <strong>0121 233 9993</strong>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏰</div>
+    <strong>Open 6 Days a Week</strong>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">💳</div>
+    <strong>All Payment Methods</strong>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="section-label">Our Services</div>
+  <h2>Professional Hair Services</h2>
+  <p class="section-intro">From precision cuts to vibrant colour treatments, our expert stylists provide comprehensive hair services tailored to your unique style and needs.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Haircuts & Styling</h3>
+      <p>Expert cutting and styling for all hair types. Whether you're after a classic look or something contemporary, our stylists create cuts that suit your face shape and lifestyle.</p>
+      <a href="#book" class="service-link">Book Now →</a>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Colour & Highlights</h3>
+      <p>Professional colouring services including full colour, highlights, lowlights and toning. We use premium products and techniques to achieve vibrant, healthy-looking results.</p>
+      <a href="#book" class="service-link">Book Now →</a>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">💆</div>
+      <h3>Hair Treatments</h3>
+      <p>Nourishing treatments including deep conditioning, keratin treatments and scalp therapies. Restore health and shine to damaged or dry hair with our specialist care.</p>
+      <a href="#book" class="service-link">Book Now →</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">💇</div>
+      <h3>Blow Dry & Styling</h3>
+      <p>Professional blow-dry and styling services for special occasions or everyday confidence. Our stylists create polished, long-lasting styles using premium products.</p>
+      <a href="#book" class="service-link">Book Now →</a>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Hair Extensions</h3>
+      <p>Premium hair extensions that add length, volume and thickness. We offer professional application and expert advice on maintenance and styling options.</p>
+      <a href="#book" class="service-link">Book Now →</a>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">👰</div>
+      <h3>Bridal & Events</h3>
+      <p>Special occasion styling for weddings, celebrations and events. We create stunning bridal looks and coordinate with your overall vision for your special day.</p>
+      <a href="#book" class="service-link">Book Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-label">About Cora Hair</div>
+      <h2>Why Choose Cora Hair?</h2>
+      <p>Cora Hair is Birmingham's trusted hair salon with over 15 years of professional experience. Located in the heart of Birmingham city centre at 16-18 Temple Row, we provide expert, personalised hair services in a welcoming environment.</p>
+      
+      <ul class="about-list">
+        <li>Award-winning stylists with extensive training and experience</li>
+        <li>Premium professional hair products and treatments</li>
+        <li>Personalised consultations tailored to your hair goals</li>
+        <li>Competitive pricing with flexible appointment options</li>
+        <li>Welcoming, comfortable salon environment</li>
+        <li>Latest styling techniques and hair trends</li>
+        <li>Dedicated aftercare advice and product recommendations</li>
+      </ul>
+      
+      <a href="tel:01212339993" class="btn btn-primary btn-lg" style="margin-top: 28px;">Call 0121 233 9993</a>
+    </div>
+    <div class="about-image"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="section-label">Client Reviews</div>
+  <h2>What Our Clients Say</h2>
+  <p class="section-intro">We're proud of our reputation for excellent service and beautiful results. Here's what our satisfied clients have to say.</p>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"I've been going to Cora Hair for 3 years now and I wouldn't go anywhere else. The stylists always listen to what I want and deliver amazing results every time."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">SM</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Sarah Mitchell</div>
+          <div class="testimonial-role">Regular Client</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Had my hair coloured for a wedding and it looked absolutely stunning. The team was professional, friendly and made me feel completely at ease."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">JT</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Jessica Thompson</div>
+          <div class="testimonial-role">Event Client</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"The team at Cora Hair truly understand hair. They gave me brilliant advice on how to style my new cut and the products they recommended have made all the difference."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">CR</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Charlotte Roberts</div>
+          <div class="testimonial-role">Happy Client</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding: 0 80px;">
+  <div class="cta" id="book">
+    <h2>Ready for Your Hair Transformation?</h2>
+    <p>Book your appointment at Cora Hair today. Call us or visit our salon in beautiful Birmingham city centre.</p>
+    <a href="tel:01212339993" class="btn btn-gold btn-lg">Call 0121 233 9993</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Cora Hair</h4>
+      <p>Professional hair salon in Birmingham city centre. Award-winning stylists providing expert haircuts, colouring, treatments and styling services.</p>
+      <div style="margin-top: 20px;">
+        <div class="footer-contact">
+          <span>📍</span>
+          16-18 Temple Row<br>Birmingham B2 5HG, UK
+        </div>
+        <div class="footer-contact">
+          <span>📞</span>
+          <a href="tel:01212339993" style="color: rgba(255,255,255,0.8); text-decoration: none;">0121 233 9993</a>
+        </div>
+      </div>
