@@ -1,0 +1,467 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browns Manchester — Restaurant in Manchester</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-icon { font-size: 32px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-text h2 { margin-bottom: 24px; }
+  .about-text p { font-size: 16px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.8; }
+  .about-list { list-style: none; margin: 32px 0; }
+  .about-list li { display: flex; gap: 12px; margin-bottom: 12px; font-size: 16px; color: var(--text-mid); }
+  .about-list li::before { content: '✓'; color: var(--teal); font-weight: 700; min-width: 20px; }
+  .about-image { width: 100%; height: 400px; background: linear-gradient(135deg, var(--teal-light) 0%, #E8F7F5 100%); border-radius: 16px; overflow: hidden; }
+
+  /* GALLERY */
+  .gallery { background: var(--white); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .gallery-item {
+    position: relative; height: 300px; border-radius: 12px; overflow: hidden;
+    background: linear-gradient(135deg, #E8F7F5, #FEF8E8); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .gallery-placeholder { font-size: 64px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 48px; }
+  .testimonial-card {
+    background: white; padding: 32px; border-radius: 16px; box-shadow: var(--shadow);
+  }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .testimonial-name { font-weight: 600; color: var(--navy); }
+  .testimonial-role { font-size: 13px; color: var(--text-light); }
+  .testimonial-text { font-size: 16px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; }
+  .testimonial-stars { color: #F6BE00; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; }
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+  .contact-item { display: flex; gap: 20px; }
+  .contact-item-icon { width: 48px; height: 48px; background: var(--teal-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .contact-item h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .contact-item p { font-size: 16px; color: var(--text-mid); }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; }
+  .form-group label { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .form-group input,
+  .form-group textarea { font-family: 'DM Sans', sans-serif; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 14px; transition: border-color 0.2s; }
+  .form-group input:focus,
+  .form-group textarea:focus { outline: none; border-color: var(--teal); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: white; padding: 48px 80px; }
+  .footer-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-section h4 { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: white; }
+  .footer-section p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 12px; }
+  .footer-section a { display: block; font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-section a:hover { color: var(--teal); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-credit { font-size: 14px; color: rgba(255,255,255,0.5); }
+  .footer-socials { display: flex; gap: 16px; }
+  .social-link { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.2s; }
+  .social-link:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 20px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { display: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-content { grid-template-columns: 1fr; gap: 40px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .contact-content { grid-template-columns: 1fr; }
+    section { padding: 60px 40px; }
+    .footer-content { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 40px 20px; }
+    .hero h1 { font-size: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .form-group-row { grid-template-columns: 1fr; }
+    section { padding: 40px 20px; }
+    .footer-content { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🍴</div>
+    <div>
+      <div class="logo-text">Browns Manchester</div>
+      <div class="logo-sub">Premium Dining</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#reservations">Reservations</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:01618191055" class="btn btn-outline">Call</a>
+    <a href="#reservations" class="btn btn-primary">Reserve Table</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Award-Winning Restaurant
+    </div>
+    <h1>Exceptional <em>Dining</em> in Manchester</h1>
+    <p>Experience culinary excellence at Browns Manchester. From fine dining to casual elegance, discover the flavors that define modern British cuisine in the heart of the city.</p>
+    <div class="hero-actions">
+      <a href="tel:01618191055" class="btn btn-primary btn-lg">📞 Call Now</a>
+      <a href="#reservations" class="btn btn-outline">Reserve a Table</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years of Excellence</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Weekly Guests</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.8★</div>
+        <div class="trust-label">Guest Reviews</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="card-avatar">👨‍🍳</div>
+          <div>
+            <div class="card-name">Chef's Special</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="card-text">"The finest dining experience in Manchester. Every dish is a masterpiece."</div>
+        <div class="card-badge">Michelin Recognized</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+          <span class="stars">★★★★★</span>
+        </div>
+        <div class="card-name">Sarah Mitchell</div>
+        <div class="card-text">Outstanding service and incredible food. Will visit again!</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+          <span class="stars">★★★★★</span>
+        </div>
+        <div class="card-name">James Thomson</div>
+        <div class="card-text">Perfect venue for celebrations. Highly recommended!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">🏆</div>
+    <span>Award-Winning Cuisine</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">👨‍🍳</div>
+    <span>Expert Chefs</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🥘</div>
+    <span>Fresh Ingredients</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🎯</div>
+    <span>Exceptional Service</span>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu" class="services">
+  <div class="section-label">Our Offerings</div>
+  <h2>Curated Dining Experiences</h2>
+  <p class="section-intro">At Browns Manchester, we offer a diverse range of dining options to suit every occasion, from casual lunch to fine dining experiences.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🍽️</div>
+      <h3>Fine Dining</h3>
+      <p>Experience our signature tasting menus featuring seasonal ingredients and innovative techniques prepared by our award-winning culinary team.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥗</div>
+      <h3>Casual Lunch</h3>
+      <p>Enjoy contemporary British cuisine in a relaxed atmosphere. Perfect for business meetings or leisurely meals with friends and family.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍷</div>
+      <h3>Wine & Spirits</h3>
+      <p>Discover our carefully curated selection of fine wines, craft cocktails, and premium spirits from around the world.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎉</div>
+      <h3>Private Events</h3>
+      <p>Host your special celebration in our elegant private dining rooms. Perfect for corporate events, weddings, and private parties.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍰</div>
+      <h3>Special Occasions</h3>
+      <p>Make your milestone moments memorable with our bespoke catering and special occasion packages tailored to your needs.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Group Bookings</h3>
+      <p>Book your group dining experience with us. We welcome parties of all sizes with customized menus and dedicated service.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-content">
+    <div class="about-text">
+      <h2>Welcome to Browns Manchester</h2>
+      <p>Located on York Street in the heart of Manchester, Browns Manchester is a premier dining destination that brings together exceptional cuisine, impeccable service, and an elegant atmosphere.</p>
+      <p>Our commitment to excellence extends from our carefully sourced ingredients to the passionate team that serves you. We believe that great dining is about more than just food—it's about creating unforgettable memories.</p>
+      <ul class="about-list">
+        <li>Award-winning chefs and culinary expertise</li>
+        <li>Premium selection of locally sourced ingredients</li>
+        <li>Elegant dining rooms with sophisticated ambiance</li>
+        <li>Professional and attentive service team</li>
+        <li>Flexible private dining spaces available</li>
+        <li>Extensive wine and beverage collection</li>
+      </ul>
+      <a href="#reservations" class="btn btn-primary btn-lg">Reserve Your Table</a>
+    </div>
+    <div class="about-image"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="section-label">Visual Tour</div>
+  <h2>Explore Our Restaurant</h2>
+  <p class="section-intro">Step into the world of Browns Manchester and experience our elegant dining spaces, exquisite plating, and warm atmosphere.</p>
+  
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🍽️</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🥂</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🍳</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🍷</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">👨‍🍳</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🏨</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-label">Guest Reviews</div>
+  <h2>What Our Guests Say</h2>
+  <p class="section-intro">Discover why guests choose Browns Manchester for their special moments and memorable dining experiences.</p>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">👩</div>
+        <div>
+          <div class="testimonial-name">Emma Richardson</div>
+          <div class="testimonial-role">Anniversary Celebration</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Absolutely outstanding! Every detail was perfect, from the welcome drink to the final dessert. The service team truly made our anniversary special."</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">👨</div>
+        <div>
+          <div class="testimonial-name">Michael Chen</div>
+          <div class="testimonial-role">Business Client</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimon
