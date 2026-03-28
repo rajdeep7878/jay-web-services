@@ -1,0 +1,489 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fair Shot Cafe — Coffee & Food in London | Covent Garden</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-icon { font-size: 32px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-content { }
+  .about-img {
+    width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 80px;
+  }
+  .about p { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 20px; }
+  .about ul { list-style: none; margin-bottom: 28px; }
+  .about li { font-size: 15px; color: var(--text-mid); line-height: 1.8; padding-left: 28px; position: relative; margin-bottom: 10px; }
+  .about li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white; text-align: center; padding: 80px 40px;
+  }
+  .cta-section h2 { color: white; }
+  .cta-section p { color: rgba(255,255,255,0.7); margin-bottom: 36px; }
+
+  /* CONTACT */
+  .contact { background: white; }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .contact-item { }
+  .contact-icon { width: 56px; height: 56px; background: var(--teal-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
+  .contact-item h3 { margin-bottom: 8px; }
+  .contact-item p { color: var(--text-mid); font-size: 15px; line-height: 1.6; }
+  .contact-item a { color: var(--teal); text-decoration: none; font-weight: 600; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 40px 80px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { margin-bottom: 20px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a { color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--teal); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); }
+  .socials { display: flex; gap: 16px; }
+  .social-icon { width: 36px; height: 36px; background: rgba(27,153,139,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--teal); text-decoration: none; transition: all 0.2s; }
+  .social-icon:hover { background: var(--teal); color: white; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { min-height: 400px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    nav { padding: 0 20px; }
+    section { padding: 60px 40px; }
+    .trust-bar { padding: 20px 40px; }
+    h2 { font-size: 32px; }
+    .hero h1 { font-size: 44px; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .logo-text { font-size: 16px; }
+    .hero h1 { font-size: 32px; }
+    .hero-actions { flex-direction: column; width: 100%; }
+    .btn { width: 100%; justify-content: center; }
+    .services-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    section { padding: 40px 20px; }
+    .trust-bar { padding: 20px; flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">☕</div>
+    <div>
+      <div class="logo-text">Fair Shot Cafe</div>
+      <div class="logo-sub">Covent Garden</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#atmosphere">Atmosphere</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:020XXXXXXXX" class="btn btn-primary">Call Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Now Open in Covent Garden
+    </div>
+    <h1>Premium <em>Coffee</em> & Great Food</h1>
+    <p>Welcome to Fair Shot Cafe, your destination for exceptional espresso, artisan pastries, and a vibrant community atmosphere in the heart of London's Covent Garden.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Find Us</a>
+      <a href="#menu" class="btn btn-outline btn-lg">See Menu</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">100%</div>
+        <div class="trust-label">Specialty Grade Beans</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">Fresh</div>
+        <div class="trust-label">Daily Baked Goods</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">10hrs</div>
+        <div class="trust-label">Open Daily</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div class="card-avatar">⭐</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sophie M.</div>
+        <div class="card-text">"Best flat white in London! The atmosphere is warm and welcoming."</div>
+        <div class="card-badge">Verified Customer</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="card-avatar">😊</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">James T.</div>
+        <div class="card-text">"Perfect spot for work or catching up with friends."</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="card-avatar">👍</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Emma L.</div>
+        <div class="card-text">"The pastries are incredible and the service is always friendly!"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">🌱</div>
+    <span>Ethically Sourced Beans</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🎯</div>
+    <span>Expert Baristas</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🏆</div>
+    <span>Award-Winning Blends</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">💚</div>
+    <span>Community Focused</span>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="services" id="menu">
+  <div class="section-label">What We Offer</div>
+  <h2>Our Menu</h2>
+  <p class="section-intro">From carefully crafted espresso drinks to freshly baked pastries and light lunch options, Fair Shot Cafe offers something special for every visit.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">☕</div>
+      <h3>Signature Espresso Drinks</h3>
+      <p>House-made lattes, cappuccinos, flat whites, and our signature Fair Shot blend crafted by expert baristas.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥐</div>
+      <h3>Artisan Pastries</h3>
+      <p>Freshly baked croissants, pain au chocolat, sourdough toast, and seasonal sweet treats made daily.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥗</div>
+      <h3>Light Lunch</h3>
+      <p>Sandwiches, salads, and bowls prepared fresh throughout the day using quality ingredients.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍰</div>
+      <h3>Cakes & Desserts</h3>
+      <p>Delicious homemade cakes, brownies, and seasonal specials perfect with your afternoon coffee.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥤</div>
+      <h3>Specialty Beverages</h3>
+      <p>Alternative milk options, smoothies, hot chocolate, and premium teas for every preference.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📦</div>
+      <h3>Beans to Take Home</h3>
+      <p>Purchase our single-origin and blended beans to enjoy the Fair Shot experience at home.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-label">About Us</div>
+      <h2>Fair Shot Cafe Story</h2>
+      <p>Fair Shot Cafe was founded on the belief that exceptional coffee should be accessible to everyone. We partner directly with ethical coffee producers across Africa, South America, and Asia to bring you the finest specialty-grade beans.</p>
+      <p>Located in the vibrant heart of Covent Garden, our cafe is more than just a coffee shop—it's a gathering place where baristas share their passion for craft, where locals catch up with friends, and where every visit feels special.</p>
+      <p>We're committed to sustainability, quality, and creating a welcoming community space where everyone feels at home.</p>
+      <ul>
+        <li>Ethically sourced, single-origin beans</li>
+        <li>Expert barista training and certification</li>
+        <li>Sustainable and eco-friendly practices</li>
+        <li>Community events and coffee tastings</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary">Visit Us Today</a>
+    </div>
+    <div class="about-img">🌍</div>
+  </div>
+</section>
+
+<!-- ATMOSPHERE -->
+<section id="atmosphere">
+  <div class="section-label">Our Space</div>
+  <h2>A Welcoming Atmosphere</h2>
+  <p class="section-intro">Fair Shot Cafe combines warm hospitality with a modern, comfortable setting designed for both quick coffee breaks and extended workdays.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🪑</div>
+      <h3>Comfortable Seating</h3>
+      <p>Mix of communal tables, window seats, and cozy corners perfect for working, meeting, or relaxing.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📶</div>
+      <h3>High-Speed WiFi</h3>
+      <p>Reliable internet throughout the cafe, ideal for remote work and staying connected with friends.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-card">
+      <div class="service-icon">🎵</div>
+      <h3>Great Vibes</h3>
+      <p>Curated soundtrack and welcoming atmosphere that makes every moment feel special and relaxed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready for Your Next Great Coffee?</h2>
+  <p>Visit Fair Shot Cafe in Covent Garden and discover why our customers keep coming back.</p>
+  <a href="#contact" class="btn btn-primary btn-lg">Get Directions</a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Visit Fair Shot Cafe</h2>
+  <p class="section-intro">Find us in the heart of Covent Garden. We're open daily and would love to welcome you for your next coffee break.</p>
+
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <h3>Location</h3>
+      <p>3 Slingsby Pl<br>London WC2E 9AB<br>United Kingdom</p>
+      <a href="https://maps.google.com/?q=3+Slingsby+Pl+London+WC2E+9AB" target="_blank">Get Directions →</a>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">📞</div>
+      <h3>Phone</h3>
+      <p>020 XXXX XXXX</p>
+      <a href="tel:020XXXXXXXX">Call Now →</a>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🕐</div>
+      <h3>Hours</h3>
+      <p>Monday - Sunday<br>7:00 AM - 6:00 PM<br>*Subject to confirmation</p>
+      <a href="#contact">Book a Table →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Fair Shot Cafe</h4>
+      <ul>
+        <li><a href="#menu">Our Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#atmosphere">Atmosphere</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Location</h4>
+      <ul>
+        <li><p style="color: rgba(255,255,255,0.6);">3 Slingsby Pl<br>London WC2E 9AB<br>United Kingdom</p></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <ul>
+        <li><p style="color: rgba(255,255,255,0.6);">Mon - Sun<br>7:00 AM - 6:00 PM</p></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="socials">
+        <a href="#" class="social-icon">f</a>
+        <a href="#" class="social-icon">𝕏</a>
+        <a href="#" class="social-icon">📷</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2024 Fair Shot Cafe. All rights reserved. | Privacy Policy | Terms of Service</p>
+    <p>Crafted with ☕ in Covent Garden, London</p>
+  </div>
+</footer>
+
+</body>
+</html>
+```
