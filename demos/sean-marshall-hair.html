@@ -1,0 +1,473 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sean Marshall Hair — Premium Hair Salon in Glasgow</title>
+<meta name="description" content="Sean Marshall Hair is a premium hair salon in Glasgow offering expert cutting, colouring, styling and treatments. Located in Suite 140, 93 Hope St. Book your appointment today.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { font-size: 32px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+  .service-card .btn { margin-top: 20px; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-content p { font-size: 16px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.8; }
+  .about-list { margin: 32px 0; }
+  .about-list-item { display: flex; gap: 14px; margin-bottom: 16px; font-size: 15px; color: var(--text-mid); }
+  .about-list-icon { width: 24px; height: 24px; background: var(--teal-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--teal); flex-shrink: 0; }
+  .about-image { width: 100%; height: 500px; background: linear-gradient(135deg, var(--teal-light) 0%, var(--cream) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 18px; }
+
+  /* TEAM */
+  .team { background: var(--white); }
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .team-member { text-align: center; }
+  .member-image { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, #E8F7F5 0%, #FEF8E8 100%); border-radius: 16px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+  .team-member h3 { margin-bottom: 6px; }
+  .member-title { font-size: 14px; color: var(--teal); font-weight: 600; margin-bottom: 12px; }
+  .member-bio { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  /* CTA SECTION */
+  .cta { background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%); color: white; text-align: center; }
+  .cta h2 { color: white; }
+  .cta p { color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 36px; }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; }
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { outline: none; border-color: var(--teal); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+  .info-block h3 { margin-bottom: 12px; }
+  .info-block p { font-size: 15px; color: var(--text-mid); }
+  .info-block a { color: var(--teal); text-decoration: none; font-weight: 600; }
+  .info-block a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 30px;
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--teal); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 30px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { display: none; }
+    .hero h1 { font-size: 48px; }
+    section { padding: 60px 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .hero-content { padding: 40px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 16px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .hero-trust { flex-direction: column; gap: 16px; }
+    section { padding: 50px 20px; }
+    h2 { font-size: 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .trust-bar { padding: 20px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">✨</div>
+    <div>
+      <div class="logo-text">Sean Marshall Hair</div>
+      <div class="logo-sub">Premium Hair Salon</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:07588130203" class="btn btn-outline">☎ Call</a>
+    <a href="#contact" class="btn btn-primary">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Premium Hair Care in Glasgow
+    </div>
+    <h1>Expert Hair <em>Styling</em> & Care</h1>
+    <p>Experience premium hair services from award-winning stylists. From cuts and colour to treatments and transformations, we create your perfect look.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Book Your Appointment</a>
+      <a href="tel:07588130203" class="btn btn-outline btn-lg">07588 130203</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">⭐ 4.9</div>
+        <div class="trust-label">Average Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="card-avatar">👨</div>
+          <div>
+            <div class="card-name">James</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="card-text">"Best haircut I've had. Sean really knows his craft!"</div>
+        <div class="card-badge">Verified Client</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+          <div style="color: var(--teal);">✓</div>
+          <div><strong>Expert Stylists</strong></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-light);">Trained professionals</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+          <div style="color: var(--teal);">✓</div>
+          <div><strong>Premium Products</strong></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-light);">Only the best brands</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <strong>Suite 140, Floor 2, 93 Hope St, Glasgow</strong>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📞</div>
+    <a href="tel:07588130203" style="color: var(--text-mid); text-decoration: none;">07588 130203</a>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🕐</div>
+    Mon-Sat: 9am-6pm | Sun: 10am-4pm
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Complete Hair Solutions</h2>
+  <p class="section-intro">From classic cuts to bold transformations, we offer a comprehensive range of professional hair services tailored to your needs.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Hair Cutting</h3>
+      <p>Precision cuts tailored to your face shape and style. From classic gents' cuts to modern styling, we create looks that suit you.</p>
+      <a href="#contact" class="btn btn-primary">Book Cutting</a>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Hair Colouring</h3>
+      <p>Professional colour services including full dyes, highlights, balayage and glosses. Expert colour matching for perfect results.</p>
+      <a href="#contact" class="btn btn-primary">Book Colour</a>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">💆</div>
+      <h3>Hair Treatments</h3>
+      <p>Nourishing treatments including keratin, deep conditioning and scalp treatments to restore health and shine to your hair.</p>
+      <a href="#contact" class="btn btn-primary">Book Treatment</a>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">💇</div>
+      <h3>Styling & Finishing</h3>
+      <p>Professional blow-dries, styling for special occasions and everyday looks. Learn styling tips from our experienced team.</p>
+      <a href="#contact" class="btn btn-primary">Book Styling</a>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">👰</div>
+      <h3>Bridal & Events</h3>
+      <p>Create your perfect look for weddings, parties and special events. Consultations and trial sessions available.</p>
+      <a href="#contact" class="btn btn-primary">Book Event Hair</a>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-icon">👶</div>
+      <h3>Kids & Family</h3>
+      <p>Comfortable, friendly service for children and families. We make haircuts fun and stress-free for the youngest clients.</p>
+      <a href="#contact" class="btn btn-primary">Book Kids Cut</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-image">
+      <div style="text-align: center;">
+        <div style="font-size: 64px; margin-bottom: 16px;">💇‍♂️</div>
+        <p>Premium Hair Care</p>
+      </div>
+    </div>
+    
+    <div class="about-content">
+      <div class="section-label">About Us</div>
+      <h2>Crafted Excellence Since Day One</h2>
+      <p>Sean Marshall Hair has been Glasgow's trusted destination for premium hair services for over 15 years. We combine traditional techniques with modern trends to deliver exceptional results every single time.</p>
+      
+      <p>Our team of experienced stylists are passionate about hair care and dedicated to understanding what makes you feel confident. Whether you're looking for a subtle change or a dramatic transformation, we've got you covered.</p>
+      
+      <div class="about-list">
+        <div class="about-list-item">
+          <div class="about-list-icon">✓</div>
+          <div>Award-winning stylists with international training</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-list-icon">✓</div>
+          <div>Premium imported hair products and treatments</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-list-icon">✓</div>
+          <div>Personalised consultations for every client</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-list-icon">✓</div>
+          <div>Welcoming environment in the heart of Glasgow</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-list-icon">✓</div>
+          <div>Loyalty programme and special offers</div>
+        </div>
+      </div>
+      
+      <a href="#contact" class="btn btn-primary btn-lg">Get Started Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="section-label">Our Team</div>
+  <h2>Meet Our Expert Stylists</h2>
+  <p class="section-intro">Our team of skilled professionals brings creativity, experience and passion to every appointment.</p>
+  
+  <div class="team-grid">
+    <div class="team-member">
+      <div class="member-image">👨‍🦱</div>
+      <h3>Sean Marshall</h3>
+      <div class="member-title">Head Stylist & Founder</div>
+      <div class="member-bio">15+ years of experience. Specialises in precision cutting and colour work. Regular attendee of international hair shows and training programmes.</div>
+    </div>
+    
+    <div class="team-member">
+      <div class="member-image">👩‍🦱</div>
+      <h3>Emma Wilson</h3>
+      <div class="member-title">Senior Stylist</div>
+      <div class="member-bio">Expert in bridal styling and complex colour transformations. Known for her meticulous attention to detail and friendly approach.</div>
+    </div>
+    
+    <div class="team-member">
+      <div class="member-image">👨‍🦲</div>
+      <h3>Lewis Thompson</h3>
+      <div class="member-title">Specialist Barber</div>
+      <div class="member-bio">Certified barber with expertise in classic and contemporary men's cuts. Creates sharp, clean styles with excellent customer service.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta">
+  <h2>Ready For Your Transformation?</h2>
