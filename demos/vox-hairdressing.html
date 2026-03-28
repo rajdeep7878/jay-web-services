@@ -1,0 +1,464 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vox Hairdressing — Hair Salon in Manchester | Professional Styling</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  /* FEATURES */
+  .features { background: var(--cream); }
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .feature-item { display: flex; gap: 24px; }
+  .feature-icon { width: 56px; height: 56px; background: var(--teal-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+  .feature-content h3 { margin-top: 0; }
+  .feature-content p { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-content p { font-size: 15px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.8; }
+  .about-list { display: flex; flex-direction: column; gap: 16px; margin: 32px 0; }
+  .about-list-item { display: flex; align-items: flex-start; gap: 12px; }
+  .about-check { width: 24px; height: 24px; background: var(--teal-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--teal); font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .about-img { width: 100%; height: 480px; background: linear-gradient(135deg, var(--teal-light) 0%, var(--cream) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .testimonial-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .testimonial-card:hover { border-color: var(--teal); box-shadow: var(--shadow); transition: all 0.25s; }
+  .testimonial-stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+  .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .testimonial-name { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-light); }
+
+  /* CTA */
+  .cta { background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%); color: white; text-align: center; }
+  .cta h2 { color: white; margin-bottom: 24px; }
+  .cta p { font-size: 18px; max-width: 600px; margin: 0 auto 32px; color: rgba(255,255,255,0.8); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+  }
+  footer h4 { font-size: 14px; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); }
+  footer a, footer p { font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 12px; display: block; transition: color 0.2s; }
+  footer a:hover { color: var(--teal); }
+  .footer-logo { margin-bottom: 20px; }
+  .footer-logo .logo-text { color: white; }
+  .footer-contact { display: flex; flex-direction: column; gap: 12px; }
+  .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+  .footer-social a {
+    width: 40px; height: 40px; background: rgba(27,153,139,0.2); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0;
+  }
+  .footer-social a:hover { background: var(--teal); }
+  .footer-bottom { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { min-height: 400px; }
+    section { padding: 60px 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: 1fr; }
+    .about-container { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .logo-text { font-size: 16px; }
+    .hero { min-height: auto; }
+    .hero-content { padding: 40px 24px; }
+    .hero h1 { font-size: 42px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">✂️</div>
+    <div>
+      <div class="logo-text">Vox Hairdressing</div>
+      <div class="logo-sub">Professional Hair Salon</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:01616374077" class="btn btn-outline">Call Us</a>
+    <a href="#book" class="btn btn-primary">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Open 6 days a week
+    </div>
+    <h1>Professional Hair <em>Styling</em> in Manchester</h1>
+    <p>Welcome to Vox Hairdressing, your destination for expert haircuts, colour treatments, and styling. Our experienced team delivers premium services in a relaxed, contemporary setting in the heart of Manchester City Centre.</p>
+    <div class="hero-actions">
+      <a href="tel:01616374077" class="btn btn-primary btn-lg">📞 0161 637 4077</a>
+      <a href="#book" class="btn btn-outline">Book Appointment</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9★</div>
+        <div class="trust-label">Client Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div class="card-avatar">👩‍🦰</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Sarah M.</div>
+          </div>
+        </div>
+        <div class="card-text">"Fantastic service! My new style looks amazing. Highly recommend Vox Hairdressing."</div>
+        <div class="card-badge">✓ Verified Client</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">James T.</div>
+        <div class="card-text">Best barber in Manchester!</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Emma L.</div>
+        <div class="card-text">Professional & friendly team</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <div><strong>City Centre Location:</strong> 50 Port St, Manchester M1 2EQ</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🎯</div>
+    <div><strong>Expert Stylists:</strong> Highly trained professionals</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⭐</div>
+    <div><strong>Premium Quality:</strong> Top brands & products</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">What We Offer</div>
+  <h2>Professional Hair Services</h2>
+  <p class="section-intro">Vox Hairdressing offers a comprehensive range of hair services tailored to your unique style and needs. From classic cuts to creative colour, we have you covered.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">✂️</span>
+      <h3>Hair Cutting</h3>
+      <p>Precision cuts for all hair types. From classic styles to modern trends, our skilled stylists ensure you leave looking sharp and feeling confident.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎨</span>
+      <h3>Colour & Highlights</h3>
+      <p>Transform your look with expert colour services. We use premium products and techniques for vibrant, long-lasting results that complement your complexion.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💆</span>
+      <h3>Styling & Treatment</h3>
+      <p>Professional blow-dry styling and nourishing treatments. Perfect for special occasions or everyday polish. We enhance your natural beauty.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">👨‍🦰</span>
+      <h3>Barber Services</h3>
+      <p>Traditional barbering for gentlemen. Expert fades, trims, and grooming services in a welcoming atmosphere. Book your appointment today.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">✨</span>
+      <h3>Hair Care Products</h3>
+      <p>Premium hair care products available for purchase. We recommend the best products to maintain your style and keep your hair healthy between visits.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">👰</span>
+      <h3>Special Occasions</h3>
+      <p>Bridal and event styling. Let our team create the perfect look for your special day. Consultation available to bring your vision to life.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-label">Why Choose Vox</div>
+  <h2>Experience Excellence</h2>
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">🎓</div>
+      <div class="feature-content">
+        <h3>Expert Team</h3>
+        <p>Our stylists are highly trained and regularly update their skills with the latest techniques and trends in hairdressing.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🏆</div>
+      <div class="feature-content">
+        <h3>Quality Products</h3>
+        <p>We use only premium hair care and styling products to ensure the best results and maintain the health of your hair.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">😊</div>
+      <div class="feature-content">
+        <h3>Friendly Atmosphere</h3>
+        <p>Our relaxed, welcoming salon environment makes every visit a pleasure. We treat you like family from the moment you walk through our doors.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⏰</div>
+      <div class="feature-content">
+        <h3>Convenient Booking</h3>
+        <p>Easy online booking and flexible appointment times. We're open 6 days a week to fit around your busy schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-container">
+    <div class="about-img">💈</div>
+    <div class="about-content">
+      <div class="section-label">About Us</div>
+      <h2>Vox Hairdressing Manchester</h2>
+      <p>Vox Hairdressing is a premier hair salon located in Manchester City Centre. With over 15 years of combined experience, our team is dedicated to providing exceptional hair services that exceed your expectations.</p>
+      <p>We pride ourselves on creating a welcoming space where every client feels valued and leaves looking and feeling their best. Whether you're looking for a simple trim or a complete transformation, we're here to help.</p>
+      <div class="about-list">
+        <div class="about-list-item">
+          <div class="about-check">✓</div>
+          <div>Expert stylists with international training</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-check">✓</div>
+          <div>Premium hair products and treatments</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-check">✓</div>
+          <div>Modern, comfortable salon environment</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-check">✓</div>
+          <div>Personalised service for every client</div>
+        </div>
+      </div>
+      <a href="tel:01616374077" class="btn btn-primary btn-lg">Contact Us Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client Reviews</div>
+  <h2>What Our Clients Say</h2>
+  <p class="section-intro">Read what our happy clients have to say about their experience at Vox Hairdressing.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Absolutely brilliant! The team at Vox are professional and talented. My new cut is exactly what I wanted. Will definitely be back."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👩</div>
+        <div>
+          <div class="testimonial-name">Sarah Mitchell</div>
+          <div class="testimonial-role">Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Best haircut I've had in years! The stylists really listen to what you want and deliver amazing results. Highly recommended."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👨</div>
+        <div>
+          <div class="testimonial-name">James Thompson</div>
+          <div class="testimonial-role">Client</div>
+        </div>
