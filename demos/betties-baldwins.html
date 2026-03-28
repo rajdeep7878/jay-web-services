@@ -1,0 +1,432 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betties + Baldwins — Hair Salon in Bristol | Professional Hair Care</title>
+<meta name="description" content="Betties + Baldwins is a professional hair salon in Bristol offering expert cuts, colour, styling and treatments. Located at 12 Small St, Bristol BS1 1DB. Call 0117 239 8347 to book your appointment.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--gold); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4);
+    color: #E8D5A7; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #D4AF37 0%, #C9A84C 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-light); color: #8B6914; padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--gold-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: var(--shadow); }
+  .service-icon { font-size: 40px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-content h2 { margin-bottom: 20px; }
+  .about-text { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 28px; }
+  .about-list { display: flex; flex-direction: column; gap: 16px; }
+  .about-list-item { display: flex; gap: 12px; align-items: flex-start; }
+  .about-list-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+  .about-list-text { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+  .about-img { width: 100%; aspect-ratio: 4/5; background: linear-gradient(135deg, var(--gold) 0%, #D4AF37 100%); border-radius: 16px; }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white; text-align: center; padding: 120px 80px;
+  }
+  .cta h2 { color: white; margin-bottom: 24px; }
+  .cta p { font-size: 18px; max-width: 600px; margin: 0 auto 48px; color: rgba(255,255,255,0.8); line-height: 1.7; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 40px;
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 60px; }
+  .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 16px; font-weight: 600; }
+  .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+  .footer-col a:hover { color: white; }
+  .footer-col p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .footer-divider { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-bottom { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-img { min-height: 400px; }
+    .hero-content { padding: 60px 40px; }
+    .hero h1 { font-size: 48px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    section { padding: 60px 40px; }
+    nav { padding: 0 24px; }
+    .trust-bar { padding: 20px 40px; }
+    footer { padding: 40px 40px 20px; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .logo-text { font-size: 16px; }
+    .hero { min-height: auto; padding-top: 70px; }
+    .hero-content { padding: 40px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero-img { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    section { padding: 40px 20px; }
+    h2 { font-size: 32px; }
+    .trust-bar { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
+    footer { padding: 30px 20px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">✂️</div>
+    <div>
+      <div class="logo-text">Betties + Baldwins</div>
+      <div class="logo-sub">Hair Salon</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:01172398347" class="btn btn-outline">Call Us</a>
+    <a href="#contact" class="btn btn-primary">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Professional Hair Care in Bristol
+    </div>
+    <h1>Your Hair, Our <em>Passion</em></h1>
+    <p>At Betties + Baldwins, we specialise in creating stunning styles tailored to you. From precision cuts to vibrant colour and transformative treatments, we're committed to making you feel confident and beautiful.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Book an Appointment</a>
+      <a href="#services" class="btn btn-outline">View Services</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">5★</div>
+        <div class="trust-label">Google Rated</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; gap: 12px;">
+          <div class="card-avatar">💇‍♀️</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Sarah Mitchell</div>
+            <div class="card-text">"Best hair experience ever. The team really listens!"</div>
+          </div>
+        </div>
+        <div class="card-badge">Verified Review</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Emma Johnson</div>
+        <div class="card-text">Amazing colour work and such a welcoming atmosphere!</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Lucy Chen</div>
+        <div class="card-text">Professional stylists who really care about their craft.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span>Award-Winning Team</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🏅</div>
+    <span>Premium Products</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏱️</div>
+    <span>Quick Booking Available</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">💳</div>
+    <span>All Payment Methods</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="section-label">Our Services</div>
+  <h2>Professional Hair Solutions</h2>
+  <p class="section-intro">From classic cuts to creative colour transformations, we offer a complete range of professional hair services designed to bring out your best.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Hair Cutting & Styling</h3>
+      <p>Expert cuts tailored to your face shape and hair type. Whether it's a classic bob, textured crop, or long layers, we'll create the perfect style for you.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Colour & Highlights</h3>
+      <p>Vibrant permanent colour, creative highlights, or subtle balayage. Our colourists use premium products for rich, long-lasting results with minimal damage.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💆‍♀️</div>
+      <h3>Hair Treatments</h3>
+      <p>Nourishing treatments to restore and protect your hair. From keratin smoothing to deep conditioning masks, we keep your hair healthy and shiny.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💁‍♀️</div>
+      <h3>Blow Dry & Finishing</h3>
+      <p>Professional blow-dry services for any occasion. From everyday styles to special event looks, we'll have your hair looking flawless.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧴</div>
+      <h3>Extensions & Weaves</h3>
+      <p>Premium hair extensions for added length and volume. We use quality products and expert application for natural-looking results.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👶</div>
+      <h3>Children's Cuts</h3>
+      <p>Gentle, patient service for little ones. Our stylists create fun, age-appropriate cuts in a relaxed, welcoming environment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-grid">
+    <div class="about-img"></div>
+    <div class="about-content">
+      <div class="section-label">About Betties + Baldwins</div>
+      <h2>Elevating Your Hair, Building Your Confidence</h2>
+      <p class="about-text">Founded on the principle that everyone deserves to feel beautiful, Betties + Baldwins has been Bristol's premier destination for professional hair services for over 15 years. Our team of experienced stylists combines technical expertise with genuine care.</p>
+      
+      <div class="about-list">
+        <div class="about-list-item">
+          <div class="about-list-icon">✓</div>
+          <div class="about-list-text"><strong>Expert Stylists</strong> — Each member of our team brings years of experience and a passion for creating stunning transformations.</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-list-icon">✓</div>
+          <div class="about-list-text"><strong>Premium Quality</strong> — We use only the finest professional haircare products to ensure the best results and hair health.</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-list-icon">✓</div>
+          <div class="about-list-text"><strong>Welcoming Atmosphere</strong> — Our salon is a safe space where you can relax, be yourself, and feel valued.</div>
+        </div>
+        <div class="about-list-item">
+          <div class="about-list-icon">✓</div>
+          <div class="about-list-text"><strong>Personalised Service</strong> — We listen to your needs and create bespoke solutions tailored to your unique style and hair goals.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta">
+  <h2>Ready for Your Hair Transformation?</h2>
+  <p>Book your appointment at Betties + Baldwins today. Our talented team is ready to create the look you've always wanted.</p>
+  <a href="tel:01172398347" class="btn btn-gold btn-lg">Call 0117 239 8347</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Betties + Baldwins</h4>
+      <p>Professional hair salon in the heart of Bristol, delivering expert cuts, colour, and treatments since 2009.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#services">Services</a>
+      <a href="#about">About Us</a>
+      <a href="#team">Meet the Team</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Location & Hours</h4>
+      <p><strong>12 Small St</strong><br>Bristol BS1 1DB<br>United Kingdom</p>
+      <p style="margin-top: 16px;">Mon-Fri: 9am-6pm<br>Sat: 9am-5pm<br>Sun: Closed</p>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <p><strong>Phone:</strong><br><a href="tel:01172398347" style="color: rgba(255,255,255,0.8);">0117 239 8347</a></p>
+      <p style="margin-top: 16px;"><strong>Email:</strong><br><a href="mailto:info@bettiesbaldwins.co.uk" style="color: rgba(255,255,255,0.8);">info@bettiesbaldwins.co.uk</a></p>
+    </div>
+  </div>
+  
+  <div class="footer-divider">
+    <div class="footer-bottom">&copy; 2024 Betties + Baldwins. All rights reserved. | <a href="#" style="color: rgba(255,255,255,0.5); text-decoration: none;">Privacy Policy</a></div>
+    <div style="display: flex; gap: 16px;">
+      <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px;">Instagram</a>
+      <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px;">Facebook</a>
+      <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px;">Google</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+```
