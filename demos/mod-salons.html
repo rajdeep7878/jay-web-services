@@ -1,0 +1,436 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mod Salons is a professional hair salon in Chapel Allerton, Leeds. Expert styling, cutting, and colour treatments for all hair types. Book your appointment today.">
+<title>Mod Salons — Hair Salon in Chapel Allerton, Leeds | Expert Styling & Colour</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { width: 48px; height: 48px; background: var(--teal-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-text p { margin-bottom: 20px; }
+  .about-img { width: 100%; aspect-ratio: 1; background: var(--teal-light); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+
+  /* CTA SECTION */
+  .cta {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(27,153,139,0.1) 0%, transparent 70%); }
+  .cta::after { content: ''; position: absolute; bottom: -50px; left: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%); }
+  .cta-content { position: relative; z-index: 1; }
+  .cta h2 { color: white; margin-bottom: 20px; }
+  .cta p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+  }
+  footer h4 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; color: var(--teal); }
+  footer p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+  footer a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; display: block; margin-bottom: 8px; transition: color 0.2s; }
+  footer a:hover { color: var(--teal); }
+  .footer-bottom { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card { border: 1.5px solid var(--border); border-radius: 16px; padding: 32px; }
+  .testimonial-card .stars { display: block; margin-bottom: 16px; }
+  .testimonial-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; }
+  .testimonial-meta { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--teal-light); }
+  .testimonial-name { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-light); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .hero { grid-template-columns: 1fr; padding-top: 70px; }
+    .hero-content { padding: 40px 20px; }
+    .hero h1 { font-size: 40px; }
+    .hero-img { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-content { grid-template-columns: 1fr; gap: 40px; }
+    section { padding: 60px 20px; }
+    footer { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
+    .footer-bottom { flex-direction: column; gap: 16px; }
+    .trust-bar { padding: 20px; flex-direction: column; }
+    .nav-links { display: none; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">✨</div>
+    <div>
+      <div class="logo-text">Mod Salons</div>
+      <div class="logo-sub">Hair & Style</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:0113262318" class="btn btn-outline">☎ Book</a>
+    <a href="#contact" class="btn btn-primary">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Open Now - Walk-ins Welcome
+    </div>
+    <h1>Premium Hair Care in <em>Chapel Allerton</em></h1>
+    <p>Expert styling, colour treatments, and transformative cuts for all hair types. Experience the Mod Salons difference with our highly trained professionals.</p>
+    <div class="hero-actions">
+      <a href="tel:01132623185" class="btn btn-primary btn-lg">Call 0113 262 3185</a>
+      <a href="#services" class="btn btn-outline btn-lg">Explore Services</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9★</div>
+        <div class="trust-label">Client Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div class="card-avatar">💇</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Perfect Cut</div>
+          </div>
+        </div>
+        <div class="card-text">"Sarah transformed my hair completely. The service was professional and the results exceeded expectations."</div>
+        <div class="card-badge">⭐ Highly Rated</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Emily's Colour</div>
+        <div class="card-text">Amazing colour service and friendly team!</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Best Salon</div>
+        <div class="card-text">Professional stylists and welcoming atmosphere.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✂️</div>
+    <span>Expert Stylists</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">💅</div>
+    <span>Premium Products</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🏆</div>
+    <span>Award-Winning Service</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏰</div>
+    <span>Flexible Appointments</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">What We Offer</div>
+  <h2>Hair Services Designed for You</h2>
+  <p class="section-intro">From cuts and styling to colour treatments and keratin care, Mod Salons provides comprehensive hair solutions tailored to your needs.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Precision Cutting</h3>
+      <p>Expert cuts tailored to your face shape and hair type. Bobs, layers, fades, and creative styles crafted by experienced stylists.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Colour & Highlights</h3>
+      <p>Professional colouring, highlights, balayage, and toning. Premium products ensure vibrant, healthy-looking hair with lasting results.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Styling & Treatments</h3>
+      <p>Keratin treatments, deep conditioning, blow-dries, and special occasion styling. Restore shine and strength to your hair.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">Our Story</div>
+  <h2>Premium Hair Care Since 2009</h2>
+  <div class="about-content">
+    <div class="about-text">
+      <p>Mod Salons has been a cornerstone of Chapel Allerton's beauty community for over a decade. Founded on the belief that everyone deserves professional, personalized hair care, we've built a reputation for excellence and attention to detail.</p>
+      <p>Our team of trained stylists stays current with the latest techniques and trends, using only premium products to ensure your hair looks and feels its best. Whether you're looking for a complete transformation or routine maintenance, you're in trusted hands.</p>
+      <p><strong>Location:</strong> 98 Harrogate Rd, Chapel Allerton, Leeds LS7 4LZ<br><strong>Phone:</strong> 0113 262 3185</p>
+      <a href="#contact" class="btn btn-primary">Book Your Appointment</a>
+    </div>
+    <div class="about-img">📍</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client Love</div>
+  <h2>What Our Clients Say</h2>
+  <p class="section-intro">Trusted by hundreds of satisfied clients across Chapel Allerton and Leeds. Read what they think of our services.</p>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Sarah gave me the best haircut I've had in years. She listened to what I wanted and delivered perfectly. The salon is warm and welcoming. Highly recommend!"</p>
+      <div class="testimonial-meta">
+        <div class="testimonial-avatar"></div>
+        <div>
+          <div class="testimonial-name">Jessica M.</div>
+          <div class="testimonial-role">Client since 2022</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"The colour service here is incredible. I've been coming for 3 years and they never disappoint. Great attention to detail and lovely staff."</p>
+      <div class="testimonial-meta">
+        <div class="testimonial-avatar"></div>
+        <div>
+          <div class="testimonial-name">Amanda T.</div>
+          <div class="testimonial-role">Client since 2021</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"First visit and already booked my next appointment. Professional service, fair prices, and my hair looks amazing. Love it here!"</p>
+      <div class="testimonial-meta">
+        <div class="testimonial-avatar"></div>
+        <div>
+          <div class="testimonial-name">Rachel K.</div>
+          <div class="testimonial-role">New Client</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-content">
+    <h2>Ready for Your Transformation?</h2>
+    <p>Book your appointment at Mod Salons today and experience the difference professional hair care makes.</p>
+    <a href="tel:01132623185" class="btn btn-gold btn-lg">Call 0113 262 3185</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div>
+    <h4>Mod Salons</h4>
+    <p>Professional hair care in Chapel Allerton, Leeds. Expert styling, colour treatments, and personalized service since 2009.</p>
+  </div>
+  <div>
+    <h4>Hours</h4>
+    <p>Monday - Friday: 9am - 6pm<br>
+    Saturday: 9am - 5pm<br>
+    Sunday: Closed</p>
+  </div>
+  <div>
+    <h4>Location</h4>
+    <p>98 Harrogate Rd<br>
+    Chapel Allerton<br>
+    Leeds LS7 4LZ<br>
+    United Kingdom</p>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <a href="tel:01132623185">☎ 0113 262 3185</a>
+    <a href="mailto:hello@modsalons.co.uk">✉ Email Us</a>
+    <a href="#services">→ Book Online</a>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Mod Salons. All rights reserved.</p>
+    <p>Professional Hair Care • Chapel Allerton, Leeds</p>
+  </div>
+</footer>
+
+</body>
+</html>
+```
