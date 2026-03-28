@@ -1,0 +1,470 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomtom Coffee House — Café in London | Specialty Coffee & Food</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #8B6F47;
+    --teal-light: #F5F1E8;
+    --teal-dark: #6B5635;
+    --cream: #FDF8F2;
+    --gold: #D4A574;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,111,71,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #c29560; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, #2c1810 0%, #3d2817 60%, #4a3520 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,165,116,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(212,165,116,0.2); border: 1px solid rgba(212,165,116,0.4);
+    color: #D4A574; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #4a3520 0%, #3d2817 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--teal); }
+  .service-icon { font-size: 40px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-text p { font-size: 16px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.8; }
+  .about-image {
+    width: 100%; height: 400px; background: linear-gradient(135deg, var(--teal) 0%, var(--gold) 100%);
+    border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white; text-align: center;
+  }
+  .cta-section h2 { color: white; margin-bottom: 24px; }
+  .cta-section p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 36px; }
+
+  /* CONTACT */
+  .contact { background: white; }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .contact-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 36px;
+    text-align: center;
+  }
+  .contact-card-icon { font-size: 32px; margin-bottom: 16px; }
+  .contact-card h3 { margin-bottom: 12px; }
+  .contact-card p { color: var(--text-mid); font-size: 15px; }
+  .contact-card a { color: var(--teal); text-decoration: none; font-weight: 600; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 24px;
+  }
+  .footer-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col a:hover { color: white; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,0.6); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero, .about-content { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 60px 40px; }
+    nav { padding: 0 20px; }
+    .nav-links { gap: 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 42px; }
+    .nav-links { display: none; }
+    .footer-content { grid-template-columns: repeat(2, 1fr); }
+    .trust-bar { padding: 20px 20px; flex-direction: column; align-items: flex-start; }
+    section { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">☕</div>
+    <div>
+      <div class="logo-text">Tomtom Coffee House</div>
+      <div class="logo-sub">SPECIALTY COFFEE & FOOD</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About Us</a>
+    <a href="#menu">Menu</a>
+    <a href="#atmosphere">Atmosphere</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:020 7730 1771" class="btn btn-outline">Call Us</a>
+    <a href="#contact" class="btn btn-primary">Visit Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Now Open in Belgravia
+    </div>
+    <h1>Exceptional <em>Coffee</em> & Cuisine</h1>
+    <p>Welcome to Tomtom Coffee House, where specialty coffee meets artisan food in the heart of London's Belgravia. Experience the perfect blend of warmth, craftsmanship, and community.</p>
+    <div class="hero-actions">
+      <a href="tel:020 7730 1771" class="btn btn-primary btn-lg">Call: 020 7730 1771</a>
+      <a href="#contact" class="btn btn-outline">Learn More</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years of Excellence</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">1000+</div>
+        <div class="trust-label">Daily Customers</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">5★</div>
+        <div class="trust-label">Customer Rated</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div class="card-avatar">☕</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Premium Coffee</div>
+          </div>
+        </div>
+        <div class="card-text">Hand-roasted beans sourced from the finest estates worldwide.</div>
+        <div class="card-badge">Award Winning</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="card-avatar">🥐</div>
+        <div class="card-name">Fresh Pastries</div>
+        <div class="card-text">Baked daily with premium ingredients.</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="card-avatar">🍽️</div>
+        <div class="card-name">Light Lunches</div>
+        <div class="card-text">Seasonal menu crafted with care.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">☕</div>
+    <span><strong>Specialty Coffee</strong> — Single origin & blends</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <span><strong>Prime Location</strong> — Belgravia, London</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">👥</div>
+    <span><strong>Friendly Staff</strong> — Expert baristas & chefs</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🌱</div>
+    <span><strong>Sustainable</strong> — Ethical sourcing</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="menu">
+  <div class="section-label">What We Offer</div>
+  <h2>Our Specialties</h2>
+  <p class="section-intro">From espresso to avocado toast, discover why locals love Tomtom Coffee House.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">☕</div>
+      <h3>Specialty Coffee</h3>
+      <p>Carefully curated single-origin and house-blend coffees, expertly prepared by our trained baristas using traditional and modern techniques.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥐</div>
+      <h3>Freshly Baked Goods</h3>
+      <p>Daily selection of croissants, sourdough, muffins, and pastries made fresh in-house using premium butter and organic ingredients.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍽️</div>
+      <h3>Light Lunch Menu</h3>
+      <p>Seasonal salads, sandwiches, and hot dishes prepared to order. Perfect for a quick lunch or leisurely brunch with friends and colleagues.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">Our Story</div>
+  <h2>Where Community Meets Coffee</h2>
+  
+  <div class="about-content">
+    <div class="about-text">
+      <p>Tomtom Coffee House was founded on a simple belief: that great coffee should be paired with warm hospitality and a welcoming atmosphere. Located on Ebury Street in the heart of Belgravia, we've become a beloved destination for coffee enthusiasts, professionals, and families alike.</p>
+      <p>Every cup is crafted with care, using beans sourced directly from ethical, sustainable farms around the world. Our baristas are passionate about their craft, and it shows in every espresso, cappuccino, and specialty drink we serve.</p>
+      <p>Beyond coffee, we celebrate the art of living well. Our carefully curated menu of fresh pastries and light meals is designed to complement your coffee experience, whether you're catching up with friends or finding a quiet corner to work.</p>
+      <a href="#contact" class="btn btn-primary btn-lg" style="margin-top: 24px;">Visit Us Today</a>
+    </div>
+    <div class="about-image">
+      <div style="text-align: center;">
+        <div style="font-size: 60px; margin-bottom: 10px;">☕</div>
+        <div style="font-size: 24px; font-weight: 700;">Tomtom Coffee House</div>
+        <div style="font-size: 14px; margin-top: 10px; opacity: 0.9;">Est. 2009</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATMOSPHERE -->
+<section class="services" id="atmosphere">
+  <div class="section-label">The Experience</div>
+  <h2>More Than Just Coffee</h2>
+  <p class="section-intro">Visit Tomtom for the coffee, stay for the atmosphere and community.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Cosy Ambiance</h3>
+      <p>Warm lighting, comfortable seating, and thoughtful design create the perfect space to relax, work, or connect with friends.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📶</div>
+      <h3>Work-Friendly</h3>
+      <p>High-speed WiFi and plenty of power outlets make Tomtom ideal for remote work, meetings, or creative projects.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎵</div>
+      <h3>Community Hub</h3>
+      <p>Join us for coffee talks, local art displays, and a vibrant community of regulars who've made Tomtom their second home.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <h2>Ready for Your Next Great Cup?</h2>
+  <p>Visit Tomtom Coffee House today. We're open seven days a week in the heart of Belgravia, London. Walk in anytime—no reservation needed.</p>
+  <a href="#contact" class="btn btn-gold btn-lg">Visit Us</a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Find Us</h2>
+  <p class="section-intro">Whether you have questions or just want to say hello, we'd love to hear from you.</p>
+  
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-card-icon">📍</div>
+      <h3>Address</h3>
+      <p>114 Ebury Street<br>Elizabeth Street<br>London SW1W 9QD, UK</p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">📞</div>
+      <h3>Phone</h3>
+      <p><a href="tel:020 7730 1771">020 7730 1771</a></p>
+      <p style="font-size: 13px; color: var(--text-light); margin-top: 10px;">Monday–Sunday: 7am–7pm</p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">🕐</div>
+      <h3>Hours</h3>
+      <p><strong>Monday–Friday</strong><br>7:00 AM – 7:00 PM</p>
+      <p style="margin-top: 10px;"><strong>Saturday–Sunday</strong><br>8:00 AM – 6:00 PM</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-col">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+        <div style="width: 32px; height: 32px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px;">☕</div>
+        <div>
+          <div style="font-weight: 700; font-size: 14px;">Tomtom Coffee House</div>
+          <div style="font-size: 11px; color: rgba(255,255,255,0.5);">Specialty Coffee & Food</div>
+        </div>
+      </div>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6;">Crafting exceptional coffee experiences in the heart of Belgravia, London.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Location</h4>
+      <ul>
+        <li><a href="#contact">114 Ebury Street</a></li>
+        <li><a href="#contact">London SW1W 9QD</a></li>
+        <li><a href="tel:020 7730 1771">020 7730 1771</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <ul>
+        <li>Mon–Fri: 7am–7pm</li>
+        <li>Sat–Sun: 8am–6pm</li>
+        <li><a href="#contact">Book a Table</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Tomtom Coffee House. All rights reserved.</p>
+    <div style="display: flex; gap: 20px;">
+      <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12px;">Privacy Policy</a>
+      <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12px;">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+```
