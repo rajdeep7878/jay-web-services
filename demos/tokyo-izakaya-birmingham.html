@@ -1,0 +1,451 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tokyo izakaya Birmingham - Authentic Japanese izakaya restaurant in Birmingham city centre. Enjoy traditional Japanese cuisine, sake, and cocktails. Located on Lower Severn Street. Book your table today.">
+<title>Tokyo izakaya Birmingham — Authentic Japanese Izakaya Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--teal); background: var(--teal-light); }
+  .service-icon { font-size: 28px; margin-bottom: 12px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  /* FEATURES */
+  .features { background: var(--cream); }
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .feature-item { display: flex; gap: 24px; }
+  .feature-icon { width: 56px; height: 56px; border-radius: 12px; background: white; border: 1.5px solid var(--teal); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .feature-content h3 { margin-top: 0; }
+  .feature-content p { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* ABOUT */
+  .about { background: white; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-img { width: 100%; border-radius: 20px; background: var(--teal-light); height: 400px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+  .about-content h2 { margin-bottom: 20px; }
+  .about-content p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 20px; }
+  .about-list { list-style: none; margin: 30px 0; }
+  .about-list li { font-size: 14px; color: var(--text-mid); margin-bottom: 12px; display: flex; gap: 12px; }
+  .about-list li::before { content: '✓'; color: var(--teal); font-weight: 700; font-size: 18px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card { background: var(--cream); border-radius: 16px; padding: 32px; border: 1px solid var(--border); }
+  .testimonial-stars { color: #F6BE00; margin-bottom: 16px; font-size: 14px; }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .testimonial-author { display: flex; gap: 12px; align-items: center; }
+  .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; }
+  .testimonial-name { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-light); }
+
+  /* CONTACT */
+  .contact { background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%); color: white; }
+  .contact h2 { color: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+  .contact-item { display: flex; gap: 20px; }
+  .contact-item-icon { width: 48px; height: 48px; background: rgba(27,153,139,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .contact-item-content h3 { color: white; margin-bottom: 4px; font-size: 16px; }
+  .contact-item-content p { font-size: 14px; color: rgba(255,255,255,0.8); }
+  .contact-item-content a { color: var(--teal); text-decoration: none; font-weight: 600; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; }
+  .form-group label { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: rgba(255,255,255,0.9); }
+  .form-group input, .form-group textarea { 
+    padding: 12px 16px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1); color: white; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; transition: all 0.2s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.5); }
+  .form-group input:focus, .form-group textarea:focus { 
+    outline: none; border-color: var(--teal); background: rgba(255,255,255,0.15);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .contact .btn { width: 100%; justify-content: center; }
+
+  /* FOOTER */
+  footer {
+    background: #08111a; color: rgba(255,255,255,0.7); padding: 48px 80px;
+    border-top: 1px solid rgba(27,153,139,0.2); display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  footer p { font-size: 13px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--teal); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 30px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { display: none; }
+    .hero h1 { font-size: 48px; }
+    section { padding: 60px 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .trust-bar { padding: 20px 40px; }
+    footer { padding: 36px 40px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; height: 60px; }
+    .nav-links { gap: 16px; display: none; }
+    .logo-text { font-size: 16px; }
+    .hero { padding-top: 60px; }
+    .hero-content { padding: 40px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 16px; }
+    .hero-actions { flex-direction: column; }
+    .btn { font-size: 13px; padding: 12px 20px; }
+    .btn-lg { padding: 14px 28px; font-size: 14px; }
+    section { padding: 50px 20px; }
+    h2 { font-size: 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .features-grid { gap: 24px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .trust-bar { padding: 16px 20px; flex-direction: column; }
+    footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🍶</div>
+    <div>
+      <div class="logo-text">Tokyo izakaya</div>
+      <div class="logo-sub">BIRMINGHAM</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:0121 616 2627" class="btn btn-outline">Call Now</a>
+    <a href="#contact" class="btn btn-primary">Reserve</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Now Open in Birmingham
+    </div>
+    <h1>Experience Authentic <em>Japanese</em> Izakaya Culture</h1>
+    <p>Discover the vibrant atmosphere of a traditional Tokyo izakaya. Enjoy carefully crafted Japanese cuisine, premium sake selection, and warm hospitality in the heart of Birmingham.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Reserve a Table</a>
+      <a href="tel:0121 616 2627" class="btn btn-outline">📞 0121 616 2627</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">4.8★</div>
+        <div class="trust-label">Customer Rating</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Monthly Guests</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">50+</div>
+        <div class="trust-label">Sake Selection</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div class="card-avatar">🍱</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Exceptional Experience</div>
+            <div class="card-text">The best Japanese dining in Birmingham. Authentic flavours and perfect ambiance.</div>
+            <div style="margin-top: 12px;"><span class="card-badge">⭐ Highly Recommended</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="smile-card floating-1">
+        <div style="display: flex; gap: 8px; align-items: flex-start;">
+          <div class="card-avatar">🍣</div>
+          <div>
+            <div class="card-name">Sarah M.</div>
+            <div class="card-text">Brilliant service and delicious food!</div>
+          </div>
+        </div>
+      </div>
+      <div class="smile-card floating-2">
+        <div style="display: flex; gap: 8px; align-items: flex-start;">
+          <div class="card-avatar">🥢</div>
+          <div>
+            <div class="card-name">James T.</div>
+            <div class="card-text">Worth every penny. True izakaya vibes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <strong>Unit4 Lower Severn St, Birmingham B1 1PU, UK</strong>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🕐</div>
+    <strong>Open 7 Days a Week</strong>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <strong>Reservations Welcome</strong>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🎌</div>
+    <strong>Authentic Japanese Cuisine</strong>
+  </div>
+</div>
+
+<!-- MENU SECTION -->
+<section class="services" id="menu">
+  <div class="section-label">Our Specialities</div>
+  <h2>Signature Dishes & Drinks</h2>
+  <p class="section-intro">Explore our carefully curated menu of traditional Japanese izakaya favourites, from classic grilled skewers to fresh sashimi and an extensive sake selection.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🍢</div>
+      <h3>Premium Sashimi & Sushi</h3>
+      <p>Fresh daily selections of the finest sashimi and expertly crafted nigiri sushi, prepared by our skilled chefs using imported Japanese techniques.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔥</div>
+      <h3>Yakitori & Grilled Dishes</h3>
+      <p>Succulent grilled chicken skewers and premium cuts of meat, charred to perfection over our traditional Japanese grill with signature sauces.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍜</div>
+      <h3>Ramen & Noodle Dishes</h3>
+      <p>Richly flavoured broths and perfectly cooked noodles in classic tonkotsu, miso, and shoyu styles, topped with fresh toppings and proteins.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍤</div>
+      <h3>Seafood Specialities</h3>
+      <p>Fresh oysters, grilled prawns, and seasonal seafood served as authentic small plates perfect for sharing and enjoying with drinks.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥢</div>
+      <h3>Tempura & Fried Dishes</h3>
+      <p>Light and crispy tempura vegetables and seafood, deep-fried in traditional Japanese style and served with dipping sauces.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍶</div>
+      <h3>Premium Sake Selection</h3>
+      <p>Over 50 varieties of premium sake from across Japan, expertly selected and served at the perfect temperature to complement your meal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-label">Why Choose Us</div>
+  <h2>Authentic Japanese Izakaya Experience</h2>
+  <p class="section-intro">We bring the warmth and vibrancy of Tokyo's izakaya culture to Birmingham with genuine hospitality, authentic cuisine, and an unforgettable atmosphere.</p>
+  
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">👨‍🍳</div>
+      <div class="feature-content">
+        <h3>Expert Chefs</h3>
+        <p>Our head chef trained in Tokyo brings decades of experience in traditional Japanese cooking techniques and authentic flavour profiles to every dish.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🌾</div>
+      <div class="feature-content">
+        <h3>Premium Ingredients</h3>
+        <p>We source the finest fresh ingredients, importing specialty Japanese products regularly to ensure authenticity and quality in every dish.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🎌</div>
+      <div class="feature-content">
+        <h3>Authentic Atmosphere</h3>
+        <p>Our carefully designed interior captures the vibrant energy of a Tokyo izakaya, complete with traditional decor and warm hospitality.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🍷</div>
+      <div class="feature-content">
+        <h3>Curated Beverage Menu</h3>
+        <p>Beyond our extensive sake collection, we offer Japanese beers, whisky, and signature cocktails crafted to pair perfectly with your meal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img">🏯</div>
+    <div class="about-content">
+      <div class="section-label">Our Story</div>
+      <h2>Bringing Tokyo to Birmingham</h2>
+      <p>Tokyo izakaya Birmingham is dedicated to creating an authentic Japanese dining and social experience in the heart of the city. Our restaurant captures the essence of Tokyo's vibrant izakaya culture—casual, welcoming, and centred around great food, drinks, and community.</p>
