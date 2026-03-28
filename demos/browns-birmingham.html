@@ -1,0 +1,484 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browns Birmingham — Restaurant in Birmingham</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--gold); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--gold); color: var(--gold); }
+  .btn-outline:hover { background: var(--gold); color: white; }
+  .btn-primary { background: var(--gold); color: white; }
+  .btn-primary:hover { background: #b8933d; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, #2c1810 0%, #3d2417 60%, #1a0f08 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4);
+    color: #E8D4A2; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #3d2417 0%, #1a0f08 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .dining-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .dining-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .dining-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .dining-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-light); color: #8B6914; padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--gold-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--gold); }
+  .service-icon { font-size: 32px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-text h2 { margin-bottom: 20px; }
+  .about-text p { font-size: 16px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.8; }
+  .about-features { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .feature-item { display: flex; gap: 12px; }
+  .feature-icon {
+    width: 40px; height: 40px; background: white; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+  }
+  .feature-text h4 { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .feature-text p { font-size: 13px; color: var(--text-mid); }
+  .about-img { position: relative; height: 400px; background: linear-gradient(135deg, var(--gold) 0%, #8B6914 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 48px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card {
+    background: var(--cream); border-radius: 16px; padding: 32px;
+    border: 1px solid var(--border);
+  }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .testimonial-info h4 { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .testimonial-info p { font-size: 12px; color: var(--text-light); }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; margin-bottom: 12px; }
+  .testimonial-text { font-size: 14px; color: var(--text-mid); line-height: 1.6; font-style: italic; }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, #2c1810 0%, #3d2417 100%);
+    color: white; text-align: center; padding: 80px;
+    border-radius: 20px; margin: 0 80px;
+  }
+  .cta-section h2 { color: white; margin-bottom: 20px; }
+  .cta-section p { font-size: 18px; max-width: 540px; margin: 0 auto 32px; opacity: 0.9; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 30px;
+  }
+  .footer-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 20px; }
+  .footer-section ul { list-style: none; }
+  .footer-section ul li { margin-bottom: 10px; }
+  .footer-section ul li a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-section ul li a:hover { color: var(--gold); }
+  .footer-contact { font-size: 14px; }
+  .footer-contact p { margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .footer-contact a { color: var(--gold); text-decoration: none; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.6); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .hero { grid-template-columns: 1fr; padding-top: 70px; }
+    .hero-content { padding: 40px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero-img { display: none; }
+    section { padding: 60px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-content { grid-template-columns: 1fr; gap: 40px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-content { grid-template-columns: 1fr 1fr; }
+    .trust-bar { padding: 20px; }
+    .cta-section { padding: 40px 20px; margin: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🍽️</div>
+    <div>
+      <div class="logo-text">Browns Birmingham</div>
+      <div class="logo-sub">Fine Dining</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#dining">Dining</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:01216438708" class="btn btn-outline">Call</a>
+    <a href="#reserve" class="btn btn-primary">Reserve</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Birmingham's Premier Dining Destination
+    </div>
+    <h1>Experience <em>Exceptional</em> Cuisine</h1>
+    <p>Located in the heart of Birmingham's historic St Martins Square, Browns Birmingham offers an unparalleled dining experience with expertly crafted dishes and impeccable service.</p>
+    <div class="hero-actions">
+      <a href="#reserve" class="btn btn-primary btn-lg">Reserve a Table</a>
+      <a href="#menu" class="btn btn-outline">View Menu</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Excellence</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">1000+</div>
+        <div class="trust-label">Happy Guests</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">5★</div>
+        <div class="trust-label">Rated Reviews</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="dining-card main">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+          <div class="card-avatar">👨‍🍳</div>
+          <div>
+            <div class="card-name">Head Chef Selection</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="card-text">Handpicked seasonal ingredients prepared with traditional techniques and modern creativity.</div>
+        <div class="card-badge">⭐ Award Winning</div>
+      </div>
+      <div class="dining-card floating-1">
+        <div class="card-avatar">🍷</div>
+        <div class="card-name">Wine Selection</div>
+        <div class="card-text">Curated wine pairings from around the world</div>
+      </div>
+      <div class="dining-card floating-2">
+        <div class="card-avatar">🎭</div>
+        <div class="card-name">Ambiance</div>
+        <div class="card-text">Sophisticated atmosphere perfect for any occasion</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <strong>St Martins Square, Birmingham</strong>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📞</div>
+    <a href="tel:01216438708" style="color: var(--text-mid); text-decoration: none;">0121 643 8708</a>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏰</div>
+    <strong>Open 6 days a week</strong>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">👥</div>
+    <strong>Private Dining Available</strong>
+  </div>
+</div>
+
+<section class="services" id="dining">
+  <div class="section-label">Our Offerings</div>
+  <h2>Dining Experiences</h2>
+  <p class="section-intro">Browns Birmingham provides diverse culinary experiences tailored to every occasion and preference.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🍽️</div>
+      <h3>À La Carte</h3>
+      <p>Choose from our extensive selection of expertly prepared dishes, each crafted with premium ingredients and culinary expertise.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Tasting Menu</h3>
+      <p>Our Chef's curated tasting menu showcases seasonal ingredients and innovative culinary techniques across 5-7 carefully paired courses.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Private Dining</h3>
+      <p>Celebrate special occasions in our intimate private dining spaces, customized menus, and dedicated service for your event.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥂</div>
+      <h3>Wine Pairing</h3>
+      <p>Our sommelier expertly pairs wines from our extensive collection with each course of your meal for the ultimate experience.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎉</div>
+      <h3>Special Events</h3>
+      <p>Host corporate dinners, celebrations, and milestone events with our bespoke catering and event coordination services.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏆</div>
+      <h3>Fine Dining</h3>
+      <p>Experience fine dining at its finest with impeccable service, refined ambiance, and dishes that delight every sense.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-content">
+    <div class="about-text">
+      <h2>About Browns Birmingham</h2>
+      <p>Nestled in the historic St Martins Square in Birmingham's vibrant city centre, Browns Birmingham stands as a beacon of culinary excellence. Our restaurant combines traditional fine dining techniques with modern innovation to create unforgettable meals.</p>
+      <p>With over 15 years of dedicated service, we've earned our reputation as one of Birmingham's premier dining destinations. Our team of passionate chefs, knowledgeable sommeliers, and attentive staff work tirelessly to ensure every visit exceeds expectations.</p>
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon">👨‍🍳</div>
+          <div class="feature-text">
+            <h4>Expert Chefs</h4>
+            <p>Classically trained culinary team with international experience</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌟</div>
+          <div class="feature-text">
+            <h4>Premium Ingredients</h4>
+            <p>Sourced from the finest suppliers across the UK and Europe</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎖️</div>
+          <div class="feature-text">
+            <h4>Award Winning</h4>
+            <p>Recognized for culinary excellence and exceptional service</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🍷</div>
+          <div class="feature-text">
+            <h4>Curated Wine List</h4>
+            <p>Thoughtfully selected wines to complement every dish</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-img">
+      🍽️
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-label">Guest Reviews</div>
+  <h2>What Our Guests Say</h2>
+  <p class="section-intro">Read testimonials from our valued guests who have experienced the Browns Birmingham difference.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">👩</div>
+        <div class="testimonial-info">
+          <h4>Sarah Mitchell</h4>
+          <p>Birmingham</p>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"An absolutely exceptional dining experience. Every course was a masterpiece, and the service was impeccable. Browns Birmingham is a true gem."</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">👨</div>
+        <div class="testimonial-info">
+          <h4>James Patterson</h4>
+          <p>Birmingham</p>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"The tasting menu was outstanding. The sommelier's wine pairings were perfectly chosen. I cannot recommend this restaurant highly enough."</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">👩</div>
+        <div class="testimonial-info">
+          <h4>Emma Thompson</h4>
+          <p>Birmingham</p>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Perfect venue for our anniversary celebration. The private dining room was beautifully appointed, and the team made us feel truly special all evening."</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="reserve">
+  <h2>Ready to Experience Fine Dining?</h2>
+  <p>Reserve your table at Browns Birmingham today and discover why we're Birmingham's most distinguished dining destination.</p>
+  <div class="cta-buttons">
+    <a href="tel:01216438708" class="btn btn-primary btn-lg">Call 0121 643 8708</a>
+    <a href="mailto:info@brownsbirmingham.com" class="btn btn-outline">Email Us</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Browns Birmingham</h3>
+      <div class="footer-contact">
+        <p>📍 Unit 1, St Martins Square<br>7 Spiceal St<br>Birmingham B5 4BH, UK</p>
+        <p>📞 <a href="tel:01216438708">0121 643 8708</a></p>
+        <p>📧 <a href="mailto:info@brownsbirmingham.com">info@brownsbirmingham.com</a></p>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h3>Dining</h3>
+      <ul>
+        <li><a href="#dining">À La Carte</a></li>
+        <li><a href="#dining">Tasting Menu</a></li>
+        <li><a href="#dining">Private Dining</a></li>
+        <li><a href="#dining">Wine Pairings</a></li>
+        <li><a href="#dining">Special Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Information</h3>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reserve">Reservations</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Dress Code</a></li>
+      </ul>
+    </div>
