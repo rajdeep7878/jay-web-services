@@ -1,0 +1,453 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant At The Woods — Fine Dining in Birmingham</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { font-size: 32px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* FEATURES */
+  .features { background: var(--cream); }
+  .features-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .features-list { display: flex; flex-direction: column; gap: 20px; }
+  .feature-item { display: flex; gap: 16px; }
+  .feature-check { width: 24px; height: 24px; background: var(--teal-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--teal); flex-shrink: 0; font-weight: 700; }
+  .feature-item h4 { font-size: 16px; color: var(--navy); margin-bottom: 4px; }
+  .feature-item p { font-size: 14px; color: var(--text-mid); line-height: 1.5; }
+  .features-img { width: 100%; height: 400px; background: linear-gradient(135deg, rgba(27,153,139,0.1) 0%, rgba(201,168,76,0.1) 100%); border-radius: 16px; }
+
+  /* CTA SECTION */
+  .cta { background: var(--navy); color: white; text-align: center; }
+  .cta h2 { color: white; margin-bottom: 20px; }
+  .cta p { font-size: 18px; max-width: 600px; margin: 0 auto 36px; color: rgba(255,255,255,0.8); }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: white; padding: 60px 80px 20px; }
+  .footer-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { font-size: 16px; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--teal); }
+  .footer-contact { margin-bottom: 20px; }
+  .footer-contact p { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+  .footer-contact a { color: var(--teal); text-decoration: none; font-weight: 600; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { min-height: 400px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-content { grid-template-columns: 1fr; gap: 40px; }
+    nav { padding: 0 20px; }
+    section { padding: 60px 40px; }
+    .trust-bar { padding: 20px 40px; }
+    footer { padding: 40px 40px 20px; }
+    .footer-content { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    section { padding: 40px 20px; }
+    h2 { font-size: 28px; }
+    .trust-bar { padding: 20px; flex-direction: column; }
+    footer { padding: 30px 20px; }
+    .footer-content { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🍽️</div>
+    <div>
+      <div class="logo-text">Restaurant At The Woods</div>
+      <div class="logo-sub">FINE DINING</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#dining">Dining</a>
+    <a href="#events">Events</a>
+    <a href="#about">About</a>
+  </div>
+  <div class="nav-cta">
+    <a class="btn btn-outline" href="tel:01212935083">📞 Call</a>
+    <a class="btn btn-primary" href="#reserve">Reserve</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Welcome to Restaurant At The Woods
+    </div>
+    <h1>Exceptional <em>Dining</em> in the Heart of Birmingham</h1>
+    <p>Experience contemporary cuisine crafted with locally-sourced ingredients. A culinary destination designed for unforgettable moments.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-lg" href="#reserve">Reserve Your Table</a>
+      <a class="btn btn-outline" href="#menu">View Menu</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">5★</div>
+        <div class="trust-label">Rated by Guests</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Happy Diners</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">10+</div>
+        <div class="trust-label">Years Excellence</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div class="card-avatar">👨‍🍳</div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div class="card-name">Chef's Special</div>
+          <div class="card-text">Seasonal tasting menu featuring the finest ingredients</div>
+        </div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="card-avatar">🍷</div>
+        <div class="card-text">Premium wine selection curated by our sommeliers</div>
+        <div class="card-badge">Award Winner</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="card-avatar">✨</div>
+        <div class="card-text">Intimate atmosphere perfect for special occasions</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">🏆</div>
+    <span>Award-Winning Chef</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🌿</div>
+    <span>Locally-Sourced Ingredients</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🍽️</div>
+    <span>Contemporary Cuisine</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">👥</div>
+    <span>Private Dining Available</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="dining">
+  <div class="section-label">Our Offerings</div>
+  <h2>Dining Experiences</h2>
+  <p class="section-intro">From casual lunches to intimate dinners, discover the perfect dining experience at Restaurant At The Woods</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🍽️</div>
+      <h3>À La Carte Menu</h3>
+      <p>Explore our carefully curated selection of dishes prepared with premium ingredients and contemporary techniques.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👨‍🍳</div>
+      <h3>Tasting Menu</h3>
+      <p>Experience our chef's creative vision through a multi-course seasonal tasting menu with wine pairings.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎉</div>
+      <h3>Private Events</h3>
+      <p>Host your celebration in our elegant private dining spaces. Perfect for weddings, corporate events, and special occasions.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">☕</div>
+      <h3>Lunch Service</h3>
+      <p>Enjoy our lighter lunch menu featuring fresh salads, sandwiches, and small plates in a relaxed atmosphere.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍷</div>
+      <h3>Wine & Cocktails</h3>
+      <p>Discover our extensive wine list and signature cocktails crafted by our expert mixologists.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎂</div>
+      <h3>Special Occasions</h3>
+      <p>Let us create a memorable celebration with custom menus and personalized service for your milestone moments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="about">
+  <div class="section-label">Why Choose Us</div>
+  <h2>The Restaurant At The Woods Difference</h2>
+  
+  <div class="features-content">
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h4>Award-Winning Cuisine</h4>
+          <p>Our chef brings years of experience and innovation to every dish.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h4>Premium Ingredients</h4>
+          <p>We source the finest local and seasonal produce for maximum flavor.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h4>Elegant Ambiance</h4>
+          <p>Sophisticated setting with warm hospitality creates the perfect atmosphere.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h4>Attentive Service</h4>
+          <p>Our team is trained to exceed expectations and ensure your comfort.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h4>Wine Selection</h4>
+          <p>Expertly curated wines to complement your dining experience perfectly.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <h4>Flexible Menus</h4>
+          <p>Dietary requirements and preferences accommodated with ease.</p>
+        </div>
+      </div>
+    </div>
+    <div class="features-img"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="reserve">
+  <h2>Ready to Dine With Us?</h2>
+  <p>Reserve your table today and experience exceptional dining at Restaurant At The Woods in Birmingham.</p>
+  <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+    <a class="btn btn-primary btn-lg" href="tel:01212935083">📞 Call: 0121 293 5083</a>
+    <a class="btn btn-gold btn-lg" href="mailto:info@restaurantatthewoods.co.uk">✉️ Email Us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-col">
+      <h4>Restaurant At The Woods</h4>
+      <div class="footer-contact">
+        <p><strong>Address</strong></p>
+        <p>Unit 109 / 111, Mailbox<br>Wharfside Street<br>Birmingham B1 1RF, UK</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact">
+        <p><strong>Phone</strong></p>
+        <a href="tel:01212935083">0121 293 5083</a>
+      </div>
+      <div class="footer-contact">
+        <p><strong>Email</strong></p>
+        <a href="mailto:info@restaurantatthewoods.co.uk">info@restaurantatthewoods.co.uk</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Opening Hours</h4>
+      <ul>
+        <li>Monday - Thursday: 12pm - 10pm</li>
+        <li>Friday - Saturday: 12pm - 11pm</li>
+        <li>Sunday: 12pm - 9pm</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Restaurant At The Woods. All rights reserved. | <a href="#" style="color: var(--teal); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--teal); text-decoration: none;">Terms of Service</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
+```
