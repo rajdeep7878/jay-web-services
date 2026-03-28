@@ -1,0 +1,484 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hideaway London — Café in Mayfair | Specialty Coffee & Food</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { font-size: 28px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-text { display: flex; flex-direction: column; gap: 16px; }
+  .about-text p { font-size: 15px; color: var(--text-mid); line-height: 1.8; }
+  .about-features { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+  .feature-item { display: flex; gap: 12px; align-items: flex-start; }
+  .feature-icon { width: 24px; height: 24px; background: var(--teal-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--teal); font-weight: 600; font-size: 14px; flex-shrink: 0; }
+  .feature-text { font-size: 14px; color: var(--text-mid); }
+  .about-img {
+    width: 100%; height: 400px; background: linear-gradient(135deg, #1B998B 0%, #137D71 100%);
+    border-radius: 16px; display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 18px; font-weight: 600;
+  }
+
+  /* CONTACT */
+  .contact { background: var(--white); }
+  .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+  .contact-info h3 { margin-bottom: 20px; }
+  .contact-items { display: flex; flex-direction: column; gap: 24px; }
+  .contact-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px; border-radius: 12px; transition: all 0.2s;
+  }
+  .contact-item:hover { background: var(--teal-light); }
+  .contact-item-icon {
+    width: 40px; height: 40px; background: var(--teal-light); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: var(--teal);
+    font-size: 18px; flex-shrink: 0;
+  }
+  .contact-item-content { flex: 1; }
+  .contact-item-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .contact-item-text { font-size: 15px; color: var(--text-mid); font-weight: 500; }
+  .contact-item a { color: var(--teal); text-decoration: none; transition: color 0.2s; }
+  .contact-item a:hover { color: var(--teal-dark); }
+  .contact-form {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+    transition: all 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(27,153,139,0.1);
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 24px;
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: white; }
+  .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--teal); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 30px; }
+    section { padding: 60px 40px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { min-height: 400px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-wrapper { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-bar { padding: 20px 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .logo-text { font-size: 16px; }
+    .hero { min-height: auto; }
+    .hero h1 { font-size: 42px; }
+    section { padding: 50px 24px; }
+    .hero-content { padding: 40px 24px; }
+    h2 { font-size: 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .btn-lg { width: 100%; justify-content: center; }
+    .trust-bar { flex-direction: column; align-items: flex-start; padding: 20px 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">☕</div>
+    <div>
+      <div class="logo-text">Hideaway London</div>
+      <div class="logo-sub">Specialty Café</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    <a href="#contact" class="btn btn-primary">Reserve a Table</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Now Open in Mayfair
+    </div>
+    <h1>Your <em>Hideaway</em> from the City</h1>
+    <p>Discover a serene café escape in the heart of London. Award-winning specialty coffee, artisan pastries, and carefully curated light meals in an intimate setting designed for peace and connection.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Reserve Now</a>
+      <a href="#menu" class="btn btn-outline btn-lg">Explore Menu</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">4.9★</div>
+        <div class="trust-label">Customer Rating</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Weekly Visitors</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">100%</div>
+        <div class="trust-label">Specialty Grade</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="card-avatar">☕</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Premium Experience</div>
+          </div>
+        </div>
+        <div class="card-text">Expertly crafted espresso drinks using single-origin, ethically sourced beans.</div>
+        <div class="card-badge">✓ Award Winning</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sophie M.</div>
+        <div class="card-text">"Best coffee I've found in London. Peaceful atmosphere."</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">James T.</div>
+        <div class="card-text">"Hidden gem. Perfect for work or relaxing."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">🏆</div>
+    <span>Award-winning specialty coffee roaster</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🌱</div>
+    <span>100% ethically sourced beans</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🛋️</div>
+    <span>Intimate seating for 45 guests</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏰</div>
+    <span>Open 7 days a week</span>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu" class="services">
+  <div class="section-label">What We Offer</div>
+  <h2>Our Carefully Curated Menu</h2>
+  <p class="section-intro">From single-origin espresso to hand-crafted pastries, every item is selected to create the perfect café experience.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">☕</div>
+      <h3>Specialty Coffee</h3>
+      <p>Hand-pulled espresso, pour-over, and flat whites made with single-origin, freshly roasted beans sourced directly from ethical growers worldwide.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥐</div>
+      <h3>Artisan Pastries</h3>
+      <p>Freshly baked daily from our partnership with local London bakeries. Croissants, sourdough toast, cinnamon swirls, and seasonal specials.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🥗</div>
+      <h3>Light Meals</h3>
+      <p>Thoughtfully prepared salads, sandwiches, and bowls using seasonal ingredients. All prepared fresh daily in our kitchen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-label">About Hideaway London</div>
+      <h2>A Sanctuary in the Heart of Mayfair</h2>
+      <div class="about-text">
+        <p>Hideaway London was created with one simple vision: to offer a peaceful retreat from the energy of the city. Nestled on Mount Street in Mayfair, our intimate 45-seat café combines exceptional specialty coffee with carefully curated light meals in a warm, inviting space.</p>
+        <p>Founded in 2024, we've quickly become a favourite among locals, remote workers, and coffee enthusiasts who appreciate quality, authenticity, and genuine hospitality. Every detail—from our single-origin beans to our design—has been thoughtfully selected.</p>
+      </div>
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div class="feature-text">Award-winning coffee roasted by experienced baristas</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div class="feature-text">Intimate setting perfect for meetings or solo work</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div class="feature-text">Free high-speed WiFi and plenty of seating</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div class="feature-text">Ethically sourced, sustainable, and locally-minded</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-img">
+      🏡 Hideaway London Interior
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="services">
+  <div class="section-label">Experience</div>
+  <h2>Why Guests Love Hideaway London</h2>
+  <p class="section-intro">Discover what makes our café a hidden gem in London's café scene.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🤫</div>
+      <h3>Peaceful Atmosphere</h3>
+      <p>A quiet, distraction-free environment perfect for work, reading, or meeting friends. Limited capacity ensures we never feel crowded.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Expert Baristas</h3>
+      <p>Our team are passionate coffee professionals who love talking about their craft and recommending the perfect drink for your taste preferences.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌍</div>
+      <h3>Ethical & Sustainable</h3>
+      <p>We're committed to fair-trade practices, sustainable sourcing, and reducing our environmental impact. Every choice matters to us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Visit Hideaway London</h2>
+  <p class="section-intro">We'd love to see you. Find us in the heart of Mayfair or get in touch with any questions.</p>
+  
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <h3>Contact Details</h3>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-content">
+            <div class="contact-item-label">Address</div>
+            <div class="contact-item-text">100 Mount St, London W1K 2TG, UK</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">☎️</div>
+          <div class="contact-item-content">
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-text"><a href="tel:020">020 XXXX XXXX</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div class="contact-item-content">
+            <div class="contact-item-label">Hours</div>
+            <div class="contact-item-text">Mon-Fri: 7:30am - 6:00pm<br>Sat-Sun: 8:30am - 5:30pm</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div class="contact-item-content">
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-text"><a href="mailto:hello@hideaway-london.com">hello@hideaway-london.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Reserve a Table or Get in Touch</h3>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email"
