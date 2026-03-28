@@ -1,0 +1,400 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Pavilion — Restaurant in Leeds | Fine Dining</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { width: 48px; height: 48px; background: var(--teal-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about {
+    background: var(--cream);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .about-content h2 { margin-bottom: 20px; }
+  .about-list { list-style: none; margin-top: 28px; }
+  .about-list li {
+    display: flex; gap: 12px; margin-bottom: 16px; font-size: 15px; color: var(--text-mid);
+  }
+  .about-list li::before {
+    content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; font-size: 18px;
+  }
+  .about-img {
+    width: 100%; height: 400px; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    border-radius: 16px; box-shadow: var(--shadow-lg);
+  }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white; text-align: center;
+    border-radius: 16px; padding: 60px; margin: 0 80px;
+  }
+  .cta h2 { color: white; margin-bottom: 16px; }
+  .cta p { font-size: 18px; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+  }
+  .footer-col h4 { margin-bottom: 20px; font-size: 15px; font-weight: 600; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--teal); }
+  .footer-logo { margin-bottom: 16px; }
+  .footer-contact { font-size: 14px; line-height: 1.8; }
+  .footer-contact strong { color: var(--teal); }
+  .footer-bottom { grid-column: 1/-1; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    nav .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding-top: 70px; min-height: auto; }
+    .hero-content { padding: 60px 30px; }
+    .hero h1 { font-size: 42px; }
+    .hero-img { display: none; }
+    section { padding: 60px 30px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 1fr; }
+    .trust-bar { padding: 20px 30px; flex-direction: column; }
+    .trust-bar-item { width: 100%; }
+    .cta { margin: 0 30px; padding: 40px 20px; }
+    footer { grid-template-columns: 1fr; padding: 40px 30px; }
+    .footer-bottom { flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🍽️</div>
+    <div>
+      <div class="logo-text">Blue Pavilion</div>
+      <div class="logo-sub">Fine Dining</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#dining">Dining</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:01138876888" class="btn btn-outline">☎️ Reserve</a>
+    <a href="#contact" class="btn btn-primary">Book Now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span></span> Now Open in Leeds</div>
+    <h1>Exceptional <em>Culinary</em> Experiences</h1>
+    <p>Welcome to Blue Pavilion, where exceptional cuisine meets elegant ambiance. Discover our thoughtfully curated menu crafted by our award-winning chefs, featuring locally sourced ingredients and innovative flavours.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Reserve Your Table</a>
+      <a href="#menu" class="btn btn-outline">View Menu</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">4.9★</div>
+        <div class="trust-label">Customer Rating</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Happy Diners</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">50+</div>
+        <div class="trust-label">Menu Items</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Emma Thompson</div>
+        <div class="card-text">"An unforgettable dining experience. The ambiance and food quality are exceptional!"</div>
+        <div class="card-badge">✓ Verified Guest</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="card-avatar">👨‍🍳</div>
+        <div class="card-text"><strong>Chef's Special:</strong> Seasonal menu updated weekly</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="card-avatar">🎉</div>
+        <div class="card-text"><strong>Private Events:</strong> Celebrate your special occasions with us</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <span><strong>Location:</strong> 90 Merrion St, Leeds LS2 8LW, UK</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">☎️</div>
+    <span><strong>Phone:</strong> 0113 887 6888</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏰</div>
+    <span><strong>Hours:</strong> Tue-Sun 5:00 PM - 11:00 PM</span>
+  </div>
+</div>
+
+<section id="menu" class="services">
+  <div class="section-label">Our Offerings</div>
+  <h2>Culinary Excellence</h2>
+  <p class="section-intro">At Blue Pavilion, we celebrate the art of fine dining with carefully crafted menus and impeccable service.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🍽️</div>
+      <h3>À la Carte Dining</h3>
+      <p>Explore our extensive menu featuring contemporary European cuisine with creative seasonal specials crafted daily by our talented culinary team.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍷</div>
+      <h3>Wine Selection</h3>
+      <p>Carefully curated wine list featuring premium selections from established vineyards. Our sommeliers offer expert pairing recommendations.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎉</div>
+      <h3>Private Events</h3>
+      <p>Host your special occasions in our elegant private dining spaces. Perfect for celebrations, corporate gatherings, and intimate gatherings.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👨‍🍳</div>
+      <h3>Chef's Tasting Menu</h3>
+      <p>Experience our chef's artistic vision through a multi-course tasting menu. A journey of flavours showcasing seasonal ingredients and techniques.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌱</div>
+      <h3>Dietary Options</h3>
+      <p>We accommodate all dietary requirements including vegetarian, vegan, and allergen-free options without compromising on taste or presentation.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎂</div>
+      <h3>Special Occasions</h3>
+      <p>Celebrate birthdays, anniversaries, and milestones at Blue Pavilion. Custom menu creations and personalized service to make your day unforgettable.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="about-content">
+    <div class="section-label">About Us</div>
+    <h2>Crafting Memorable Moments</h2>
+    <p style="color: var(--text-mid); font-size: 16px; line-height: 1.7; margin-bottom: 24px;">Blue Pavilion is Leeds' premier fine dining destination, dedicated to delivering exceptional culinary experiences in an atmosphere of elegance and warmth. Our mission is to create unforgettable evenings through innovative cuisine and impeccable hospitality.</p>
+    <ul class="about-list">
+      <li>Award-winning chefs with international culinary training</li>
+      <li>Locally sourced, seasonal ingredients</li>
+      <li>Elegant and intimate dining atmosphere</li>
+      <li>Personalized service and attention to detail</li>
+      <li>Comprehensive wine and beverage programme</li>
+      <li>Flexible private event spaces available</li>
+    </ul>
+    <a href="tel:01138876888" class="btn btn-primary btn-lg" style="margin-top: 28px;">Call to Reserve: 0113 887 6888</a>
+  </div>
+  <div class="about-img"></div>
+</section>
+
+<section id="dining">
+  <div class="cta">
+    <h2>Ready for an Exceptional Dining Experience?</h2>
+    <p>Join us at Blue Pavilion for an evening of culinary excellence. Reserve your table today and discover why we're Leeds' most sought-after restaurant.</p>
+    <a href="tel:01138876888" class="btn btn-gold btn-lg">Reserve Now: 0113 887 6888</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-col">
+    <div class="footer-logo" style="font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700;">Blue Pavilion</div>
+    <p style="font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6;">Exceptional fine dining in the heart of Leeds. Celebrating culinary artistry and elegant hospitality.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#dining">Dining</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Opening Hours</h4>
+    <ul>
+      <li><span style="color: rgba(255,255,255,0.6);">Monday:</span> Closed</li>
+      <li><span style="color: rgba(255,255,255,0.6);">Tue-Thu:</span> 5:00 PM - 10:30 PM</li>
+      <li><span style="color: rgba(255,255,255,0.6);">Fri-Sat:</span> 5:00 PM - 11:00 PM</li>
+      <li><span style="color: rgba(255,255,255,0.6);">Sunday:</span> 5:00 PM - 10:00 PM</li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact Info</h4>
+    <div class="footer-contact">
+      <p><strong>Address:</strong><br>90 Merrion St<br>Leeds LS2 8LW<br>United Kingdom</p>
+      <p style="margin-top: 16px;"><strong>Phone:</strong><br><a href="tel:01138876888" style="color: var(--teal); text-decoration: none;">0113 887 6888</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Blue Pavilion. All rights reserved.</p>
+    <p>Secure Website | Privacy Policy | Terms of Service</p>
+  </div>
+</footer>
+
+</body>
+</html>
+```
