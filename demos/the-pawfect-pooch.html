@@ -1,0 +1,463 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Pawfect Pooch - Professional dog grooming services in Middleton, Manchester. Expert grooming, bathing, and styling for all dog breeds. Book your appointment today!">
+<title>The Pawfect Pooch — Professional Dog Grooming in Middleton, Manchester</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-icon { font-size: 36px; margin-bottom: 12px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-text h2 { margin-bottom: 24px; }
+  .about-text p { margin-bottom: 20px; font-size: 16px; line-height: 1.8; color: var(--text-mid); }
+  .about-list { list-style: none; margin-bottom: 36px; }
+  .about-list li { padding: 12px 0; padding-left: 32px; position: relative; color: var(--text-mid); }
+  .about-list li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 18px; }
+  .about-img { width: 100%; border-radius: 16px; background: linear-gradient(135deg, var(--teal-light) 0%, var(--gold-light) 100%); min-height: 400px; display: flex; align-items: center; justify-content: center; font-size: 120px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card { background: var(--cream); border-radius: 16px; padding: 32px; }
+  .testimonial-card .stars { margin-bottom: 16px; display: block; }
+  .testimonial-card p { font-size: 16px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.7; font-style: italic; }
+  .testimonial-author { font-weight: 600; color: var(--navy); font-size: 15px; }
+  .testimonial-role { font-size: 13px; color: var(--text-light); }
+
+  /* CTA SECTION */
+  .cta {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    color: white; text-align: center; padding: 80px;
+  }
+  .cta h2 { color: white; margin-bottom: 24px; }
+  .cta p { font-size: 18px; max-width: 600px; margin: 0 auto 40px; color: rgba(255,255,255,0.8); line-height: 1.7; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .cta .btn-outline { border-color: white; color: white; }
+  .cta .btn-outline:hover { background: white; color: var(--navy); }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: white; padding: 60px 80px 40px; }
+  .footer-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+  .footer-col p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 12px; }
+  .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; display: block; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--teal); }
+  .footer-contact { display: flex; flex-direction: column; gap: 12px; }
+  .footer-contact a { font-weight: 500; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+  .footer-bottom-links { display: flex; gap: 24px; }
+  .footer-bottom-links a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  .footer-bottom-links a:hover { color: var(--teal); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 13px; }
+    .hero { grid-template-columns: 1fr; padding-top: 70px; min-height: auto; }
+    .hero-content { padding: 60px 20px; }
+    .hero h1 { font-size: 40px; }
+    .hero p { font-size: 16px; }
+    .hero-img { display: none; }
+    section { padding: 60px 20px; }
+    h2 { font-size: 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-content { grid-template-columns: 1fr; gap: 40px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .trust-bar { padding: 20px; flex-direction: column; }
+    .trust-bar-item { width: 100%; }
+    .footer-content { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .footer-bottom { flex-direction: column; gap: 20px; }
+    .cta { padding: 60px 20px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 15px; }
+    .hero-actions { flex-direction: column; width: 100%; }
+    .btn-lg { width: 100%; justify-content: center; }
+    h2 { font-size: 28px; }
+    .trust-bar { padding: 20px 16px; }
+    .footer-content { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🐕</div>
+    <div>
+      <div class="logo-text">The Pawfect Pooch</div>
+      <div class="logo-sub">Dog Grooming</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:07740282895" class="btn btn-primary">Call Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Premium Dog Grooming Services
+    </div>
+    <h1>Your Dog Deserves <em>Pawfect</em> Grooming</h1>
+    <p>Professional grooming, expert care, and a comfortable experience for your beloved furry friend. Serving Middleton, Manchester with love and expertise.</p>
+    <div class="hero-actions">
+      <a href="tel:07740282895" class="btn btn-primary btn-lg">📞 Book Appointment</a>
+      <a href="#services" class="btn btn-outline">View Services</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">1000+</div>
+        <div class="trust-label">Happy Dogs Groomed</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">10+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9/5</div>
+        <div class="trust-label">Customer Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; gap: 12px;">
+          <div class="card-avatar">🐩</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="card-name">Sarah M.</div>
+          </div>
+        </div>
+        <div class="card-text">"My poodle looks absolutely adorable! The team at The Pawfect Pooch is so caring and professional."</div>
+        <div class="card-badge">Verified Customer</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="card-avatar">🐕</div>
+        <div class="card-name">Expert Care</div>
+        <div class="card-text">All breeds welcome</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="card-avatar">✨</div>
+        <div class="card-name">Premium Service</div>
+        <div class="card-text">Latest grooming styles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span>Certified Professional Groomers</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🛡️</div>
+    <span>Safe & Gentle Handling</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🏥</div>
+    <span>Health & Safety First</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏰</div>
+    <span>Convenient Appointments</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Our Grooming Services</div>
+  <h2>Professional Grooming for Every Dog</h2>
+  <p class="section-intro">From basic baths to full transformations, we offer comprehensive grooming services tailored to your dog's breed and needs.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🚿</div>
+      <h3>Full Bath & Wash</h3>
+      <p>Complete bathing with premium shampoos, conditioning, and drying. Perfect for maintaining your dog's coat health and cleanliness.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Breed-Specific Cuts</h3>
+      <p>Professional haircuts tailored to your dog's breed standards. Includes styling, shape, and finishing touches for a polished look.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💅</div>
+      <h3>Nail Trimming & Paw Care</h3>
+      <p>Expert nail trimming, paw pad care, and cuticle work. We keep your dog comfortable and mobile with proper paw maintenance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👂</div>
+      <h3>Ear & Eye Cleaning</h3>
+      <p>Gentle cleaning of ears and eye areas to prevent infections and maintain optimal health. Safe and comfortable for all dogs.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧴</div>
+      <h3>De-Shedding Treatment</h3>
+      <p>Specialized treatment to reduce shedding and maintain coat quality. Ideal for heavy-shedding breeds and seasonal maintenance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌟</div>
+      <h3>Premium Spa Package</h3>
+      <p>Ultimate grooming experience including full wash, cut, conditioning treatments, and aromatherapy. The complete pampering service.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-content">
+    <div class="about-text">
+      <div class="section-label">About The Pawfect Pooch</div>
+      <h2>Dedicated to Your Dog's Care</h2>
+      <p>The Pawfect Pooch is Middleton's trusted dog grooming specialist. With over 10 years of experience, we've perfected the art of professional dog grooming while maintaining the highest standards of animal care and safety.</p>
+      <p>Our team of certified groomers treats every dog as if it were our own, ensuring a comfortable, stress-free experience in a clean, welcoming environment.</p>
+      <ul class="about-list">
+        <li>Certified Professional Groomers with 10+ years experience</li>
+        <li>All dog breeds and sizes welcome</li>
+        <li>Premium, hypoallergenic grooming products</li>
+        <li>Gentle handling and stress-free care</li>
+        <li>Competitive, transparent pricing</li>
+        <li>Same-day appointments available</li>
+      </ul>
+      <a href="tel:07740282895" class="btn btn-primary btn-lg">Book Your Appointment</a>
+    </div>
+    <div class="about-img">🐕‍🦺</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Customer Reviews</div>
+  <h2>What Dog Owners Say About Us</h2>
+  <p class="section-intro">Our customers love the care and attention their furry friends receive at The Pawfect Pooch.</p>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"My golden retriever absolutely loves going to The Pawfect Pooch! She comes home looking and smelling beautiful. The team is so professional and caring."</p>
+      <div class="testimonial-author">Emma Thompson</div>
+      <div class="testimonial-role">Golden Retriever Owner</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Best grooming experience ever! My shih tzu's coat has never looked better. The staff is friendly, patient, and truly passionate about dogs. Highly recommended!"</p>
+      <div class="testimonial-author">Michael Chen</div>
+      <div class="testimonial-role">Shih Tzu Owner</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"I've tried many groomers, but The Pawfect Pooch is by far the best. My anxious dog is calm and happy after every visit. Worth every penny!"</p>
+      <div class="testimonial-author">Jessica Williams</div>
+      <div class="testimonial-role">Dachshund Owner</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>Ready for Your Dog's Perfect Grooming?</h2>
+  <p>Book an appointment with The Pawfect Pooch today. Our friendly team is ready to pamper your furry friend with professional care and attention.</p>
+  <div class="cta-buttons">
+    <a href="tel:07740282895" class="btn btn-primary btn-lg">☎️ Call: 07740 282895</a>
+    <a href="#contact" class="btn btn-outline">📍 Visit Us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-content">
+    <div class="footer-col">
+      <h4>The Pawfect Pooch</h4>
+      <p>Professional dog grooming services in Middleton, Manchester. Providing expert care and premium grooming for all dog breeds.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#services">Services</a>
+      <a href="#about">About Us</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Bath & Wash</a>
+      <a href="#services">Breed-Specific Cuts</a>
+      <a href="#services">Nail Trimming</a>
+      <a href="#services">Spa Package</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Information</h4>
+      <div class="footer-contact">
+        <span>📍 36A Cowper St, Middleton, Manchester M24 2FE, UK</span>
+        <a href="tel:07740282895">📞 07740 282895</a>
+        <span>Mon-Sat: 9AM-6PM</span>
+        <span>Sun: Closed</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 The Pawfect Pooch. All rights reserved. | SSL
