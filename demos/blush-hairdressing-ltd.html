@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blush Hairdressing Ltd — Hair Salon in Cardiff | Cuts, Colour & Styling</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); opacity: 0; transition: opacity 0.25s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { font-size: 36px; margin-bottom: 18px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card {
+    background: white; border-radius: 16px; padding: 32px;
+    border: 1.5px solid var(--border); transition: all 0.25s;
+  }
+  .testimonial-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+  .testimonial-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .testimonial-avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: var(--teal-dark); }
+  .testimonial-meta { display: flex; flex-direction: column; }
+  .testimonial-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-light); }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; letter-spacing: 1px; margin-bottom: 12px; }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* ABOUT */
+  .about { background: white; }
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-text h2 { margin-bottom: 24px; }
+  .about-text p { font-size: 16px; color: var(--text-mid); margin-bottom: 18px; line-height: 1.8; }
+  .about-list { margin: 32px 0; }
+  .about-list li { font-size: 15px; color: var(--text-mid); margin-bottom: 12px; display: flex; align-items: flex-start; gap: 12px; }
+  .about-list li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+  .about-img { width: 100%; aspect-ratio: 4/5; background: linear-gradient(135deg, var(--teal-light) 0%, var(--gold-light) 100%); border-radius: 16px; }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, var(--navy) 0%, #0f3d3a 100%);
+    padding: 90px 80px; text-align: center; color: white;
+  }
+  .cta h2 { color: white; margin-bottom: 20px; }
+  .cta p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px 20px;
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { font-size: 14px; font-weight: 600; margin-bottom: 18px; }
+  .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+  .footer-col a:hover { color: white; }
+  .footer-col p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 30px; }
+    .hero-img { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .about-content { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { display: none; }
+    section { padding: 60px 30px; }
+    nav { padding: 0 20px; }
+    .trust-bar { padding: 20px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">✨</div>
+    <div>
+      <div class="logo-text">Blush</div>
+      <div class="logo-sub">HAIRDRESSING</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:02920568335" class="btn btn-primary">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Now accepting new clients in Cardiff
+    </div>
+    <h1>Stunning Hair Starts <em>Here</em></h1>
+    <p>Expert cuts, vibrant colour, and bespoke styling for everyone. Your hair deserves the best care in a welcoming, professional salon.</p>
+    <div class="hero-actions">
+      <a href="tel:02920568335" class="btn btn-primary btn-lg">Call 029 2056 8335</a>
+      <a href="#services" class="btn btn-outline btn-lg">Explore Services</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">15+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">2000+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.8★</div>
+        <div class="trust-label">Client Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <div class="card-avatar">💇</div>
+          <div>
+            <div class="card-name">Premium Cut & Colour</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="card-text">Transform your look with expert styling and professional colour treatments</div>
+        <div class="card-badge">Available now</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="card-name" style="margin-bottom: 8px;">Quick Trim</div>
+        <div class="card-text">Express services for busy schedules</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="card-name" style="margin-bottom: 8px;">Blow Dry</div>
+        <div class="card-text">Polished look for any occasion</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">💇‍♀️</div>
+    <span>Expert Stylists</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🎨</div>
+    <span>Premium Products</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <span>25 High St, Cardiff CF5 2DY</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏱️</div>
+    <span>Same-Day Appointments</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Expert Hair Care & Styling</h2>
+  <p class="section-intro">From classic cuts to contemporary colour, we offer a comprehensive range of services tailored to your unique style and needs.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Hair Cutting</h3>
+      <p>Precision cuts for all hair types. Whether you want a timeless style or something modern, our skilled stylists deliver flawless results.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Hair Colouring</h3>
+      <p>Professional colour treatments from subtle highlights to bold transformations. We use premium, quality products for lasting shine.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💇‍♀️</div>
+      <h3>Styling & Blow Dry</h3>
+      <p>Professional blow-dries and styling for special events, date nights, or just everyday confidence. Look your absolute best.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Hair Treatment</h3>
+      <p>Nourishing treatments to restore health and shine. Perfect for damaged or coloured hair needing rejuvenation and care.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌟</div>
+      <h3>Keratin Treatment</h3>
+      <p>Smooth, frizz-free hair with our keratin smoothing service. Enjoy sleek, manageable locks that last for weeks.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💫</div>
+      <h3>Children's Cuts</h3>
+      <p>Friendly, patient service for children. We make haircuts fun and create styles that parents and kids both love.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client Testimonials</div>
+  <h2>Loved by Our Community</h2>
+  <p class="section-intro">Discover what our clients in Cardiff say about Blush Hairdressing Ltd.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">SJ</div>
+        <div class="testimonial-meta">
+          <div class="testimonial-name">Sarah J.</div>
+          <div class="testimonial-role">Cardiff</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"I've been going to Blush for over two years now. My colour always turns out perfect, and Emma's cutting skills are incredible. The salon is so welcoming and you always feel pampered. Highly recommend!"</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">MC</div>
+        <div class="testimonial-meta">
+          <div class="testimonial-name">Marcus C.</div>
+          <div class="testimonial-role">Llandaff, Cardiff</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"First visit to Blush was brilliant. Got a clean fade and the lads made me feel right at home. Professional, quick service, and reasonably priced. Will definitely be back."</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">LC</div>
+        <div class="testimonial-meta">
+          <div class="testimonial-name">Lucy C.</div>
+          <div class="testimonial-role">Cathays, Cardiff</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Got my hair cut and styled for an event last month and felt absolutely stunning. The team took time to understand what I wanted, and the result was even better than I imagined. Worth every penny!"</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-content">
+    <div class="about-text">
+      <div class="section-label">About Us</div>
+      <h2>Blush Hairdressing Ltd</h2>
+      <p>Located in the heart of Cardiff on High Street, Blush Hairdressing Ltd has been delivering exceptional hair care for over 15 years. Our passion is creating beautiful, confidence-boosting transformations for clients of all ages.</p>
+      <p>We believe every client deserves personalised attention and expert care. Our experienced team stays up-to-date with the latest techniques and trends, ensuring you always receive the highest standard of service.</p>
+      <ul class="about-list">
+        <li>Experienced, trained stylists</li>
+        <li>Premium products only</li>
+        <li>Personalised consultations</li>
+        <li>Relaxed, welcoming atmosphere</li>
+        <li>Convenient High Street location</li>
+      </ul>
+      <a href="tel:02920568335" class="btn btn-primary btn-lg">Call Us Today</a>
+    </div>
+    <div class="about-img"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>Ready for Your Transformation?</h2>
+  <p>Book your appointment at Blush Hairdressing Ltd today. We're located at 25 High St, Cardiff CF5 2DY.</p>
+  <a href="tel:02920568335" class="btn btn-gold btn-lg">Call 029 2056 8335</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Blush Hairdressing Ltd</h4>
+      <p>Expert hair care and styling in the heart of Cardiff. Your trusted salon since 2008.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📍 25 High St, Cardiff CF5 2DY, UK</p>
+      <p>📞 029 2056 8335</p>
+      <p>Monday–Saturday: 9am–6pm<br>Sunday: Closed</p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Blush Hairdressing Ltd. All rights reserved.</p>
+    <p>Designed with care for Cardiff.</p>
+  </div>
+</footer>
+
+</body>
+</html>
