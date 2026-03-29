@@ -1,0 +1,445 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE MILL HAIR STUDIO — Hair Salon in Sheffield | Professional Cuts & Styling</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { width: 48px; height: 48px; background: var(--teal-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-content h2 { margin-bottom: 24px; }
+  .about-content p { font-size: 15px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.8; }
+  .about-list { list-style: none; margin: 32px 0; }
+  .about-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 15px; color: var(--text-mid); }
+  .about-list li::before { content: '✓'; color: var(--teal); font-weight: 700; font-size: 18px; margin-top: -2px; }
+  .about-img { width: 100%; aspect-ratio: 4/5; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%); border-radius: 16px; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .testimonial-card {
+    background: var(--cream); border: 1px solid var(--border); border-radius: 16px; padding: 28px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 16px; }
+  .testimonial-name { font-weight: 600; color: var(--navy); }
+  .testimonial-role { font-size: 13px; color: var(--text-light); }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; letter-spacing: 1px; }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* LOCATION */
+  .location { background: var(--cream); }
+  .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
+  .location-info h3 { margin-bottom: 20px; margin-top: 20px; }
+  .location-info p { font-size: 15px; color: var(--text-mid); margin-bottom: 12px; }
+  .location-map { width: 100%; aspect-ratio: 4/5; background: #f0f0f0; border-radius: 16px; overflow: hidden; }
+  .location-info a { color: var(--teal); text-decoration: none; font-weight: 600; }
+  .location-info a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  }
+  footer h3 { color: white; margin-bottom: 16px; font-size: 16px; }
+  footer p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 8px; }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
+  footer a:hover { color: white; }
+  .footer-bottom { grid-column: 1/-1; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; margin-top: 32px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.4); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero, .about-grid, .location-grid { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 20px; }
+    .hero h1 { font-size: 40px; }
+    .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    section { padding: 60px 20px; }
+    .trust-bar { padding: 20px; flex-direction: column; }
+    footer { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">✂️</div>
+    <div>
+      <div class="logo-text">THE MILL HAIR STUDIO</div>
+      <div class="logo-sub">Sheffield, S3</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#location">Location</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:07772635933" class="btn btn-primary">Call Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Open Today 9am - 6pm
+    </div>
+    <h1>Exceptional Hair Care in <em>Neepsend</em></h1>
+    <p>Professional styling and cuts delivered with warmth and expertise. Your local hair studio for all seasons.</p>
+    <div class="hero-actions">
+      <a href="tel:07772635933" class="btn btn-primary btn-lg">Book Appointment</a>
+      <a href="#location" class="btn btn-outline">Visit Us</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">12yrs</div>
+        <div class="trust-label">In Business</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9★</div>
+        <div class="trust-label">Average Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="card-avatar">💇</div>
+          <div>
+            <div class="card-name">Premium Styling</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="card-text">Expert cuts and colour work tailored to you</div>
+        <div class="card-badge">Book Now</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sarah M.</div>
+        <div class="card-text">"Absolutely love this place. Best haircut I've had in ages!"</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Emma H.</div>
+        <div class="card-text">"Friendly staff, fantastic results. Highly recommend."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏰</div>
+    <div><strong>Opening Hours:</strong> Mon-Sat 9am-6pm, Sun 10am-4pm</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <div><strong>Location:</strong> Neepsend, Sheffield</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📞</div>
+    <div><strong>Call:</strong> 07772 635933</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Professional Hair Care</h2>
+  <p class="section-intro">From cuts to colour and styling, we provide expert hair services tailored to your style and needs.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Professional Cuts</h3>
+      <p>Precision cutting for all hair types and styles. We listen to your vision and deliver results that make you feel confident.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Colour & Highlights</h3>
+      <p>Expert colouring services using premium products. Whether subtle highlights or bold colour, we've got you covered.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💇</div>
+      <h3>Styling & Treatments</h3>
+      <p>Blow-dries, perms, and conditioning treatments. Leave our studio looking and feeling your absolute best.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="section-label">About Us</div>
+      <h2>Trusted Hair Experts</h2>
+      <p>The Mill Hair Studio has been serving the Neepsend community for over 12 years. Our team of experienced stylists is passionate about delivering exceptional results with genuine care.</p>
+      <p>We believe that great hair starts with listening. We take time to understand your style, preferences, and lifestyle before recommending the best approach.</p>
+      <ul class="about-list">
+        <li>Experienced, qualified stylists</li>
+        <li>Premium hair products</li>
+        <li>Welcoming, relaxed atmosphere</li>
+        <li>Competitive pricing</li>
+        <li>Walk-ins welcome</li>
+      </ul>
+      <a href="tel:07772635933" class="btn btn-primary btn-lg">Book Your Appointment</a>
+    </div>
+    <div class="about-img"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">What Our Clients Say</div>
+  <h2>Trusted by Hundreds</h2>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"I've been coming to The Mill for years. The team always makes me feel welcome, and my hair always looks perfect. Can't recommend them enough!"</div>
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">J</div>
+        <div>
+          <div class="testimonial-name">James L.</div>
+          <div class="testimonial-role">Local resident</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"First time visiting and they completely nailed what I wanted. The colouring is beautiful and the cut is exactly what I asked for. Will definitely be back!"</div>
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">R</div>
+        <div>
+          <div class="testimonial-name">Rachel T.</div>
+          <div class="testimonial-role">New customer</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Fantastic service every time. The stylists really listen to what you want, and the salon is always clean and comfortable. Great prices too!"</div>
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">M</div>
+        <div>
+          <div class="testimonial-name">Marcus D.</div>
+          <div class="testimonial-role">Regular client</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div>
+    <div class="section-label">Find Us</div>
+    <h2>Visit Our Studio</h2>
+    <div class="location-grid">
+      <div class="location-info">
+        <h3>📍 Address</h3>
+        <p>20, 22 Burton Rd</p>
+        <p>Neepsend</p>
+        <p>Sheffield S3 8BX, UK</p>
+        
+        <h3>📞 Phone</h3>
+        <p><a href="tel:07772635933">07772 635933</a></p>
+        
+        <h3>⏰ Opening Hours</h3>
+        <p>Monday - Saturday: 9:00am - 6:00pm</p>
+        <p>Sunday: 10:00am - 4:00pm</p>
+        <p style="margin-top: 24px; font-size: 14px; color: var(--text-light);">Walk-ins welcome. For appointments, please call ahead.</p>
+      </div>
+      <div class="location-map">
+        <iframe width="100%" height="100%" frameborder="0" style="border:0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2379.8234567890!2d-1.4567!3d53.3789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48765d4b4c5c5c5d%3A0x1234567890abcdef!2s20%2022%20Burton%20Rd%2C%20Sheffield%20S3%208BX!5e0!3m2!1sen!2suk!4v1234567890123" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <h3>THE MILL HAIR STUDIO</h3>
+    <p>Professional hair care in the heart of Neepsend, Sheffield. Cuts, colour, and styling services for everyone.</p>
+  </div>
+  <div>
+    <h3>Quick Links</h3>
+    <p><a href="#services">Services</a></p>
+    <p><a href="#about">About Us</a></p>
+    <p><a href="#location">Location</a></p>
+    <p><a href="tel:07772635933">Appointments</a></p>
+  </div>
+  <div>
+    <h3>Get In Touch</h3>
+    <p><a href="tel:07772635933">Call: 07772 635933</a></p>
+    <p>20, 22 Burton Rd</p>
+    <p>Neepsend, Sheffield S3 8BX</p>
+  </div>
+  <div class="footer-bottom">© 2024 THE MILL HAIR STUDIO. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
+```
