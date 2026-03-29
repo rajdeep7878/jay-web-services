@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Replay Cardiff — Hair Salon in Cardiff City Centre</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --teal: #1B998B;
+    --teal-light: #E8F7F5;
+    --teal-dark: #137D71;
+    --cream: #FDF8F2;
+    --gold: #C9A84C;
+    --gold-light: #FEF8E8;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: white; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,153,139,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-gold { background: var(--gold); color: white; }
+  .btn-gold:hover { background: #b8933d; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 60%, #0f3d3a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(27,153,139,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(27,153,139,0.2); border: 1px solid rgba(27,153,139,0.4);
+    color: #6ECFC4; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1B4A44 0%, #0D2B28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .smile-card {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .smile-card.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .smile-card.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .smile-card.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { font-size: 32px; margin-bottom: 16px; }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .testimonial-card {
+    background: white; border-radius: 16px; padding: 32px;
+    border: 1px solid var(--border); box-shadow: var(--shadow);
+  }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-weight: 600; color: var(--teal-dark); font-size: 16px; }
+  .testimonial-name { font-weight: 600; color: var(--navy); font-size: 14px; }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; letter-spacing: 1px; }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f45 100%);
+    color: white;
+  }
+  .contact h2, .contact h3 { color: white; }
+  .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .contact-info { display: flex; flex-direction: column; gap: 28px; }
+  .info-block { display: flex; gap: 16px; }
+  .info-icon { width: 44px; height: 44px; background: rgba(27,153,139,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+  .info-text h3 { margin-bottom: 4px; }
+  .info-text p { color: rgba(255,255,255,0.7); font-size: 15px; }
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-size: 14px; font-weight: 500; }
+  .form-group input, .form-group textarea {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; padding: 12px 16px; border-radius: 8px; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; transition: all 0.2s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.5); }
+  .form-group input:focus, .form-group textarea:focus {
+    outline: none; background: rgba(255,255,255,0.15); border-color: var(--teal);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0a1219; color: rgba(255,255,255,0.6); padding: 40px 80px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-text { font-size: 14px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-links a:hover { color: white; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .hero { grid-template-columns: 1fr; padding-top: 70px; }
+    .hero-content { padding: 40px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero-img { display: none; }
+    section { padding: 60px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .trust-bar { padding: 20px; flex-direction: column; }
+    .contact-content { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; gap: 20px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">✂️</div>
+    <div>
+      <div class="logo-text">Replay Cardiff</div>
+      <div class="logo-sub">Hair Salon</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:029 2022 1233" class="btn btn-outline">Call</a>
+    <a href="#contact" class="btn btn-primary">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Professional Hair Care in Cardiff City Centre
+    </div>
+    <h1>Your Hair, <em>Replayed</em> to Perfection</h1>
+    <p>Welcome to Replay Cardiff, where expert stylists transform your hair with precision cuts, vibrant colour, and personalised styling. Located at the heart of Cardiff, we're dedicated to bringing out the best version of you.</p>
+    <div class="hero-actions">
+      <a href="tel:029 2022 1233" class="btn btn-primary btn-lg">Call 029 2022 1233</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">1000+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">12+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">5.0</div>
+        <div class="trust-label">Average Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="smile-card main">
+        <div class="card-avatar">💇</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Emma T.</div>
+        <div class="card-text">"Best hair cut I've had in years. The team really listens to what you want."</div>
+        <div class="card-badge">✓ Verified Client</div>
+      </div>
+      <div class="smile-card floating-1">
+        <div class="card-avatar">💅</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Lisa J.</div>
+        <div class="card-text">"Colour is absolutely perfect!"</div>
+      </div>
+      <div class="smile-card floating-2">
+        <div class="card-avatar">✨</div>
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sophie K.</div>
+        <div class="card-text">"Lovely relaxed atmosphere, highly recommend."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">🎯</div>
+    <span><strong>Expert Stylists</strong> — Qualified professionals</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">💇</div>
+    <span><strong>Premium Products</strong> — Best brands used</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⏱️</div>
+    <span><strong>Flexible Booking</strong> — Open 6 days a week</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">What We Offer</div>
+  <h2>Our Hair Services</h2>
+  <p class="section-intro">From classic cuts to bold colour transformations, Replay Cardiff offers a full range of professional hair services tailored to your style and needs.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Precision Cuts</h3>
+      <p>Expert cutting techniques for men and women. Whether you're after a sharp fade, textured crop, or elegant long-hair cut, our stylists will create the perfect shape for your hair type and face.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Colour Services</h3>
+      <p>From subtle highlights to bold transformations. We use premium colour products to deliver vibrant, long-lasting results. Balayage, ombré, full colour, or root touch-ups — we've got you covered.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💆</div>
+      <h3>Styling & Treatments</h3>
+      <p>Professional blow-dries, special occasion styling, and restorative hair treatments. Our deep conditioning and repair packages restore shine and strength to damaged or tired hair.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👶</div>
+      <h3>Children's Hair Care</h3>
+      <p>Friendly, patient service for our younger clients. We make the experience fun and stress-free, perfect for first haircuts and regular maintenance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔄</div>
+      <h3>Hair Extensions</h3>
+      <p>Add length and volume with our professional extension services. We offer multiple methods with expert application and personalised aftercare guidance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Perms & Waves</h3>
+      <p>Create beautiful texture and hold with modern perming and wave treatments. We use advanced techniques for natural-looking, manageable results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">What Our Clients Say</div>
+  <h2>Real Reviews from Cardiff</h2>
+  <p class="section-intro">Don't just take our word for it — hear what our clients in Cardiff City Centre have to say about their experience at Replay.</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">CJ</div>
+        <div>
+          <div class="testimonial-name">Chris J.</div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="testimonial-text">"Had my precision cut done by the team at Replay and couldn't be happier. Great attention to detail, they really understood what I wanted. Been going back ever since. Highly recommend if you're in the city centre."</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">RC</div>
+        <div>
+          <div class="testimonial-name">Rachel C.</div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="testimonial-text">"Had a complete colour transformation here and I absolutely love it. The stylist was so professional and made sure I was happy every step of the way. The location on St Mary Street is perfect, easy to get to. Will definitely be back!"</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">MT</div>
+        <div>
+          <div class="testimonial-name">Michelle T.</div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="testimonial-text">"Took my daughter for her first proper haircut here and she was so comfortable. The stylists were patient and kind, and she got exactly the cut we wanted. Lovely, welcoming atmosphere. Already booked her next appointment!"</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2>Book Your Appointment</h2>
+
+  <div class="contact-content">
+    <div class="contact-info">
+      <div class="info-block">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <h3>Visit Us</h3>
+          <p>24 St Mary St, Cardiff CF10 1AA, UK</p>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">📞</div>
+        <div class="info-text">
+          <h3>Call Us</h3>
+          <p>029 2022 1233</p>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">⏰</div>
+        <div class="info-text">
+          <h3>Opening Hours</h3>
+          <p>Tuesday–Friday: 9:30 AM–6:00 PM<br>Saturday: 10:00 AM–5:00 PM<br>Sunday–Monday: Closed</p>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon">💬</div>
+        <div class="info-text">
+          <h3>Walk-ins Welcome</h3>
+          <p>Subject to availability. Advance booking recommended for colour services and special occasions.</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required placeholder="e.g. Sarah">
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="029 2022 1233">
+      </div>
+      <div class="form-group">
+        <label for="service">Service Interested In</label>
+        <input type="text" id="service" name="service" placeholder="e.g. Colour or Precision Cut">
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell us about your hair goals..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold btn-lg">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">&copy; 2024 Replay Cardiff. All rights reserved. 24 St Mary St, Cardiff CF10 1AA.</div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="tel:029 2022 1233">029 2022 1233</a>
+  </div>
+</footer>
+
+</body>
+</html>
