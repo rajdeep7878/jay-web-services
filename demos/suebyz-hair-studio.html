@@ -1,0 +1,448 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suebyz Hair Studio — Hair Salon in Sheffield | Cut, Colour & Styling</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #116dff;
+    --primary-dark: #0d52cc;
+    --primary-light: #e8f1ff;
+    --navy: #0D1B2A;
+    --cream: #FDF8F2;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(17,109,255,0.08);
+    --shadow-lg: 0 16px 48px rgba(17,109,255,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--primary); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--primary); color: var(--primary); }
+  .btn-outline:hover { background: var(--primary); color: white; }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(17,109,255,0.35); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, #1a1f3a 0%, #0f2847 60%, #16192d 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(17,109,255,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(17,109,255,0.1) 0%, transparent 70%);
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(17,109,255,0.2); border: 1px solid rgba(17,109,255,0.4);
+    color: #6eb3ff; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 62px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--primary); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1a2f4a 0%, #0d1a2a 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; }
+  .service-card-showcase {
+    background: white; border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .service-card-showcase.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .service-card-showcase.floating-1 {
+    width: 200px; top: 20%; right: -10px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .service-card-showcase.floating-2 {
+    width: 220px; bottom: 20%; left: -20px; z-index: 2;
+    font-size: 13px; padding: 18px;
+  }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--primary-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--primary-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--primary); }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 540px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    border: 1.5px solid var(--border); border-radius: 16px; padding: 32px;
+    transition: all 0.25s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--primary);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+  .service-icon { width: 56px; height: 56px; background: var(--primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px; }
+  .service-card h3 { color: var(--navy); margin-bottom: 12px; }
+  .service-card p { color: var(--text-mid); font-size: 15px; line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card {
+    background: white; border-radius: 16px; padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05); border: 1px solid var(--border);
+  }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+  .testimonial-info { display: flex; flex-direction: column; }
+  .testimonial-name { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .testimonial-role { font-size: 12px; color: var(--text-light); }
+  .testimonial-stars { color: #F6BE00; font-size: 13px; margin-bottom: 10px; letter-spacing: 1px; }
+  .testimonial-text { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: white; }
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-text { }
+  .about-text p { font-size: 16px; color: var(--text-mid); margin-bottom: 16px; line-height: 1.8; }
+  .about-img { background: linear-gradient(135deg, var(--primary-light) 0%, rgba(17,109,255,0.05) 100%); border-radius: 16px; height: 400px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+
+  /* CONTACT */
+  .contact { background: var(--navy); color: white; }
+  .contact h2 { color: white; }
+  .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; margin-top: 48px; }
+  .contact-item h3 { color: white; margin-bottom: 12px; }
+  .contact-item p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.7; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .contact-form input,
+  .contact-form textarea {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; padding: 12px 16px; border-radius: 8px; font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: rgba(255,255,255,0.5); }
+  .contact-form button { background: var(--primary); color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .contact-form button:hover { background: var(--primary-dark); }
+
+  /* FOOTER */
+  footer {
+    background: #0a0f1a; color: rgba(255,255,255,0.6); padding: 40px 80px;
+    border-top: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 13px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 0 20px; }
+    section { padding: 60px 40px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { display: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-content { grid-template-columns: 1fr; gap: 40px; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 42px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    h2 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">✂️</div>
+    <div>
+      <div class="logo-text">Suebyz Hair Studio</div>
+      <div class="logo-sub">HAIR & BEAUTY</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <button class="btn btn-outline">Book Now</button>
+    <button class="btn btn-primary">Call</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Now booking in Highfield
+    </div>
+    <h1>Expert <em>Hair Care</em> in Sheffield</h1>
+    <p>Suebyz Hair Studio offers professional cuts, colouring, styling, and treatments for all hair types. Experience expert service from our talented team.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary btn-lg">Book Appointment</button>
+      <button class="btn btn-outline btn-lg">View Services</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">8+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9/5</div>
+        <div class="trust-label">Average Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="service-card-showcase main">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="card-avatar">👩‍🦰</div>
+          <div>
+            <div class="card-name">Emma L.</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="card-text">"Best colour I've had. Sue really knows how to bring out the right tones."</div>
+        <div class="card-badge">✓ Verified Client</div>
+      </div>
+      <div class="service-card-showcase floating-1">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Sarah M.</div>
+        <div class="card-text">Amazing service and a really welcoming space.</div>
+      </div>
+      <div class="service-card-showcase floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-name">Jessica P.</div>
+        <div class="card-text">Professional team, great haircut, highly recommended!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">📍</div>
+    <div><strong>Based in Highfield</strong><br>234 Shoreham St, Sheffield</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">⭐</div>
+    <div><strong>Highly Rated</strong><br>4.9/5 stars on Google</div>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <div><strong>Professional Team</strong><br>Experienced stylists</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">Our Services</div>
+  <h2>Expert Hair Services</h2>
+  <p class="section-intro">From precision cuts to vibrant colour and nourishing treatments, we offer a full range of professional hair services tailored to you.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✂️</div>
+      <h3>Hair Cuts</h3>
+      <p>Professional cuts for all hair types and styles. Precision styling tailored to your face shape and preferences.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Hair Colouring</h3>
+      <p>Expert colour services including full colour, highlights, balayage, and vibrant fashion colours. Colour correction available.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💇</div>
+      <h3>Styling & Blow-Dry</h3>
+      <p>Professional blow-dry services and styling for special occasions. Always on-trend and expertly executed.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💆</div>
+      <h3>Hair Treatments</h3>
+      <p>Nourishing treatments including keratin, deep conditioning, and scalp treatments to restore health and shine.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3>Perms & Waves</h3>
+      <p>Professional perms and wave treatments using quality products. Consultation included to find your perfect texture.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💇‍♀️</div>
+      <h3>Children's Cuts</h3>
+      <p>Friendly, patient service for children. We make haircuts fun and create a welcoming environment for younger clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client Testimonials</div>
+  <h2>What Our Clients Say</h2>
+  <p class="section-intro">Real feedback from real clients in Highfield and across Sheffield who trust us with their hair.</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">EC</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Emma C.</div>
+          <div class="testimonial-role">Highfield</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"I've been coming here for two years now and wouldn't go anywhere else. The colour work is absolutely incredible, and the team always makes me feel welcome."</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">SH</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Sarah H.</div>
+          <div class="testimonial-role">City Centre</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Had the most amazing balayage done here. Sue really listened to what I wanted and delivered beyond my expectations. The salon is so clean and professional."</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-header">
+        <div class="testimonial-avatar">JM</div>
+        <div class="testimonial-info">
+          <div class="testimonial-name">Jamie M.</div>
+          <div class="testimonial-role">Heeley</div>
+        </div>
+      </div>
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Finally found a salon that gets my hair. The cut is perfect, the styling advice is brilliant, and they're so friendly. Would definitely recommend to anyone in Sheffield."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About Us</div>
+  <h2>Suebyz Hair Studio</h2>
+
+  <div class="about-content">
+    <div class="about-text">
+      <p>Welcome to Suebyz Hair Studio, Sheffield's trusted destination for expert hair care. Located in the heart of Highfield, we've been helping our community look and feel their best for over 8 years.</p>
+      <p>Our experienced team specializes in bespoke hair services tailored to your individual needs—from precision cuts and vibrant colouring to nourishing treatments. We believe in listening to our clients and delivering results that exceed expectations.</p>
+      <p>Whether you're looking for a fresh cut, a complete colour transformation, or expert styling advice, you're in the right hands. We use quality products and stay up-to-date with the latest techniques to ensure you always leave feeling confident.</p>
+      <p>Visit us at 234 Shoreham St in Highfield and experience the Suebyz difference.</p>
+    </div>
+    <div class="about-img">
+      💇‍♀️
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>Get in Touch</h2>
+  <p class="section-intro" style="color: rgba(255,255,255,0.7);">Ready to book your appointment or have a question? We'd love to hear from you.</p>
+
+  <div class="contact-grid">
+    <div>
+      <h3>Visit Us</h3>
+      <p>234 Shoreham St<br>Highfield<br>Sheffield S1 4ST, UK</p>
+      <h3 style="margin-top: 24px;">Contact</h3>
+      <p><strong>Phone:</strong> 020 XXXX XXXX<br><strong>Email:</strong> hello@suebyzhairstudio.com<br><strong>Opening Hours:</strong><br>Mon–Fri: 10am–6pm<br>Sat: 9am–5pm<br>Sun: Closed</p>
+    </div>
+    <div>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="tel" placeholder="Your Phone">
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 Suebyz Hair Studio. All rights reserved. | 234 Shoreham St, Highfield, Sheffield S1 4ST</p>
+</footer>
+
+</body>
+</html>
+```
