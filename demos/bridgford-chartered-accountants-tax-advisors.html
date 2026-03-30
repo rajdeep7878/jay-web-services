@@ -1,0 +1,460 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridgford Chartered Accountants & Tax Advisors</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1a2f47;
+    --navy-light: #243b55;
+    --gold: #37b34a;
+    --gold-dark: #2d8f3b;
+    --gold-light: #e8f5e9;
+    --gold-bg: #f1f8f4;
+    --cream: #FAFAF7;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(13,27,42,0.08);
+    --shadow-lg: 0 16px 48px rgba(13,27,42,0.16);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--navy); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 18px; font-weight: 700; font-family: 'Playfair Display', serif;
+  }
+  .logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 400; letter-spacing: 0.08em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; font-family: 'DM Sans', sans-serif; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: white; }
+  .btn-primary { background: var(--gold); color: white; }
+  .btn-primary:hover { background: var(--gold-dark); color: white; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(55,179,74,0.4); }
+  .btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 10px; }
+  .btn-navy { background: var(--navy); color: white; }
+  .btn-navy:hover { background: var(--navy-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(13,27,42,0.35); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; padding-top: 70px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f47 55%, #1c2d1a 100%);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(55,179,74,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(55,179,74,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { padding: 80px 60px 80px 80px; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(55,179,74,0.18); border: 1px solid rgba(55,179,74,0.4);
+    color: #4caf50; padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+  .hero h1 {
+    font-family: 'Playfair Display', serif; font-size: 60px; font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 48px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; flex-direction: column; }
+  .trust-num { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* HERO RIGHT PANEL — floating review cards */
+  .hero-img {
+    position: relative; height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #1a2f1a 0%, #0d2010 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 360px; height: 500px; }
+  .review-float {
+    background: white; border-radius: 20px; padding: 24px; box-shadow: var(--shadow-lg);
+    position: absolute;
+  }
+  .review-float.main {
+    width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; gap: 16px; z-index: 3;
+  }
+  .review-float.floating-1 {
+    width: 210px; top: 40px; right: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite;
+  }
+  .review-float.floating-2 {
+    width: 220px; bottom: 40px; left: -40px; z-index: 4;
+    font-size: 13px; padding: 18px;
+    animation: floatY 4s ease-in-out infinite 2s;
+  }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .card-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .stars { color: #F6BE00; font-size: 14px; letter-spacing: 1px; }
+  .card-name { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .card-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .card-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--gold-light); color: var(--gold-dark); padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; }
+  .icaew-badge { background: #1A3A5C; color: white; display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--gold-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 20px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-bar-item { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 14px; font-weight: 500; }
+  .trust-icon { width: 36px; height: 36px; background: var(--gold-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+  /* SECTIONS */
+  section { padding: 90px 80px; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+  h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .section-intro { font-size: 17px; color: var(--text-mid); max-width: 600px; margin-bottom: 48px; line-height: 1.7; }
+
+  /* SERVICES */
+  .services { background: var(--cream); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .service-card {
+    background: white; border-radius: 16px; padding: 40px; box-shadow: 0 2px 12px rgba(13,27,42,0.06);
+    transition: all 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px); box-shadow: var(--shadow);
+  }
+  .service-icon {
+    width: 56px; height: 56px; background: var(--gold-light); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px;
+  }
+  .service-card h3 { margin-bottom: 12px; }
+  .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: white; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .testimonial-card {
+    background: var(--cream); border-radius: 16px; padding: 32px;
+    border-left: 4px solid var(--gold);
+  }
+  .testimonial-card .stars { margin-bottom: 12px; }
+  .testimonial-text { font-size: 15px; color: var(--text-mid); margin-bottom: 16px; line-height: 1.7; }
+  .testimonial-author { font-weight: 600; color: var(--navy); font-size: 14px; }
+  .testimonial-role { font-size: 13px; color: var(--text-light); }
+
+  /* ABOUT */
+  .about { background: white; }
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-text h3 { margin-top: 20px; }
+  .about-text p { margin-bottom: 16px; font-size: 15px; color: var(--text-mid); line-height: 1.8; }
+  .about-features { list-style: none; margin-top: 24px; }
+  .about-features li { display: flex; gap: 12px; margin-bottom: 12px; font-size: 15px; color: var(--text-mid); }
+  .about-features li::before { content: '✓'; color: var(--gold); font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .about-image {
+    background: var(--gold-bg); border-radius: 16px; padding: 40px;
+    display: flex; align-items: center; justify-content: center; min-height: 400px;
+    font-size: 80px;
+  }
+
+  /* CTA SECTION */
+  .cta {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color: white; text-align: center; border-radius: 16px; margin: 80px;
+    padding: 60px 40px;
+  }
+  .cta h2 { color: white; margin-bottom: 20px; }
+  .cta p { font-size: 18px; margin-bottom: 32px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); color: white; padding: 60px 80px;
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+  .footer-col h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.8; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-contact { line-height: 1.8; font-size: 14px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; font-size: 13px; opacity: 0.6; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 60px 40px; }
+    .hero-img { display: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-content { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    h2 { font-size: 32px; }
+    .hero h1 { font-size: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .trust-bar { padding: 20px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .cta { margin: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">B</div>
+    <div>
+      <div class="logo-text">Bridgford</div>
+      <div class="logo-sub">Chartered Accountants</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="tel:07866882086" class="btn btn-outline">Call</a>
+    <a href="#contact" class="btn btn-primary">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Trusted by West Bridgford businesses
+    </div>
+    <h1>Expert <em>Tax & Accounting</em> for Your Business</h1>
+    <p>Strategic tax planning and comprehensive accounting solutions designed to help your business grow and thrive in West Bridgford, Nottingham.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Schedule Consultation</a>
+      <a href="tel:07866882086" class="btn btn-outline btn-lg">Call: 07866 882086</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num">20+</div>
+        <div class="trust-label">Years Experience</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">500+</div>
+        <div class="trust-label">Happy Clients</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">£50M+</div>
+        <div class="trust-label">Tax Saved</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-card-stack">
+      <div class="review-float main">
+        <div style="display: flex; gap: 8px;">
+          <div class="card-avatar">👨‍💼</div>
+          <div style="flex: 1;">
+            <div class="stars">★★★★★</div>
+            <div class="card-name">James R.</div>
+            <div class="card-text">"Outstanding tax planning service. Saved us thousands."</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-float floating-1">
+        <div class="card-badge">Verified Client</div>
+        <div class="card-text" style="margin-top: 8px;">Highly recommended for business tax advice</div>
+      </div>
+      <div class="review-float floating-2">
+        <div class="stars">★★★★★</div>
+        <div class="card-text">Professional & thorough service</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">
+    <div class="trust-icon">✓</div>
+    <span>Chartered Accountants</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">📊</div>
+    <span>Tax Specialists</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🎯</div>
+    <span>Strategic Planning</span>
+  </div>
+  <div class="trust-bar-item">
+    <div class="trust-icon">🔒</div>
+    <span>Confidentiality Guaranteed</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="section-label">Our Expertise</div>
+  <h2>Professional Accounting Services</h2>
+  <p class="section-intro">We provide comprehensive tax and accounting solutions tailored to your business needs. From strategic planning to compliance, we've got you covered.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Business Planning & Advice</h3>
+      <p>Strategic guidance to help your business grow and make informed financial decisions. We work with you to develop sustainable growth plans.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Business Tax & Accounting</h3>
+      <p>Complete accounting services including bookkeeping, financial statements, tax compliance and corporation tax planning for your organisation.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👤</div>
+      <h3>Individual Tax</h3>
+      <p>Expert personal tax planning and self-assessment support. Maximise your allowances and ensure full compliance with HMRC requirements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="section-label">Client Feedback</div>
+  <h2>Trusted by West Bridgford Businesses</h2>
+  <p class="section-intro">Real testimonials from our valued clients in the Nottingham area.</p>
+  
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Bridgford Chartered Accountants provided exceptional business tax planning advice. They helped us reduce our tax liability significantly and made the process straightforward."</div>
+      <div class="testimonial-author">Sarah M.</div>
+      <div class="testimonial-role">Managing Director, West Bridgford</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Excellent service for my self-assessment. They're knowledgeable, professional and really understand the individual tax landscape. Highly recommend for West Bridgford entrepreneurs."</div>
+      <div class="testimonial-author">Michael P.</div>
+      <div class="testimonial-role">Freelance Consultant, Nottingham</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"We've been using Bridgford for business accounting for three years. Their business planning advice has been instrumental in our growth. Professional, reliable and local!"</div>
+      <div class="testimonial-author">Emma T.</div>
+      <div class="testimonial-role">Owner, Local Business Services</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-content">
+    <div class="about-text">
+      <div class="section-label">About Us</div>
+      <h2>Your Local Tax & Accounting Partner</h2>
+      <p>Based in West Bridgford, Bridgford Chartered Accountants & Tax Advisors has been serving the local business community for over 20 years. We're committed to providing expert, personalised accounting and tax advice that helps businesses and individuals succeed.</p>
+      <h3 style="margin-top: 28px; color: var(--gold);">Why Choose Us?</h3>
+      <ul class="about-features">
+        <li>Chartered Accountants with extensive experience</li>
+        <li>Proactive tax planning strategies</li>
+        <li>Local expertise in Nottingham business landscape</li>
+        <li>Personalised service and dedicated support</li>
+        <li>Transparent pricing with no hidden fees</li>
+        <li>Full compliance and regulatory expertise</li>
+      </ul>
+    </div>
+    <div class="about-image">📍<br>Bridgford Business Centre<br>29 Bridgford Rd</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to Optimise Your Taxes?</h2>
+  <p>Let Bridgford Chartered Accountants help you achieve your financial goals. Schedule your free initial consultation today.</p>
+  <a href="tel:07866882086" class="btn btn-primary btn-lg">Call 07866 882086</a>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Bridgford</h4>
+      <div class="footer-contact">
+        <strong>Bridgford Chartered Accountants & Tax Advisors</strong><br>
+        Bridgford Business Centre<br>
+        29 Bridgford Rd<br>
+        West Bridgford<br>
+        Nottingham NG2 6AU<br>
+        UK
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:07866882086">Phone: 07866 882086</a></li>
+        <li><a href="mailto:hello@bridgfordaccountants.co.uk">Email Us</a></li>
+        <li><a href="#">Get Directions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Business Planning</a></li>
+        <li><a href="#services">Business Tax</a></li>
+        <li><a href="#services">Individual Tax</a></li>
+        <li><a href="#services">Accounting</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Bridgford Chartered Accountants & Tax Advisors. All rights reserved. Located at Bridgford Business Centre, West Bridgford, Nottingham.</p>
+  </div>
+</footer>
+
+</body>
+</html>
+```
