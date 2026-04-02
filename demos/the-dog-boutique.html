@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dog Boutique - Professional Dog Grooming</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Geneva', sans-serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background-color: #faf8f3;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #d4e6ff 0%, #e6f0ff 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(17, 109, 255, 0.1);
+            border-bottom: 3px solid #116dff;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #116dff;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #0a3d99;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #116dff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e8f2ff 0%, #d9e9ff 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(17, 109, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            color: #116dff;
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #0a3d99;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #116dff 0%, #0055cc 100%);
+            color: white;
+            padding: 0.85rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(17, 109, 255, 0.3);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: #116dff;
+            border: 2px solid #116dff;
+        }
+
+        .cta-button-secondary:hover {
+            background: rgba(17, 109, 255, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 4.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: #116dff;
+            text-align: center;
+            font-weight: 900;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #116dff;
+            margin: 1rem auto 0;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(17, 109, 255, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #116dff;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(17, 109, 255, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #116dff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(17, 109, 255, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid #d9e9ff;
+            text-align: center;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #116dff;
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 8px 24px rgba(17, 109, 255, 0.2);
+            border-color: #116dff;
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background-color: #116dff;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .pricing-card h3 {
+            color: #116dff;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .pricing-size {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 2.2rem;
+            color: #116dff;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            color: #666;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0e6d8;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓ ';
+            color: #116dff;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Gallery */
+        .gallery {
+            margin-top: 2.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(17, 109, 255, 0.15);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d4e6ff, #e6f0ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(17, 109, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: white;
+            font-weight: 700;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Booking */
+        .booking-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(17, 109, 255, 0.1);
+        }
+
+        .booking-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .booking-intro p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #116dff;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #faf8f3;
+            border: 2px solid #d9e9ff;
+            border-radius: 6px;
+            color: #4a4a4a;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #116dff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-note {
+            background: #e8f2ff;
+            border-left: 4px solid #116dff;
+            padding: 1rem;
+            border-radius: 6px;
+            color: #0a3d99;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* About/Info Section */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(17, 109, 255, 0.1);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: #116dff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #d4e6ff 0%, #e6f0ff 100%);
+            border-top: 3px solid #116dff;
+            padding: 2.5rem;
+            text-align: center;
+            color: #0a3d99;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: #116dff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #0055cc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .cta-button {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🐕 The Dog Boutique</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#booking">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Premium Dog Grooming at The Dog Boutique</h1>
+            <p>Expert grooming care for your beloved companion. Professional service with a personal touch.</p>
+            <a href="#booking" class="cta-button">Book Your Appointment</a>
+            <a href="#services" class="cta-button cta-button-secondary">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🛁</div>
+                <h3>Full Groom</h3>
+                <p>Complete bath, dry, brush, and haircut tailored to your dog's breed and your preferences.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <h3>Puppy Grooming</h3>
+                <p>Gentle, patient grooming for puppies to get them comfortable and familiar with the process.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💅</div>
+                <h3>Nail & Paw Care</h3>
+                <p>Nail trimming, paw pad cleaning, and paw balm application for healthy feet.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👂</div>
+                <h3>Ear & Teeth Care</h3>
+                <p>Ear cleaning, plucking, and dental care to keep your pup healthy and fresh.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧴</div>
+                <h3>De-Shedding Treatment</h3>
+                <p>Specialized treatment to reduce shedding and keep your home cleaner longer.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏆</div>
+                <h3>Show Preparation</h3>
+                <p>Expert grooming for dog shows with breed-standard cuts and presentation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <h2>Pricing</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Small Dogs</h3>
+                <div class="pricing-size">Up to 10kg</div>
+                <div class="pricing-price">£35</div>
+                <ul class="pricing-features">
+                    <li>Full bath & dry</li>
+                    <li>Nail trim</li>
+                    <li>Ear clean</li>
+                    <li>Basic groom</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Most Popular</div>
+                <h3>Medium Dogs</h3>
+                <div class="pricing-size">10-25kg</div>
+                <div class="pricing-price">£50</div>
+                <ul class="pricing-features">
+                    <li>Full bath & dry</li>
+                    <li>Haircut (breed cut)</li>
+                    <li>Nail & paw care</li>
+                    <li>Ear cleaning</li>
+                    <li>De-shedding</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <h3>Large Dogs</h3>
+                <div class="pricing-size">25-45kg</div>
+                <div class="pricing-price">£70</div>
+                <ul class="pricing-features">
+                    <li>Full bath & dry</li>
+                    <li>Haircut (breed cut)</li>
+                    <li>Nail & paw care</li>
+                    <li>Ear & dental care</li>
+                    <li>De-shedding</li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; color: #666;">
+            <p><strong>Add-ons:</strong> Teeth brushing (£5) • Show prep (+20%) • Anxiety support (+£10) • Home visits available</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>Our Happy Clients</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-image">🐩</div>
+                <div class="gallery-overlay">Fluffy & Fresh</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">🐕‍🦺</div>
+                <div class="gallery-overlay">Golden Beauty</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">🐕</div>
+                <div class="gallery-overlay">Perfectly Trimmed</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">🦮</div>
+                <div class="gallery-overlay">Puppy Ready</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">🐕‍🦺</div>
+                <div class="gallery-overlay">Spa Day Special</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">🐩</div>
+                <div class="gallery-overlay">Show Ready</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section>
+        <h2>Why Choose The Dog Boutique?</h2>
+        <div class="info-cards">
+            <div class="info-card">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">❤️</div>
+                <h3>Love & Care</h3>
+                <p>We treat every pup like family. Your dog will be happy, safe, and loved during every visit.</p>
+            </div>
+            <div class="info-card">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎓</div>
+                <h3>Expert Groomers</h3>
+                <p>Our team is fully trained, certified, and experienced with all breeds and temperaments.</p>
+            </div>
+            <div class="info-card">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌱</div>
+                <h3>Natural Products</h3>
+                <p>We use only premium, dog-safe shampoos and treatments. Your pup's skin deserves the best.</p>
+            </div>
+            <div class="info-card">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📍</div>
+                <h3>Convenient Location</h3>
+                <p>Located at 90 Warren Rd with easy access and parking for your convenience.</p>
+            </div>
+            <div class="info-card">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⏰</div>
+                <h3>Flexible Hours</h3>
+                <p>Open 6 days a week with flexible scheduling to fit your busy lifestyle.</p>
+            </div>
+            <div class="info-card">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💝</div>
+                <h3>Loyalty Rewards</h3>
+                <p>Every 5th groom is 20% off. We reward your trust with great savings.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking">
+        <h2>Book Your Appointment</h2>
+        <div class="booking-container">
+            <div class="booking-intro">
+                <p>Ready to give your furry friend premium grooming? Fill out the form below and we'll confirm your booking within 24 hours!</p>
+            </div>
+            <div class="form-note">
+                💡 <strong>First-time customers:</strong> We recommend allowing extra time for a consultation. We'll discuss your pup's needs and any special requirements.
+            </div>
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ownerName">Your Name</label>
+                        <input type="text" id="ownerName" name="ownerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dogName">Dog's Name</label>
+                        <input type="text" id="dogName" name="dogName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="breed">Dog Breed</label>
+                        <input type="text" id="breed" name="breed" placeholder="e.g., Golden Retriever">
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Dog Size</label>
+                        <select id="size" name="size" required>
+                            <option value="">Select size</option>
+                            <option value="small">Small (up to 10kg)</option>
+                            <option value="medium">Medium (10-25kg)</option>
+                            <option value="large">Large (25-45kg)</option>
+                            <option value="xlarge">Extra Large (45kg+)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Required</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select service</option>
+                        <option value="full-groom">Full Groom</option>
+                        <option value="puppy">Puppy Grooming</option>
+                        <option value="nails">Nail & Paw Care Only</option>
+                        <option value="bath">Bath & Dry Only</option>
+                        <option value="deshed">De-Shedding Treatment</option>
+                        <option value="show">Show Preparation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Special Notes (allergies, temperament, preferences)</label>
+                    <textarea id="notes" name="notes" placeholder="Tell us about your pup's personality and any special needs..."></textarea>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Book Appointment</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 The Dog Boutique. All rights reserved. 🐾</p>
+        <p>📍 90 Warren Rd | 📞 07394 178241</p>
+        <p>🕐 Mon-Sat 9am-5pm | Closed Sundays</p>
+        <div class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+</body>
+</html>
