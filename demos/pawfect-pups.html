@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawfect Pups - Professional Dog Grooming in Powder Mill Lane</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #3d3d3d;
+            background: #faf8f5;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        header {
+            background: rgba(31, 78, 121, 0.97);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(31, 78, 121, 0.15);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+
+        .logo {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-icon {
+            width: 36px; height: 36px; background: #e67e22; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        }
+
+        .nav-links { display: flex; list-style: none; gap: 2.2rem; }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            transform: translateX(-50%); width: 0; height: 2px;
+            background: #e67e22; transition: width 0.3s ease; border-radius: 2px;
+        }
+
+        .nav-links a:hover { color: #fff; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta { background: #e67e22; color: #2d2d2d !important; padding: 0.55rem 1.4rem !important; border-radius: 50px; font-weight: 700 !important; }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: #f39c12 !important; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4); }
+
+        /* Hero */
+        .hero {
+            position: relative; min-height: 85vh;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            background: linear-gradient(160deg, #1f4e79 0%, #2d5f95 35%, #3a6faa 70%, #4a7fbb 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(230, 126, 34, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
+                        radial-gradient(ellipse at 60% 80%, rgba(230, 126, 34, 0.1) 0%, transparent 45%);
+        }
+
+        .hero-shape { position: absolute; border-radius: 50%; }
+        .hero-shape-1 { top: -80px; right: -60px; width: 350px; height: 350px; background: rgba(230, 126, 34, 0.08); animation: hFloat 18s ease-in-out infinite; }
+        .hero-shape-2 { bottom: -100px; left: -80px; width: 450px; height: 450px; background: rgba(255, 255, 255, 0.04); animation: hFloat 22s ease-in-out infinite reverse; }
+        .hero-shape-3 { top: 30%; right: 15%; width: 120px; height: 120px; background: rgba(230, 126, 34, 0.1); animation: hFloat 14s ease-in-out infinite 2s; }
+
+        @keyframes hFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-25px) scale(1.05); }
+        }
+
+        .hero-content { position: relative; z-index: 10; max-width: 780px; padding: 2rem; animation: fadeUp 1.2s ease-out; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-block; background: rgba(230, 126, 34, 0.2); color: #e67e22;
+            padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem;
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem;
+            border: 1px solid rgba(230, 126, 34, 0.3); animation: fadeUp 1.2s ease-out 0.2s both;
+        }
+
+        .hero h1 {
+            font-family: 'Nunito', sans-serif; font-size: 4rem; font-weight: 900;
+            color: #fff; line-height: 1.1; margin-bottom: 1.2rem;
+            animation: fadeUp 1.2s ease-out 0.3s both;
+        }
+
+        .hero h1 span { color: #e67e22; }
+
+        .hero-desc {
+            font-size: 1.15rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 2.5rem;
+            line-height: 1.7; max-width: 600px; margin-left: auto; margin-right: auto;
+            animation: fadeUp 1.2s ease-out 0.5s both;
+        }
+
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 1.2s ease-out 0.7s both; }
+
+        .btn-primary {
+            display: inline-block; background: #e67e22; color: #1f4e79;
+            padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none;
+            font-weight: 700; font-size: 1rem; transition: all 0.3s ease; border: 2px solid #e67e22;
+        }
+
+        .btn-primary:hover { background: #f39c12; border-color: #f39c12; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(230, 126, 34, 0.35); }
+
+        .btn-secondary {
+            display: inline-block; background: transparent; color: #fff;
+            padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none;
+            font-weight: 700; font-size: 1rem; transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-secondary:hover { border-color: #fff; background: rgba(255, 255, 255, 0.1); transform: translateY(-3px); }
+
+        .hero-trust { display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; animation: fadeUp 1.2s ease-out 0.9s both; }
+        .hero-trust-item { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 0.4rem; }
+        .hero-trust-item strong { color: #e67e22; font-size: 1rem; }
+
+        /* Services */
+        .services { padding: 6rem 0; background: #faf8f5; }
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
+        .section-label { display: inline-block; color: #1f4e79; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.8rem; }
+        .section-title { font-family: 'Nunito', sans-serif; font-size: 2.8rem; color: #1f4e79; font-weight: 900; margin-bottom: 1rem; }
+        .section-subtitle { color: #777; font-size: 1.05rem; max-width: 550px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+        .service-card {
+            background: #fff; padding: 2.2rem; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer; position: relative; overflow: hidden;
+            border: 1px solid rgba(31, 78, 121, 0.08);
+        }
+
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #1f4e79, #4a7fbb);
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(31, 78, 121, 0.12); }
+
+        .service-icon {
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg, #1f4e79, #3a6faa); border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; margin-bottom: 1.2rem; transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon { transform: scale(1.1) rotate(-5deg); }
+        .service-card h3 { font-family: 'Nunito', sans-serif; font-size: 1.25rem; font-weight: 800; color: #1f4e79; margin-bottom: 0.7rem; }
+        .service-card p { color: #666; font-size: 0.92rem; line-height: 1.7; }
+        .service-price { display: inline-block; margin-top: 1rem; color: #1f4e79; font-weight: 700; font-size: 0.9rem; padding: 0.3rem 0.9rem; background: rgba(31, 78, 121, 0.08); border-radius: 50px; }
+
+        /* About */
+        .about { padding: 6rem 0; background: #1f4e79; position: relative; overflow: hidden; }
+        .about::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(230, 126, 34, 0.08) 0%, transparent 60%); border-radius: 50%; }
+        .about-content { max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+        .about .section-label { color: #e67e22; }
+        .about .section-title { color: #fff; margin-bottom: 1.5rem; }
+        .about-text { color: rgba(255, 255, 255, 0.75); font-size: 1.08rem; line-height: 1.9; margin-bottom: 3rem; }
+
+        .stat-bar {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px; padding: 2.5rem 2rem;
+        }
+
+        .stat-item { text-align: center; }
+        .stat-number { font-family: 'Nunito', sans-serif; font-size: 2.5rem; font-weight: 900; color: #e67e22; line-height: 1; margin-bottom: 0.5rem; }
+        .stat-label { color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Testimonials */
+        .testimonials { padding: 6rem 0; background: #f4f1ec; }
+
+        .testimonial-track {
+            display: flex; gap: 2rem; overflow-x: auto; scroll-snap-type: x mandatory;
+            padding: 1rem 0 2rem; scrollbar-width: thin; scrollbar-color: #e67e22 transparent;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .testimonial-track::-webkit-scrollbar { height: 6px; }
+        .testimonial-track::-webkit-scrollbar-thumb { background: #e67e22; border-radius: 3px; }
+
+        .testimonial-card {
+            flex: 0 0 380px; scroll-snap-align: start; background: #fff;
+            padding: 2.5rem; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;
+        }
+
+        .testimonial-card:first-child { margin-left: calc((100vw - 1200px) / 2 + 24px); }
+        .testimonial-card:last-child { margin-right: calc((100vw - 1200px) / 2 + 24px); }
+        .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        .testimonial-quote { font-size: 2.5rem; color: #1f4e79; font-family: 'Nunito', sans-serif; font-weight: 900; line-height: 1; margin-bottom: 0.8rem; opacity: 0.3; }
+        .testimonial-stars { color: #f0a500; font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; }
+        .testimonial-text { color: #555; font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+
+        .testimonial-avatar {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #1f4e79, #4a7fbb); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 700; font-size: 1rem;
+        }
+
+        .testimonial-name { font-weight: 700; color: #1f4e79; font-size: 0.95rem; }
+        .testimonial-pet { color: #999; font-size: 0.8rem; }
+
+        /* Contact */
+        .contact { padding: 6rem 0; background: #faf8f5; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+
+        .contact-info-block {
+            background: linear-gradient(160deg, #1f4e79, #152d4a);
+            padding: 3rem; border-radius: 20px; color: #fff;
+            position: relative; overflow: hidden;
+        }
+
+        .contact-info-block::before { content: ''; position: absolute; top: -40%; right: -30%; width: 300px; height: 300px; background: rgba(230, 126, 34, 0.1); border-radius: 50%; }
+        .contact-info-block h3 { font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 900; margin-bottom: 1.5rem; position: relative; }
+        .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.8rem; position: relative; }
+
+        .contact-detail-icon {
+            width: 44px; height: 44px; min-width: 44px;
+            background: rgba(230, 126, 34, 0.2); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        }
+
+        .contact-detail-text h4 { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; color: #e67e22; }
+        .contact-detail-text p { color: rgba(255, 255, 255, 0.7); font-size: 0.92rem; line-height: 1.6; }
+
+        .contact-form-block {
+            background: #fff; padding: 2.5rem; border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(31, 78, 121, 0.08);
+        }
+
+        .contact-form-block h3 { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 800; color: #1f4e79; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.3rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.88rem; color: #3d3d3d; }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%; padding: 0.85rem 1rem; background: #faf8f5;
+            border: 2px solid #e8e4de; border-radius: 10px;
+            font-family: 'Inter', sans-serif; font-size: 0.92rem;
+            color: #3d3d3d; transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none; border-color: #1f4e79;
+            background: #fff; box-shadow: 0 0 0 4px rgba(31, 78, 121, 0.08);
+        }
+
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .form-submit {
+            width: 100%; padding: 1rem;
+            background: linear-gradient(135deg, #1f4e79, #3a6faa); color: #fff;
+            border: none; border-radius: 12px;
+            font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s ease; margin-top: 0.5rem;
+        }
+
+        .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(31, 78, 121, 0.3); }
+
+        /* Footer */
+        footer { background: #0d1f2d; padding: 3.5rem 0 2rem; color: rgba(255, 255, 255, 0.5); }
+
+        .footer-top {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 2.5rem; padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-brand p { color: rgba(255, 255, 255, 0.4); font-size: 0.88rem; max-width: 300px; line-height: 1.6; margin-top: 0.8rem; }
+        .footer-nav { display: flex; gap: 3rem; }
+        .footer-nav-col h4 { font-family: 'Nunito', sans-serif; color: #e67e22; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-nav-col a { display: block; color: rgba(255, 255, 255, 0.4); text-decoration: none; font-size: 0.88rem; padding: 0.3rem 0; transition: color 0.3s ease; }
+        .footer-nav-col a:hover { color: #e67e22; }
+        .footer-bottom { text-align: center; font-size: 0.82rem; }
+        .footer-bottom p { margin-bottom: 0.3rem; }
+
+        /* Scroll Animations */
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+
+        /* Responsive - 1024px */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.2rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-bar { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .testimonial-card:first-child { margin-left: 24px; }
+            .testimonial-card:last-child { margin-right: 24px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-top { flex-direction: column; gap: 2rem; }
+        }
+
+        /* Responsive - 768px */
+        @media (max-width: 768px) {
+            .hero { min-height: 70vh; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-desc { font-size: 1rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.8rem; }
+            .section-title { font-size: 2.2rem; }
+            .services-grid { gap: 1.2rem; }
+            .service-card { padding: 1.5rem; }
+            .hero-trust { flex-direction: column; gap: 0.8rem; }
+            .testimonial-card { flex: 0 0 300px; }
+            .testimonial-card:first-child { margin-left: 20px; }
+            .testimonial-card:last-child { margin-right: 20px; }
+            .footer-nav { gap: 2rem; }
+        }
+
+        /* Responsive - 480px */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+            .nav-links { gap: 0.7rem; }
+            .nav-links a { font-size: 0.72rem; letter-spacing: 0; }
+            .nav-cta { padding: 0.4rem 1rem !important; }
+            .logo { font-size: 1.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .stat-bar { padding: 1.5rem; }
+            .stat-number { font-size: 2rem; }
+            .testimonial-card { flex: 0 0 280px; padding: 1.8rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-info-block, .contact-form-block { padding: 2rem; }
+            .footer-nav { flex-direction: column; gap: 1.5rem; }
+            .services, .about, .testimonials, .contact { padding: 4rem 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">&#x1f43e;</div>
+                    Pawfect Pups
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-shape hero-shape-1"></div>
+        <div class="hero-shape hero-shape-2"></div>
+        <div class="hero-shape hero-shape-3"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Expert Dog Grooming</div>
+            <h1>Your Dog Deserves <span>Pawfect Care</span></h1>
+            <p class="hero-desc">
+                Professional grooming services that keep your dog healthy, happy, and looking their very best.
+                Trusted by families across Powder Mill Lane and beyond since opening day.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Book a Grooming Session</a>
+                <a href="#services" class="btn-secondary">Explore Our Services</a>
+            </div>
+            <div class="hero-trust">
+                <div class="hero-trust-item"><strong>100+</strong> Happy Dogs</div>
+                <div class="hero-trust-item"><strong>Certified</strong> Groomers</div>
+                <div class="hero-trust-item"><strong>Expert</strong> Care</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">What We Offer</div>
+                <h2 class="section-title">Our Grooming Services</h2>
+                <p class="section-subtitle">
+                    From quick tidy-ups to complete breed-standard grooms, we have everything
+                    your dog needs to look and feel fantastic.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-up stagger-1">
+                    <div class="service-icon">&#x2702;&#xFE0F;</div>
+                    <h3>Full Groom</h3>
+                    <p>Complete bath, blow dry, haircut, nail trim, ear clean, and finishing touches. The complete experience for your pooch.</p>
+                    <div class="service-price">From &#163;50</div>
+                </div>
+                <div class="service-card fade-up stagger-2">
+                    <div class="service-icon">&#x1f43e;</div>
+                    <h3>Puppy's First Groom</h3>
+                    <p>A gentle, patient introduction to grooming for puppies under 6 months. Building positive associations from the start.</p>
+                    <div class="service-price">From &#163;28</div>
+                </div>
+                <div class="service-card fade-up stagger-3">
+                    <div class="service-icon">&#x1f485;</div>
+                    <h3>Nail Clipping &amp; Filing</h3>
+                    <p>Quick, stress-free nail trimming and filing to keep your dog comfortable and protect your home.</p>
+                    <div class="service-price">From &#163;15</div>
+                </div>
+                <div class="service-card fade-up stagger-4">
+                    <div class="service-icon">&#x1f9F9;</div>
+                    <h3>De-shedding Treatment</h3>
+                    <p>Specialist de-shedding shampoo, deep coat conditioning, and thorough blow-out. Less hair around your home.</p>
+                    <div class="service-price">From &#163;40</div>
+                </div>
+                <div class="service-card fade-up stagger-5">
+                    <div class="service-icon">&#x1f6c1;</div>
+                    <h3>Bath &amp; Blow Dry</h3>
+                    <p>Premium shampoo and conditioner with warm bath and professional fluff dry. Perfect between full grooms.</p>
+                    <div class="service-price">From &#163;35</div>
+                </div>
+                <div class="service-card fade-up stagger-6">
+                    <div class="service-icon">&#x270B;</div>
+                    <h3>Hand Stripping</h3>
+                    <p>Traditional hand stripping for wire-coated breeds. Maintains coat texture and colour as nature intended.</p>
+                    <div class="service-price">From &#163;60</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="section-label">Our Story</div>
+                <h2 class="section-title">Expert Care for Every Dog</h2>
+                <p class="about-text">
+                    Pawfect Pups was founded on a simple belief: every dog deserves professional grooming with patience,
+                    skill, and genuine love. Our team of certified groomers treats each pup like they're part of the family.
+                    We use only natural, hypoallergenic products and take time to understand your dog's temperament, coat type,
+                    and individual needs for the best possible grooming experience.
+                </p>
+                <div class="stat-bar fade-up">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Dogs Groomed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Certified Groomers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Natural Products</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Happy Customers</div>
+                <h2 class="section-title">What Local Pet Parents Say</h2>
+                <p class="section-subtitle">
+                    Hear from families in the Powder Mill Lane area and beyond who trust us
+                    with their beloved furry friends.
+                </p>
+            </div>
+        </div>
+        <div class="testimonial-track">
+            <div class="testimonial-card">
+                <div class="testimonial-quote">&#x201C;</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-text">
+                    We were struggling to find someone near Powder Mill Lane who could handle our anxious rescue dog.
+                    The team at Pawfect Pups was incredibly patient and he now gets excited for his appointments. Brilliant!
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JM</div>
+                    <div>
+                        <div class="testimonial-name">James M.</div>
+                        <div class="testimonial-pet">Owner of Rex, German Shepherd</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-quote">&#x201C;</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-text">
+                    My Poodle's coat has never looked better. The hand stripping is absolutely perfect every time.
+                    Worth the journey from across town -- truly understand breed standards here.
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">LC</div>
+                    <div>
+                        <div class="testimonial-name">Lucy C.</div>
+                        <div class="testimonial-pet">Owner of Daisy, Standard Poodle</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-quote">&#x201C;</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-text">
+                    Found Pawfect Pups by chance and we've been loyal customers ever since. They're so professional
+                    and our dog Max always comes home clean, calm, and looking adorable. Highly recommend!
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SB</div>
+                    <div>
+                        <div class="testimonial-name">Sophie B.</div>
+                        <div class="testimonial-pet">Owner of Max, Labradoodle</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Get in Touch</div>
+                <h2 class="section-title">Book Your Dog's Next Groom</h2>
+                <p class="section-subtitle">
+                    Fill in the form or give us a call -- we'd love to meet your pup and discuss their grooming needs.
+                </p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-block fade-up">
+                    <h3>Visit Us</h3>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#x1f4cd;</div>
+                        <div class="contact-detail-text">
+                            <h4>Our Studio</h4>
+                            <p>241 Powder Mill Lane<br>Powder Mill Lane Area</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#x1f4de;</div>
+                        <div class="contact-detail-text">
+                            <h4>Phone</h4>
+                            <p>07566 757174</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#x1f552;</div>
+                        <div class="contact-detail-text">
+                            <h4>Opening Hours</h4>
+                            <p>Monday - Friday: 8:00am - 6:00pm<br>
+                            Saturday: 9:00am - 5:00pm<br>
+                            Sunday: Closed</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">&#x2709;&#xFE0F;</div>
+                        <div class="contact-detail-text">
+                            <h4>Email</h4>
+                            <p>hello@pawfectpups.co.uk</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-block fade-up">
+                    <h3>Request a Booking</h3>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ownerName">Your Name</label>
+                                <input type="text" id="ownerName" name="ownerName" required placeholder="John Smith">
+                            </div>
+                            <div class="form-group">
+                                <label for="dogName">Dog's Name</label>
+                                <input type="text" id="dogName" name="dogName" required placeholder="Max">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="07700 123456">
+                            </div>
+                            <div class="form-group">
+                                <label for="breed">Breed</label>
+                                <input type="text" id="breed" name="breed" placeholder="e.g. Labradoodle">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service...</option>
+                                <option value="full-groom">Full Groom - from &#163;50</option>
+                                <option value="puppy">Puppy's First Groom - from &#163;28</option>
+                                <option value="nails">Nail Clipping &amp; Filing - from &#163;15</option>
+                                <option value="deshed">De-shedding Treatment - from &#163;40</option>
+                                <option value="bath">Bath &amp; Blow Dry - from &#163;35</option>
+                                <option value="handstrip">Hand Stripping - from &#163;60</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Anything we should know?</label>
+                            <textarea id="notes" name="notes" placeholder="Tell us about your dog's temperament, skin conditions, or preferred style..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Request Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">&#x1f43e;</div>
+                        Pawfect Pups
+                    </div>
+                    <p>Expert, professional grooming for dogs of all breeds and sizes in the Powder Mill Lane area. We treat every pup with care and expertise.</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-col">
+                        <h4>Services</h4>
+                        <a href="#services">Full Groom</a>
+                        <a href="#services">Puppy Groom</a>
+                        <a href="#services">De-shedding</a>
+                        <a href="#services">Hand Stripping</a>
+                    </div>
+                    <div class="footer-nav-col">
+                        <h4>Company</h4>
+                        <a href="#about">About Us</a>
+                        <a href="#testimonials">Reviews</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#contact">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Pawfect Pups. All rights reserved.</p>
+                <p>241 Powder Mill Lane | 07566 757174</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Animation & Smooth Scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.fade-up').forEach(function(el) {
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
