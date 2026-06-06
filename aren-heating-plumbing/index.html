@@ -3,463 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aren Heating & Plumbing - Emergency Plumber in Brixton, South London</title>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Aren Heating &amp; Plumbing — Emergency Plumber in Brixton, London</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Saira+Condensed:wght@500;600;700&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #0d2440;
-            --navy-deep: #0a1c33;
-            --blue: #1a6b3a;
-            --amber: #ff9500;
-            --emergency: #e02424;
-            --call: #16a34a;
-            --call-dark: #128a4b;
-            --ink: #16202e;
-            --muted: #5b6675;
-            --bg: #ffffff;
-            --bg-alt: #f4f6f9;
-            --line: #e3e8ef;
+            --teal-900: #0a2a3d;
+            --teal-800: #0d3350;
+            --teal-700: #103d5e;
+            --teal-600: #165278;
+            --cream:    #f4eddc;
+            --cream-2:  #ece2cb;
+            --ink:      #16201b;
+            --muted:    #57645c;
+            --hi:       #ffc61a;
+            --hi-dark:  #c8920a;
+            --red:      #e03a2c;
+            --line:     rgba(10, 42, 61, 0.12);
+
+            --font-display: 'Anton', 'Saira Condensed', sans-serif;
+            --font-cond: 'Saira Condensed', sans-serif;
+            --font-body: 'Mulish', -apple-system, sans-serif;
+
+            /* subtle film grain for human-made texture on dark panels */
+            --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            font-family: var(--font-body);
             color: var(--ink);
-            background: var(--bg);
+            background: var(--cream);
+            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .display {
-            font-family: 'Barlow Condensed', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            line-height: 1.05;
+        h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; line-height: 0.98; letter-spacing: 0.5px; text-transform: uppercase; }
+
+        .container { max-width: 1160px; margin: 0 auto; padding: 0 22px; }
+        a { text-decoration: none; color: inherit; }
+
+        .eyebrow {
+            font-family: var(--font-cond); font-weight: 700; text-transform: uppercase;
+            letter-spacing: 3px; font-size: 0.92rem;
         }
 
-        .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-
-        a { text-decoration: none; }
+        /* hazard chevron divider */
+        .chevron {
+            height: 12px;
+            background: repeating-linear-gradient(135deg,
+                var(--hi) 0, var(--hi) 18px,
+                var(--teal-900) 18px, var(--teal-900) 36px);
+        }
 
         /* ── Emergency strip ───────────────────────────────────────── */
         .emergency-strip {
-            background: var(--emergency);
-            color: #fff;
-            text-align: center;
-            font-family: 'Barlow', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: 0.4px;
-            padding: 9px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-transform: uppercase;
+            background: var(--red); color: #fff; text-align: center;
+            font-family: var(--font-cond); font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.5px; font-size: 0.95rem; padding: 9px 14px;
+            display: flex; align-items: center; justify-content: center; gap: 11px;
         }
-
         .pulse-dot {
-            width: 10px; height: 10px; border-radius: 50%;
-            background: #fff;
-            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-            animation: pulse 1.6s infinite;
-            flex: 0 0 auto;
+            width: 11px; height: 11px; border-radius: 50%; background: #fff;
+            box-shadow: 0 0 0 0 rgba(255,255,255,0.8); animation: pulse 1.5s infinite; flex: 0 0 auto;
         }
-
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
-            70% { box-shadow: 0 0 0 9px rgba(255,255,255,0); }
+            0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.75); }
+            70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
             100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
         }
 
         /* ── Sticky header with big tap-to-call button ─────────────── */
         header {
-            background: var(--navy);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+            background: var(--teal-900); position: sticky; top: 0; z-index: 1000;
+            border-bottom: 3px solid var(--hi);
+            box-shadow: 0 6px 22px rgba(0,0,0,0.22);
         }
-
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 0;
-            gap: 16px;
-        }
-
+        nav { display: flex; align-items: center; gap: 18px; padding: 11px 0; }
         .logo {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-weight: 800;
-            font-size: 1.7rem;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            white-space: nowrap;
+            font-family: var(--font-display); font-size: 1.85rem; color: var(--cream);
+            display: flex; align-items: center; gap: 11px; white-space: nowrap; letter-spacing: 1px;
         }
-
         .logo .mark {
-            background: var(--amber);
-            color: var(--navy-deep);
-            width: 38px; height: 38px;
-            border-radius: 8px;
+            width: 42px; height: 42px; border-radius: 9px; flex: 0 0 auto;
+            background: var(--hi); color: var(--teal-900);
             display: flex; align-items: center; justify-content: center;
-            flex: 0 0 auto;
+            transform: rotate(-6deg); box-shadow: 0 3px 0 var(--hi-dark);
         }
-
-        .logo span { color: var(--amber); }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1.9rem;
-            margin-left: auto;
-        }
-
+        .logo span { color: var(--hi); }
+        .nav-links { display: flex; list-style: none; gap: 1.8rem; margin-left: auto; }
         .nav-links a {
-            color: #cdd6e4;
-            font-weight: 600;
-            font-size: 0.95rem;
-            font-family: 'Barlow', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            transition: color 0.2s;
+            font-family: var(--font-cond); font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1.5px; font-size: 0.95rem; color: #bcd3c9; transition: color 0.18s;
         }
+        .nav-links a:hover { color: var(--hi); }
 
-        .nav-links a:hover { color: #fff; }
-
-        /* The big fixed-at-top click-to-call button */
+        /* THE primary fixed-at-top click-to-call button (hi-vis) */
         .call-btn {
-            background: var(--call);
-            color: #fff;
-            font-family: 'Barlow', sans-serif;
-            font-weight: 700;
-            font-size: 1.05rem;
-            padding: 11px 20px;
-            border-radius: 9px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 0 var(--call-dark);
-            transition: transform 0.12s, box-shadow 0.12s;
+            margin-left: auto; background: var(--hi); color: var(--teal-900);
+            border-radius: 10px; padding: 9px 18px; display: inline-flex; align-items: center; gap: 11px;
+            box-shadow: 0 4px 0 var(--hi-dark); transition: transform 0.1s, box-shadow 0.1s;
             white-space: nowrap;
-            line-height: 1;
         }
-
-        .call-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--call-dark); }
+        .nav-links + .call-btn { margin-left: 1.8rem; }
+        .call-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--hi-dark); }
         .call-btn svg { flex: 0 0 auto; }
-        .call-btn .label { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
-        .call-btn .label small { font-size: 0.62rem; font-weight: 600; opacity: 0.85; letter-spacing: 1px; text-transform: uppercase; }
-        .call-btn .label b { font-size: 1.18rem; font-weight: 800; letter-spacing: 0.3px; }
+        .call-btn .lbl { display: flex; flex-direction: column; line-height: 1; gap: 3px; }
+        .call-btn .lbl small { font-family: var(--font-cond); font-weight: 700; font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.8; }
+        .call-btn .lbl b { font-family: var(--font-display); font-size: 1.32rem; letter-spacing: 0.5px; }
 
         /* ── Hero ──────────────────────────────────────────────────── */
         .hero {
-            position: relative;
-            background:
-                linear-gradient(rgba(10,28,51,0.86), rgba(10,28,51,0.94)),
-                repeating-linear-gradient(45deg, #11294a 0, #11294a 22px, #0f2746 22px, #0f2746 44px);
-            color: #fff;
-            padding: 4.4rem 0 4rem;
+            position: relative; background: var(--teal-900); color: var(--cream);
+            padding: 4.6rem 0 4.2rem; overflow: hidden;
         }
+        .hero::before { /* grain */
+            content: ''; position: absolute; inset: 0; background-image: var(--grain);
+            opacity: 0.06; pointer-events: none; mix-blend-mode: overlay;
+        }
+        .hero::after { /* glow */
+            content: ''; position: absolute; top: -30%; right: -10%; width: 620px; height: 620px;
+            background: radial-gradient(circle, rgba(22,82,120,0.55) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hero-wrench {
+            position: absolute; right: -120px; bottom: -90px; width: 560px; height: 560px;
+            color: rgba(255,198,26,0.07); transform: rotate(18deg); pointer-events: none; z-index: 0;
+        }
+        .hero .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1.55fr 1fr; gap: 2.5rem; align-items: center; }
 
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            background: rgba(224,36,36,0.16);
-            border: 1.5px solid var(--emergency);
-            color: #ffd9d9;
-            font-family: 'Barlow', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 7px 15px;
-            border-radius: 50px;
-            margin-bottom: 1.4rem;
+            display: inline-flex; align-items: center; gap: 9px; margin-bottom: 1.5rem;
+            background: rgba(224,58,44,0.16); border: 1.5px solid rgba(224,58,44,0.6); color: #ffd2cc;
+            font-family: var(--font-cond); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.82rem; padding: 7px 14px; border-radius: 50px;
+            opacity: 0; animation: rise 0.6s ease-out 0.05s forwards;
         }
-
         .hero h1 {
-            font-size: 4.1rem;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 1rem;
-            max-width: 900px;
+            font-size: 4.6rem; color: #fff; margin-bottom: 1.1rem;
+            opacity: 0; animation: rise 0.6s ease-out 0.15s forwards;
         }
+        .hero h1 .hl { color: var(--hi); }
+        .hero h1 .underline {
+            position: relative; white-space: nowrap;
+        }
+        .hero h1 .underline::after {
+            content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 7px;
+            background: var(--hi); border-radius: 4px; transform: skewX(-12deg);
+        }
+        .hero-sub {
+            font-family: var(--font-body); font-size: 1.22rem; font-weight: 500; color: #cdded6;
+            max-width: 540px; margin-bottom: 2rem; line-height: 1.5;
+            opacity: 0; animation: rise 0.6s ease-out 0.28s forwards;
+        }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; opacity: 0; animation: rise 0.6s ease-out 0.4s forwards; }
 
-        .hero h1 em { color: var(--amber); font-style: normal; }
+        @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
-        .hero p {
-            font-size: 1.22rem;
-            color: #c7d2e2;
-            max-width: 620px;
-            margin-bottom: 2rem;
-            font-weight: 400;
+        .btn-call {
+            background: var(--hi); color: var(--teal-900); border-radius: 12px;
+            padding: 17px 30px; display: inline-flex; align-items: center; gap: 13px;
+            box-shadow: 0 6px 0 var(--hi-dark); transition: transform 0.1s, box-shadow 0.1s;
         }
+        .btn-call:hover { transform: translateY(3px); box-shadow: 0 3px 0 var(--hi-dark); }
+        .btn-call svg { flex: 0 0 auto; }
+        .btn-call .bc-lbl { display: flex; flex-direction: column; line-height: 1; gap: 4px; text-align: left; }
+        .btn-call .bc-lbl small { font-family: var(--font-cond); font-weight: 700; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; }
+        .btn-call .bc-lbl b { font-family: var(--font-display); font-size: 1.9rem; letter-spacing: 0.5px; }
 
-        .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+        .btn-quote {
+            font-family: var(--font-cond); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--cream); border: 2px solid rgba(244,237,220,0.4); border-radius: 12px;
+            padding: 16px 24px; font-size: 1rem; transition: background 0.18s, border-color 0.18s;
+        }
+        .btn-quote:hover { background: rgba(244,237,220,0.1); border-color: var(--cream); }
 
-        .btn-primary {
-            background: var(--call);
-            color: #fff;
-            font-family: 'Barlow', sans-serif;
-            font-weight: 800;
-            font-size: 1.25rem;
-            padding: 16px 30px;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 5px 0 var(--call-dark);
-            transition: transform 0.12s, box-shadow 0.12s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        /* Enamel rating stamp — REAL Google rating only */
+        .hero-stamp { display: flex; justify-content: center; opacity: 0; animation: rise 0.7s ease-out 0.5s forwards; }
+        .stamp {
+            position: relative; width: 260px; background: var(--cream); color: var(--teal-900);
+            border-radius: 16px; padding: 1.9rem 1.6rem; text-align: center;
+            border: 3px solid var(--teal-900); transform: rotate(3deg);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.35), inset 0 0 0 6px var(--cream), inset 0 0 0 7px rgba(10,42,61,0.15);
         }
-        .btn-primary:hover { transform: translateY(2px); box-shadow: 0 3px 0 var(--call-dark); }
+        .stamp::before {
+            content: 'VERIFIED'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%) rotate(-3deg);
+            background: var(--red); color: #fff; font-family: var(--font-cond); font-weight: 700;
+            letter-spacing: 2px; font-size: 0.72rem; padding: 4px 13px; border-radius: 30px;
+        }
+        .stamp .g-rating { font-family: var(--font-display); font-size: 3.8rem; line-height: 1; }
+        .stamp .g-stars { color: var(--hi); font-size: 1.35rem; letter-spacing: 3px; margin: 4px 0 6px; }
+        .stamp .g-meta { font-family: var(--font-cond); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.92rem; color: var(--muted); }
+        .stamp .g-src { font-weight: 800; color: var(--teal-700); }
 
-        .btn-ghost {
-            background: transparent;
-            color: #fff;
-            border: 2px solid rgba(255,255,255,0.45);
-            font-family: 'Barlow', sans-serif;
-            font-weight: 700;
-            font-size: 1.05rem;
-            padding: 14px 26px;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: background 0.2s, border-color 0.2s;
+        /* ── Value band (offers, not claims) ───────────────────────── */
+        .value { background: var(--cream-2); padding: 2.2rem 0; }
+        .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+        .value-item { display: flex; align-items: center; gap: 14px; }
+        .value-item .vi-ic {
+            width: 52px; height: 52px; border-radius: 11px; flex: 0 0 auto;
+            background: var(--teal-900); color: var(--hi); display: flex; align-items: center; justify-content: center;
+            transform: rotate(-4deg);
         }
-        .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+        .value-item .vi-top { font-family: var(--font-display); font-size: 1.32rem; color: var(--teal-900); line-height: 1; }
+        .value-item .vi-sub { font-size: 0.94rem; color: var(--muted); font-weight: 600; }
 
-        .hero-reassure {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.4rem 2rem;
-            margin-top: 2.4rem;
-            padding-top: 1.8rem;
-            border-top: 1px solid rgba(255,255,255,0.14);
-        }
-        .hero-reassure div {
-            display: flex; align-items: center; gap: 9px;
-            font-family: 'Barlow', sans-serif; font-weight: 600;
-            color: #dbe4f1; font-size: 1rem;
-        }
-        .hero-reassure svg { color: var(--amber); flex: 0 0 auto; }
+        /* ── Section heads ─────────────────────────────────────────── */
+        section { scroll-margin-top: 84px; }
+        .section-head { max-width: 720px; margin: 0 auto 2.8rem; text-align: center; }
+        .section-head .eyebrow { color: var(--teal-600); display: inline-block; margin-bottom: 0.7rem; }
+        .section-title { font-size: 3rem; color: var(--teal-900); }
+        .section-sub { color: var(--muted); font-size: 1.1rem; margin-top: 0.7rem; font-weight: 500; }
 
-        /* ── Trust bar ─────────────────────────────────────────────── */
-        .trust-bar { background: var(--bg-alt); border-bottom: 1px solid var(--line); padding: 1.8rem 0; }
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.2rem;
-            align-items: center;
-        }
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            justify-content: center;
-            text-align: left;
-        }
-        .trust-item .badge-ic {
-            width: 46px; height: 46px; border-radius: 9px;
-            background: var(--navy);
-            color: var(--amber);
-            display: flex; align-items: center; justify-content: center;
-            flex: 0 0 auto;
-        }
-        .trust-item .t-top {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-weight: 800; font-size: 1.32rem; color: var(--navy);
-            text-transform: uppercase; line-height: 1;
-        }
-        .trust-item .t-sub { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
-        .stars-inline { color: var(--amber); letter-spacing: 2px; font-size: 1rem; }
-
-        /* ── Sections ──────────────────────────────────────────────── */
-        section { scroll-margin-top: 80px; }
-
-        .section-head { text-align: center; max-width: 680px; margin: 0 auto 2.8rem; }
-        .section-kicker {
-            font-family: 'Barlow', sans-serif; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 2px;
-            color: var(--blue); font-size: 0.9rem; margin-bottom: 0.6rem;
-        }
-        .section-title { font-size: 2.7rem; font-weight: 800; color: var(--navy); }
-        .section-sub { color: var(--muted); font-size: 1.08rem; margin-top: 0.7rem; }
-
+        /* ── Services ──────────────────────────────────────────────── */
         .services { padding: 4.6rem 0; }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 1.5rem;
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(322px, 1fr)); gap: 1.4rem; }
         .service-card {
-            background: var(--bg);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 2rem 1.8rem;
-            border-top: 4px solid var(--blue);
-            transition: transform 0.18s, box-shadow 0.18s;
+            position: relative; background: #fff; border: 2px solid var(--teal-900); border-radius: 14px;
+            padding: 2rem 1.8rem 1.8rem; box-shadow: 6px 6px 0 rgba(10,42,61,0.1);
+            transition: transform 0.15s, box-shadow 0.15s; overflow: hidden;
         }
-        .service-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(13,36,64,0.12); }
+        .service-card:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--hi); }
+        .service-card .s-num {
+            position: absolute; top: 0.6rem; right: 1.1rem; font-family: var(--font-display);
+            font-size: 3.2rem; color: var(--cream-2); line-height: 1; z-index: 0;
+        }
         .service-ic {
-            width: 54px; height: 54px; border-radius: 10px;
-            background: #e8f0fd; color: var(--blue);
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1.1rem;
+            width: 56px; height: 56px; border-radius: 12px; background: var(--teal-900); color: var(--hi);
+            display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; position: relative; z-index: 1;
         }
-        .service-card h3 { font-size: 1.5rem; color: var(--navy); margin-bottom: 0.5rem; font-weight: 700; }
-        .service-card p { color: var(--muted); font-size: 0.98rem; }
+        .service-card h3 { font-size: 1.6rem; color: var(--teal-900); margin-bottom: 0.45rem; position: relative; z-index: 1; }
+        .service-card p { color: var(--muted); font-size: 0.98rem; font-weight: 500; position: relative; z-index: 1; }
 
-        /* ── Areas we cover ────────────────────────────────────────── */
-        .areas { padding: 4.6rem 0; background: var(--navy); color: #fff; }
+        /* ── Areas We Cover ────────────────────────────────────────── */
+        .areas { position: relative; background: var(--teal-900); color: var(--cream); padding: 4.6rem 0; overflow: hidden; }
+        .areas::before { content: ''; position: absolute; inset: 0; background-image: var(--grain); opacity: 0.06; mix-blend-mode: overlay; pointer-events: none; }
+        .areas .container { position: relative; z-index: 2; }
+        .areas .section-head .eyebrow { color: var(--hi); }
         .areas .section-title { color: #fff; }
-        .areas .section-kicker { color: var(--amber); }
-        .areas .section-sub { color: #b9c5d8; }
-        .areas-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
-        .areas-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.7rem;
-        }
+        .areas .section-sub { color: #b6cabf; }
+        .areas-layout { display: grid; grid-template-columns: 1.25fr 1fr; gap: 2.6rem; align-items: center; }
+        .areas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
         .area-chip {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.13);
-            border-radius: 8px;
-            padding: 11px 12px;
-            font-family: 'Barlow', sans-serif;
-            font-weight: 600;
-            font-size: 0.98rem;
-            display: flex; align-items: center; gap: 8px;
-            color: #e7edf6;
+            display: flex; align-items: center; gap: 8px; padding: 12px 13px; border-radius: 9px;
+            background: rgba(244,237,220,0.06); border: 1px solid rgba(244,237,220,0.16); color: #e7eee9;
+            font-family: var(--font-cond); font-weight: 600; letter-spacing: 0.5px; font-size: 1rem;
         }
-        .area-chip svg { color: var(--amber); flex: 0 0 auto; }
-        .areas-aside {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-left: 4px solid var(--amber);
-            border-radius: 12px;
-            padding: 2rem;
+        .area-chip svg { color: var(--hi); flex: 0 0 auto; }
+        .areas-cta {
+            background: var(--teal-700); border: 2px solid var(--hi); border-radius: 14px; padding: 2rem;
         }
-        .areas-aside h3 { color: #fff; font-size: 1.7rem; margin-bottom: 0.7rem; }
-        .areas-aside p { color: #c4cfe0; margin-bottom: 1.4rem; }
+        .areas-cta h3 { font-size: 1.9rem; color: #fff; margin-bottom: 0.6rem; }
+        .areas-cta p { color: #c4d4cc; font-weight: 500; margin-bottom: 1.4rem; }
 
-        /* ── Why us ────────────────────────────────────────────────── */
-        .why { padding: 4.6rem 0; }
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.6rem; }
-        .why-item { display: flex; gap: 14px; align-items: flex-start; }
-        .why-item .chk {
-            width: 40px; height: 40px; border-radius: 9px; flex: 0 0 auto;
-            background: #e7f6ee; color: var(--call);
-            display: flex; align-items: center; justify-content: center;
+        /* ── Trust reinforcement + (conditional) accreditations ───── */
+        .trust { padding: 4rem 0; background: var(--cream); }
+        .trust-line {
+            display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+            text-align: center; margin-bottom: 1.6rem;
         }
-        .why-item h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 0.25rem; }
-        .why-item p { color: var(--muted); font-size: 0.96rem; }
-
-        /* ── Reviews ───────────────────────────────────────────────── */
-        .reviews { padding: 4.6rem 0; background: var(--bg-alt); }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .review-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.9rem; }
-        .review-card .stars { color: var(--amber); font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 0.8rem; }
-        .review-card .review-text { color: var(--ink); font-size: 1rem; margin-bottom: 1.1rem; }
-        .review-card .review-author { font-family: 'Barlow', sans-serif; font-weight: 700; color: var(--navy); }
-        .review-card .review-meta { color: var(--muted); font-size: 0.85rem; }
+        .trust-line .tl-stars { color: var(--hi); font-size: 1.6rem; letter-spacing: 3px; -webkit-text-stroke: 1px var(--hi-dark); }
+        .trust-line .tl-text { font-family: var(--font-display); font-size: 1.7rem; color: var(--teal-900); }
+        .trust-line .tl-text small { font-family: var(--font-cond); font-weight: 600; color: var(--muted); font-size: 1rem; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        .accreditations { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+        .accred-badge {
+            font-family: var(--font-cond); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            font-size: 0.92rem; color: var(--teal-900); background: #fff; border: 2px solid var(--teal-900);
+            border-radius: 50px; padding: 8px 18px; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .accred-badge svg { color: var(--teal-700); }
 
         /* ── Contact / quote ───────────────────────────────────────── */
-        .contact { padding: 4.6rem 0; }
-        .contact-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; }
-        .contact-info-card {
-            background: var(--navy); color: #fff; border-radius: 14px; padding: 2.4rem;
+        .contact { padding: 4.6rem 0; background: var(--cream-2); }
+        .contact-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 2.4rem; align-items: start; }
+        .contact-card { background: var(--teal-900); color: var(--cream); border-radius: 16px; padding: 2.4rem; position: relative; overflow: hidden; }
+        .contact-card::before { content: ''; position: absolute; inset: 0; background-image: var(--grain); opacity: 0.06; mix-blend-mode: overlay; }
+        .contact-card > * { position: relative; z-index: 1; }
+        .contact-card h3 { font-size: 2.1rem; color: #fff; margin-bottom: 0.4rem; }
+        .contact-card .cc-lead { color: #bccabf; font-weight: 500; margin-bottom: 1.6rem; }
+        .cc-phone {
+            display: flex; align-items: center; gap: 14px; background: var(--hi); color: var(--teal-900);
+            border-radius: 12px; padding: 16px 18px; box-shadow: 0 5px 0 var(--hi-dark); margin-bottom: 1.4rem;
         }
-        .contact-info-card h3 { font-size: 1.9rem; margin-bottom: 1.4rem; }
-        .ci-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 1.3rem; }
-        .ci-row .ci-ic {
-            width: 42px; height: 42px; border-radius: 9px; flex: 0 0 auto;
-            background: rgba(255,255,255,0.1); color: var(--amber);
-            display: flex; align-items: center; justify-content: center;
-        }
-        .ci-row .ci-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #9fb0c7; font-weight: 600; font-family: 'Barlow', sans-serif; }
-        .ci-row .ci-value { font-size: 1.15rem; font-weight: 600; color: #fff; }
-        .ci-row .ci-value a { color: #fff; }
-        .ci-row .ci-value .emoji-hours { color: var(--call); font-weight: 700; }
+        .cc-phone svg { flex: 0 0 auto; }
+        .cc-phone .ccp-lbl { font-family: var(--font-cond); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; }
+        .cc-phone .ccp-num { font-family: var(--font-display); font-size: 1.7rem; letter-spacing: 0.5px; line-height: 1; }
+        .cc-row { display: flex; align-items: center; gap: 13px; margin-bottom: 1rem; }
+        .cc-row .cc-ic { width: 40px; height: 40px; border-radius: 9px; background: rgba(244,237,220,0.1); color: var(--hi); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+        .cc-row .cc-k { font-family: var(--font-cond); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.72rem; color: #93a89e; }
+        .cc-row .cc-v { font-weight: 700; font-size: 1.05rem; color: #fff; }
+        .cc-row .cc-v .open { color: var(--hi); }
 
-        .quote-form { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 2.4rem; box-shadow: 0 18px 50px rgba(13,36,64,0.07); }
-        .quote-form h3 { font-size: 1.9rem; color: var(--navy); margin-bottom: 0.4rem; }
-        .quote-form > p { color: var(--muted); margin-bottom: 1.6rem; }
-        .form-group { margin-bottom: 1.1rem; }
-        .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.9rem; color: var(--navy); font-family: 'Barlow', sans-serif; }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 0.85rem 1rem; border: 1.5px solid var(--line); border-radius: 8px;
-            font-family: 'Inter', sans-serif; font-size: 0.98rem; color: var(--ink); background: #fbfcfe;
+        .quote-form { background: #fff; border: 2px solid var(--teal-900); border-radius: 16px; padding: 2.3rem; box-shadow: 8px 8px 0 rgba(10,42,61,0.1); }
+        .quote-form h3 { font-size: 1.9rem; color: var(--teal-900); margin-bottom: 0.3rem; }
+        .quote-form > p { color: var(--muted); font-weight: 500; margin-bottom: 1.5rem; }
+        .fg { margin-bottom: 1rem; }
+        .fg label { display: block; font-family: var(--font-cond); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: var(--teal-900); margin-bottom: 0.4rem; }
+        .fg input, .fg select, .fg textarea {
+            width: 100%; padding: 0.85rem 1rem; border: 2px solid var(--line); border-radius: 9px;
+            font-family: var(--font-body); font-size: 1rem; color: var(--ink); background: var(--cream);
         }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none; border-color: var(--blue); background: #fff; box-shadow: 0 0 0 3px rgba(21,101,216,0.12);
+        .fg input:focus, .fg select:focus, .fg textarea:focus { outline: none; border-color: var(--teal-700); background: #fff; }
+        .fg textarea { resize: vertical; min-height: 90px; }
+        .form-btn {
+            width: 100%; background: var(--hi); color: var(--teal-900); border: none; cursor: pointer;
+            font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 0.5px; text-transform: uppercase;
+            padding: 15px; border-radius: 11px; box-shadow: 0 5px 0 var(--hi-dark); transition: transform 0.1s, box-shadow 0.1s;
         }
-        .form-group textarea { resize: vertical; min-height: 96px; }
-        .form-submit {
-            width: 100%; background: var(--call); color: #fff; border: none;
-            font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 1.15rem;
-            padding: 15px; border-radius: 9px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;
-            box-shadow: 0 4px 0 var(--call-dark); transition: transform 0.12s, box-shadow 0.12s;
-        }
-        .form-submit:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--call-dark); }
+        .form-btn:hover { transform: translateY(2px); box-shadow: 0 3px 0 var(--hi-dark); }
 
         /* ── Footer ────────────────────────────────────────────────── */
-        footer { background: var(--navy-deep); color: #93a3ba; padding: 2.6rem 0 6rem; text-align: center; }
-        footer .logo { justify-content: center; font-size: 1.5rem; margin-bottom: 0.9rem; }
-        footer p { margin-bottom: 0.4rem; font-size: 0.92rem; }
-        footer .foot-badges { margin-top: 1.1rem; font-family: 'Barlow', sans-serif; font-weight: 600; color: #c2cede; letter-spacing: 0.5px; }
+        footer { background: var(--teal-900); color: #9fb4aa; padding: 2.8rem 0 6.5rem; text-align: center; }
+        footer .logo { justify-content: center; font-size: 1.6rem; margin-bottom: 0.9rem; color: var(--cream); }
+        footer p { font-size: 0.94rem; margin-bottom: 0.4rem; }
+        footer .f-phone { font-family: var(--font-display); font-size: 1.5rem; color: var(--hi); letter-spacing: 0.5px; }
 
-        /* ── Mobile fixed call bar (mobile-first tap-to-call) ──────── */
-        .mobile-call-bar {
-            display: none;
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            z-index: 1200;
-            background: var(--call);
-            box-shadow: 0 -3px 16px rgba(0,0,0,0.22);
-        }
-        .mobile-call-bar a {
-            display: flex; align-items: center; justify-content: center; gap: 11px;
-            color: #fff; font-family: 'Barlow', sans-serif; font-weight: 800;
-            font-size: 1.25rem; padding: 15px; text-transform: uppercase; letter-spacing: 0.5px;
-        }
+        /* ── Mobile fixed tap-to-call bar ──────────────────────────── */
+        .mobile-call-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1300; background: var(--hi); box-shadow: 0 -4px 18px rgba(0,0,0,0.28); }
+        .mobile-call-bar a { display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--teal-900); font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.5px; text-transform: uppercase; padding: 14px; }
 
         /* ── Responsive ────────────────────────────────────────────── */
-        @media (max-width: 900px) {
-            .areas-layout, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
-            .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+        @media (max-width: 920px) {
+            .hero .container { grid-template-columns: 1fr; gap: 2.2rem; }
+            .hero-stamp { justify-content: flex-start; }
+            .areas-layout, .contact-layout { grid-template-columns: 1fr; }
+            .value-grid { grid-template-columns: 1fr; gap: 1.1rem; }
         }
-
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero h1 { font-size: 2.9rem; }
-            .hero p { font-size: 1.1rem; }
-            .section-title { font-size: 2.1rem; }
+            .hero { padding: 3.4rem 0 3.6rem; }
+            .hero h1 { font-size: 3.1rem; }
+            .section-title { font-size: 2.3rem; }
             .areas-grid { grid-template-columns: repeat(2, 1fr); }
-            .call-btn .label small { display: none; }
-            .call-btn { padding: 9px 15px; }
+            .call-btn .lbl small { display: none; }
             .mobile-call-bar { display: block; }
-            body { padding-bottom: 62px; }
-            footer { padding-bottom: 5.5rem; }
+            body { padding-bottom: 64px; }
+            footer { padding-bottom: 5.4rem; }
         }
-
-        @media (max-width: 420px) {
-            .hero h1 { font-size: 2.4rem; }
-            .trust-grid { grid-template-columns: 1fr; }
+        @media (max-width: 430px) {
+            .hero h1 { font-size: 2.55rem; }
+            .stamp { transform: rotate(0); }
             .areas-grid { grid-template-columns: 1fr; }
+            .btn-call { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -468,28 +357,27 @@
     <!-- Emergency Strip -->
     <div class="emergency-strip">
         <span class="pulse-dot"></span>
-        24/7 Emergency Plumber &mdash; Burst Pipes &amp; Leaks Answered Day or Night
+        24/7 Emergency Call-Out &mdash; Burst Pipes &amp; Leaks, Day or Night
     </div>
 
-    <!-- Header & Navigation (sticky) with big tap-to-call button -->
+    <!-- Header (sticky) with big tap-to-call button -->
     <header>
         <div class="container">
             <nav>
                 <div class="logo">
                     <span class="mark">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6-3 3-6-6z"/><path d="M11 7L4 14v6h6l7-7"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4.5a4 4 0 0 0-5 5L4 15v5h5l5.5-5.5a4 4 0 0 0 5-5l-2.7 2.7-2.3-.4-.4-2.3z"/></svg>
                     </span>
                     AREN <span>HEATING</span>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#services">Services</a></li>
                     <li><a href="#areas">Areas</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <a href="tel:+442039961912" class="call-btn">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    <span class="label"><small>Tap to call</small><b>020 3996 1912</b></span>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span class="lbl"><small>Tap to call</small><b>020 3996 1912</b></span>
                 </a>
             </nav>
         </div>
@@ -497,47 +385,47 @@
 
     <!-- Hero -->
     <section class="hero">
+        <svg class="hero-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14.5 4.5a4 4 0 0 0-5 5L4 15v5h5l5.5-5.5a4 4 0 0 0 5-5l-2.7 2.7-2.3-.4-.4-2.3z"/></svg>
         <div class="container">
-            <div class="hero-badge">
-                <span class="pulse-dot" style="background:var(--emergency);box-shadow:0 0 0 0 rgba(224,36,36,0.7);"></span>
-                Emergency call-outs &middot; No call-out fee
+            <div class="hero-copy">
+                <div class="hero-badge"><span class="pulse-dot" style="background:var(--red);box-shadow:0 0 0 0 rgba(224,58,44,0.7);"></span> Emergency Plumber &middot; Brixton &amp; South London</div>
+                <h1>Brixton's <span class="hl">24/7</span> <span class="underline">Emergency</span> Plumbers</h1>
+                <p class="hero-sub">Burst pipe, no hot water or a boiler that's packed in? One tap and you're through to a local Brixton plumber &mdash; no copying numbers out, no waiting.</p>
+                <div class="hero-actions">
+                    <a href="tel:+442039961912" class="btn-call">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span class="bc-lbl"><small>Tap to call now</small><b>020 3996 1912</b></span>
+                    </a>
+                    <a href="#contact" class="btn-quote">Get a Quote</a>
+                </div>
             </div>
-            <h1>Brixton's <em>24/7 Emergency</em> Plumbers &mdash; On Site Fast</h1>
-            <p>Burst pipe, no hot water, blocked drain or a boiler that's packed in? Tap the button, we pick up, and a Gas Safe engineer is on the way.</p>
-            <div class="hero-actions">
-                <a href="tel:+442039961912" class="btn-primary">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    Call 020 3996 1912
-                </a>
-                <a href="#contact" class="btn-ghost">Get a Fast Quote</a>
-            </div>
-            <div class="hero-reassure">
-                <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Gas Safe registered</div>
-                <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Fixed, upfront pricing</div>
-                <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Same-day call-outs</div>
+            <div class="hero-stamp">
+                <div class="stamp">
+                    <div class="g-rating">4.8</div>
+                    <div class="g-stars">★★★★★</div>
+                    <div class="g-meta">Rated on <span class="g-src">Google</span><br>262 reviews</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Bar (Gas Safe / Checkatrade / Google rating / experience) -->
-    <section class="trust-bar">
+    <div class="chevron"></div>
+
+    <!-- Value band (offers, not unverifiable claims) -->
+    <section class="value">
         <div class="container">
-            <div class="trust-grid">
-                <div class="trust-item">
-                    <div class="badge-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-                    <div><div class="t-top">Gas Safe</div><div class="t-sub">Registered No. 000000</div></div>
+            <div class="value-grid">
+                <div class="value-item">
+                    <div class="vi-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                    <div><div class="vi-top">One Tap to Call</div><div class="vi-sub">No copying the number out by hand</div></div>
                 </div>
-                <div class="trust-item">
-                    <div class="badge-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
-                    <div><div class="t-top">Checkatrade</div><div class="t-sub">Approved member</div></div>
+                <div class="value-item">
+                    <div class="vi-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+                    <div><div class="vi-top">24/7 Call-Outs</div><div class="vi-sub">Day, night and weekends</div></div>
                 </div>
-                <div class="trust-item">
-                    <div class="badge-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
-                    <div><div class="stars-inline">★★★★★</div><div class="t-sub">4.8/5 &middot; 262+ Google reviews</div></div>
-                </div>
-                <div class="trust-item">
-                    <div class="badge-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-                    <div><div class="t-top">Local Experts</div><div class="t-sub">Serving Brixton &amp; South London</div></div>
+                <div class="value-item">
+                    <div class="vi-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                    <div><div class="vi-top">Local to You</div><div class="vi-sub">Brixton &amp; South London</div></div>
                 </div>
             </div>
         </div>
@@ -547,40 +435,46 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-head">
-                <div class="section-kicker">What We Do</div>
+                <span class="eyebrow">What We Do</span>
                 <h2 class="section-title">Plumbing &amp; Heating Services</h2>
-                <p class="section-sub">From a dripping tap to a full bathroom, one local Brixton team handles the lot.</p>
+                <p class="section-sub">From a dripping tap to a full bathroom &mdash; one local team handles the lot.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></div>
-                    <h3>Emergency Leaks &amp; Burst Pipes</h3>
-                    <p>Water where it shouldn't be? We isolate the leak fast and stop the damage before it spreads.</p>
+                    <span class="s-num">01</span>
+                    <div class="service-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></div>
+                    <h3>Leaks &amp; Burst Pipes</h3>
+                    <p>Water where it shouldn't be? We find the leak fast and stop the damage before it spreads.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8"/><circle cx="12" cy="16" r="1.6"/></svg></div>
+                    <span class="s-num">02</span>
+                    <div class="service-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8"/><circle cx="12" cy="16" r="1.6"/></svg></div>
                     <h3>Boiler Repair &amp; Servicing</h3>
-                    <p>No heating or hot water? Gas Safe engineers diagnose, repair and service all major boiler makes.</p>
+                    <p>No heating or hot water? We diagnose, repair and service all the major boiler makes.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M6 7v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M9 7V5a3 3 0 0 1 6 0v2"/></svg></div>
+                    <span class="s-num">03</span>
+                    <div class="service-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M6 7v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M9 7V5a3 3 0 0 1 6 0v2"/></svg></div>
                     <h3>Blocked Drains &amp; Toilets</h3>
-                    <p>Sinks, toilets and outside drains cleared with proper kit &mdash; not a quick poke and a guess.</p>
+                    <p>Sinks, toilets and outside drains cleared properly &mdash; not a quick poke and a guess.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-5a8 8 0 0 1 16 0v5"/><path d="M2 20h20M12 7V3"/></svg></div>
+                    <span class="s-num">04</span>
+                    <div class="service-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-5a8 8 0 0 1 16 0v5"/><path d="M2 20h20M12 7V3"/></svg></div>
                     <h3>Bathroom Installation</h3>
-                    <p>Full bathroom and wet-room fits, taps, showers and radiators &mdash; tidy work, done right first time.</p>
+                    <p>Full bathrooms, showers and radiators &mdash; tidy work, done right the first time.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6-3 3-6-6z"/><path d="M11 7L4 14v6h6l7-7"/></svg></div>
+                    <span class="s-num">05</span>
+                    <div class="service-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4.5a4 4 0 0 0-5 5L4 15v5h5l5.5-5.5a4 4 0 0 0 5-5l-2.7 2.7-2.3-.4-.4-2.3z"/></svg></div>
                     <h3>Taps, Toilets &amp; Showers</h3>
                     <p>Dripping taps, weak showers, running loos &mdash; the small jobs sorted without the wait.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 5 4-12 2 7h6"/></svg></div>
+                    <span class="s-num">06</span>
+                    <div class="service-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 5 4-12 2 7h6"/></svg></div>
                     <h3>Power Flushing</h3>
-                    <p>Cold spots and noisy pipes? A full system power flush gets your heating running like new.</p>
+                    <p>Cold spots and noisy pipes? A full system flush gets your heating running like new.</p>
                 </div>
             </div>
         </div>
@@ -590,9 +484,9 @@
     <section id="areas" class="areas">
         <div class="container">
             <div class="section-head">
-                <div class="section-kicker">Local To You</div>
+                <span class="eyebrow">Local To You</span>
                 <h2 class="section-title">Areas We Cover</h2>
-                <p class="section-sub">Based in Brixton and covering all surrounding South London postcodes &mdash; if you're nearby, we'll be with you fast.</p>
+                <p class="section-sub">Based in Brixton and covering South London &mdash; if you're nearby, we'll be with you fast.</p>
             </div>
             <div class="areas-layout">
                 <div class="areas-grid">
@@ -602,77 +496,28 @@
                     <div class="area-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Streatham</div>
                     <div class="area-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Herne Hill</div>
                     <div class="area-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Tulse Hill</div>
-                    <div class="area-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Kennington</div>
                     <div class="area-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Vauxhall</div>
+                    <div class="area-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Kennington</div>
                     <div class="area-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Norwood</div>
                 </div>
-                <div class="areas-aside">
-                    <h3>Not Sure If We Cover You?</h3>
+                <div class="areas-cta">
+                    <h3>Not Sure If We Reach You?</h3>
                     <p>If you're in South London or just outside it, the answer's almost always yes. Give us a ring and we'll tell you straight away &mdash; and how fast we can get to you.</p>
-                    <a href="tel:+442039961912" class="btn-primary" style="font-size:1.1rem;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        Check My Area
+                    <a href="tel:+442039961912" class="btn-call" style="box-shadow:0 5px 0 var(--hi-dark);">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span class="bc-lbl"><small>Tap to check your area</small><b>020 3996 1912</b></span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Us -->
-    <section class="why">
+    <!-- Trust reinforcement (real Google rating) + conditional accreditations -->
+    <section class="trust">
         <div class="container">
-            <div class="section-head">
-                <div class="section-kicker">Why Aren</div>
-                <h2 class="section-title">Why Locals Call Us First</h2>
-            </div>
-            <div class="why-grid">
-                <div class="why-item">
-                    <div class="chk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-                    <div><h3>We Actually Answer</h3><p>A real person picks up &mdash; day, night and weekends. No answerphone when you've got water pouring in.</p></div>
-                </div>
-                <div class="why-item">
-                    <div class="chk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-                    <div><h3>No Call-Out Fee</h3><p>Clear, upfront pricing agreed before we start. No surprise charges added on at the end.</p></div>
-                </div>
-                <div class="why-item">
-                    <div class="chk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-                    <div><h3>Gas Safe &amp; Insured</h3><p>Fully Gas Safe registered and insured, so every job's done to standard and signed off properly.</p></div>
-                </div>
-                <div class="why-item">
-                    <div class="chk"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-                    <div><h3>Tidy, Local &amp; Trusted</h3><p>Over 262 five-star reviews from neighbours across South London. We leave your home as clean as we found it.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews -->
-    <section id="reviews" class="reviews">
-        <div class="container">
-            <div class="section-head">
-                <div class="section-kicker">Rated 4.8 on Google</div>
-                <h2 class="section-title">What Our Customers Say</h2>
-                <p class="section-sub">Real reviews from homeowners across Brixton and South London.</p>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <div class="review-text">"Pipe burst under the sink at 10pm and they answered straight away. Engineer arrived within the hour and sorted it. Absolute lifesaver."</div>
-                    <div class="review-author">Sarah K.</div>
-                    <div class="review-meta">Brixton &middot; Emergency call-out</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <div class="review-text">"Boiler broke down in the cold snap. Called Aren Heating and they were with me the same morning, fixed by lunchtime. Fair price and explained everything clearly."</div>
-                    <div class="review-author">Marcus T.</div>
-                    <div class="review-meta">Clapham &middot; Boiler repair</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <div class="review-text">"Used them twice now. Always on time, tidy, and they tell you the price before they start. The only plumber I'll call in South London."</div>
-                    <div class="review-author">Diane O.</div>
-                    <div class="review-meta">Stockwell &middot; Bathroom install</div>
-                </div>
+            <div class="trust-line">
+                <span class="tl-stars">★★★★★</span>
+                <span class="tl-text">Rated 4.8 on Google<small>From 262 local reviews</small></span>
             </div>
         </div>
     </section>
@@ -681,38 +526,29 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-layout">
-                <div class="contact-info-card">
+                <div class="contact-card">
                     <h3>Got a Problem? Call Now.</h3>
-                    <div class="ci-row">
-                        <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-                        <div><div class="ci-label">Phone &mdash; tap to call</div><div class="ci-value"><a href="tel:+442039961912">020 3996 1912</a></div></div>
+                    <p class="cc-lead">The fastest way to get sorted is to ring &mdash; tap the number and we'll pick up.</p>
+                    <a href="tel:+442039961912" class="cc-phone">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span><span class="ccp-lbl">Tap to call</span><br><span class="ccp-num">020 3996 1912</span></span>
+                    </a>
+                    <div class="cc-row">
+                        <div class="cc-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+                        <div><div class="cc-k">Opening Hours</div><div class="cc-v"><span class="open">24/7 emergency line</span></div></div>
                     </div>
-                    <div class="ci-row">
-                        <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
-                        <div><div class="ci-label">Email</div><div class="ci-value"><a href="mailto:info@arenheating.co.uk">info@arenheating.co.uk</a></div></div>
-                    </div>
-                    <div class="ci-row">
-                        <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                        <div><div class="ci-label">Based In</div><div class="ci-value">3 Brixton Rd, Brixton &amp; South London</div></div>
-                    </div>
-                    <div class="ci-row">
-                        <div class="ci-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-                        <div><div class="ci-label">Opening Hours</div><div class="ci-value"><span class="emoji-hours">24/7 &mdash; we answer day &amp; night</span></div></div>
+                    <div class="cc-row">
+                        <div class="cc-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div><div class="cc-k">Covering</div><div class="cc-v">Brixton &amp; South London</div></div>
                     </div>
                 </div>
 
                 <div class="quote-form">
                     <h3>Get a Fast Quote</h3>
-                    <p>Fill this in and we'll call you straight back &mdash; or just ring the number, it's quicker.</p>
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="Jane Smith">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="07700 900000">
-                    </div>
-                    <div class="form-group">
+                    <p>Leave your number and we'll call you straight back &mdash; or just ring, it's quicker.</p>
+                    <div class="fg"><label for="name">Your Name</label><input type="text" id="name" name="name" placeholder="Jane Smith"></div>
+                    <div class="fg"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="07700 900000"></div>
+                    <div class="fg">
                         <label for="job">What Needs Doing?</label>
                         <select id="job" name="job">
                             <option value="">Select a job type…</option>
@@ -724,11 +560,8 @@
                             <option>Something else</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="details">Quick Details</label>
-                        <textarea id="details" name="details" placeholder="Tell us what's going on and your postcode…"></textarea>
-                    </div>
-                    <button type="submit" class="form-submit">Request My Callback</button>
+                    <div class="fg"><label for="details">Quick Details</label><textarea id="details" name="details" placeholder="Tell us what's going on and your postcode…"></textarea></div>
+                    <button type="submit" class="form-btn">Request My Callback</button>
                 </div>
             </div>
         </div>
@@ -737,10 +570,9 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="logo">AREN <span>HEATING</span></div>
+            <div class="logo">AREN <span style="color:var(--hi);">HEATING</span></div>
+            <p class="f-phone">020 3996 1912</p>
             <p>24/7 Emergency Plumbing &amp; Heating &middot; Brixton &amp; South London</p>
-            <p>Phone: 020 3996 1912 &middot; info@arenheating.co.uk</p>
-            <p class="foot-badges">Gas Safe Registered &middot; Checkatrade Approved &middot; Fully Insured</p>
             <p style="margin-top:1rem;">&copy; 2026 Aren Heating &amp; Plumbing. All rights reserved.</p>
         </div>
     </footer>
@@ -748,7 +580,7 @@
     <!-- Mobile fixed tap-to-call bar -->
     <div class="mobile-call-bar">
         <a href="tel:+442039961912">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Call Now &mdash; 020 3996 1912
         </a>
     </div>
