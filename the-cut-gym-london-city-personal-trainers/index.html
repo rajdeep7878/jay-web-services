@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cut Gym - London City Personal Trainers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            line-height: 1.7;
+            color: #e0e0e0;
+            background: #1a1a2e;
+            overflow-x: hidden;
+        }
+
+        /* ===== Sticky Navigation ===== */
+        header {
+            background: rgba(26, 26, 46, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(14px);
+            border-bottom: 2px solid rgba(251, 245, 0, 0.12);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #fbf500;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #a0a0b8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #fbf500;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            color: #fbf500;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: #fbf500;
+            color: #1a1a2e !important;
+            padding: 0.55rem 1.4rem;
+            border-radius: 4px;
+            font-weight: 700 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-cta:hover {
+            background: #e8dc00 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(251, 245, 0, 0.4);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #1a1a2e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(251, 245, 0, 0.07) 0%, transparent 65%);
+            border-radius: 50%;
+            animation: heroPulse 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(251, 245, 0, 0.05) 0%, transparent 65%);
+            border-radius: 50%;
+            animation: heroPulse 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes heroPulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 780px;
+            animation: heroFadeIn 1.2s ease-out;
+        }
+
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fbf500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: #fbf500;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a0a0b8;
+            max-width: 560px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #fbf500;
+            color: #1a1a2e;
+            padding: 1.05rem 3.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #e8dc00;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(251, 245, 0, 0.4);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .hero-stat {
+            text-align: center;
+            animation: statSlide 1s ease-out both;
+        }
+
+        .hero-stat:nth-child(1) { animation-delay: 0.3s; }
+        .hero-stat:nth-child(2) { animation-delay: 0.5s; }
+        .hero-stat:nth-child(3) { animation-delay: 0.7s; }
+
+        @keyframes statSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fbf500;
+        }
+
+        .hero-stat-label {
+            font-size: 0.82rem;
+            color: #7a7a94;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        /* ===== Services — Alternating Rows ===== */
+        .services {
+            padding: 7rem 0;
+            background: #f5f5f5;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #fbf500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #1a1a2e;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .section-heading-light {
+            color: #ffffff;
+        }
+
+        .section-divider {
+            width: 50px;
+            height: 4px;
+            background: #fbf500;
+            margin: 1.2rem auto 0;
+            border-radius: 2px;
+        }
+
+        .service-row {
+            display: flex;
+            align-items: center;
+            gap: 3.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .service-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .service-image {
+            flex: 1;
+            min-height: 300px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(251, 245, 0, 0.12);
+            border-radius: 8px;
+            transition: border-color 0.4s ease;
+        }
+
+        .service-row:hover .service-image::after {
+            border-color: rgba(251, 245, 0, 0.45);
+        }
+
+        .service-row:hover .service-image {
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(26, 26, 46, 0.2);
+        }
+
+        .service-icon-lg {
+            font-size: 3.5rem;
+            color: rgba(251, 245, 0, 0.55);
+        }
+
+        .service-text {
+            flex: 1;
+        }
+
+        .service-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 900;
+            color: rgba(251, 245, 0, 0.1);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .service-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .service-text p {
+            color: #555;
+            font-size: 1.02rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .service-tag {
+            display: inline-block;
+            background: rgba(251, 245, 0, 0.1);
+            color: #fbf500;
+            padding: 0.35rem 0.9rem;
+            border-radius: 3px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== About — Stats Left, Text Right ===== */
+        .about {
+            padding: 7rem 0;
+            background: #1a1a2e;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(251, 245, 0, 0.07);
+            border-color: rgba(251, 245, 0, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: #fbf500;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-desc {
+            font-size: 0.82rem;
+            color: #7a7a94;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .about-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-content h2 em {
+            font-style: normal;
+            color: #fbf500;
+        }
+
+        .about-content p {
+            color: #a0a0b8;
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 1.4rem;
+        }
+
+        .about-content .btn-primary {
+            margin-top: 0.5rem;
+        }
+
+        /* ===== Testimonials — Stacked Large Quotes ===== */
+        .testimonials {
+            padding: 7rem 0;
+            background: #f5f5f5;
+        }
+
+        .testimonial-stack {
+            max-width: 780px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            padding: 2.8rem 3rem;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            border-left: 5px solid transparent;
+        }
+
+        .testimonial-card:hover {
+            border-left-color: #fbf500;
+            transform: translateX(8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.09);
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: rgba(251, 245, 0, 0.1);
+            position: absolute;
+            top: -8px;
+            left: 22px;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            color: #333;
+            line-height: 1.9;
+            font-style: italic;
+            margin-bottom: 1.4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fbf500, #e8dc00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #1a1a2e;
+            flex-shrink: 0;
+        }
+
+        .testimonial-info strong {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #1a1a2e;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-info span {
+            font-size: 0.82rem;
+            color: #fbf500;
+            font-weight: 600;
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.7rem;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #fbf500;
+            transform: scale(1.3);
+        }
+
+        /* ===== Contact Section ===== */
+        .contact {
+            padding: 7rem 0;
+            background: #1a1a2e;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #fbf500, #e8dc00, #fbf500);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            background: rgba(251, 245, 0, 0.06);
+            border-color: rgba(251, 245, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            color: #7a7a94;
+            font-size: 0.98rem;
+            line-height: 1.8;
+        }
+
+        .contact-card a {
+            color: #fbf500;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #ffffff;
+        }
+
+        .contact-cta {
+            text-align: center;
+            margin-top: 3.5rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .contact-cta p {
+            font-size: 1.2rem;
+            color: #a0a0b8;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .contact-cta strong {
+            color: #ffffff;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: #12121f;
+            padding: 2.8rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-brand span {
+            color: #fbf500;
+        }
+
+        footer p {
+            color: #555;
+            font-size: 0.88rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fbf500;
+        }
+
+        /* ===== Responsive — 1024px ===== */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.4rem;
+            }
+
+            .hero-stats {
+                gap: 2.5rem;
+            }
+
+            .service-row {
+                gap: 2.5rem;
+            }
+
+            .about-grid {
+                gap: 3rem;
+            }
+
+            .about-content h2 {
+                font-size: 2rem;
+            }
+
+            .section-heading {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* ===== Responsive — 768px ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 6rem 0 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.02rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+
+            .service-row,
+            .service-row.reverse {
+                flex-direction: column;
+            }
+
+            .service-image {
+                min-height: 220px;
+                width: 100%;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-stats {
+                order: 2;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: 2rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.02rem;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .section-heading {
+                font-size: 1.8rem;
+            }
+
+            .service-number {
+                font-size: 2.8rem;
+            }
+
+            .service-text h3 {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* ===== Responsive — 480px ===== */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            nav {
+                height: 60px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 0.6rem;
+            }
+
+            .nav-links a {
+                font-size: 0.68rem;
+                letter-spacing: 0;
+            }
+
+            .nav-cta {
+                padding: 0.4rem 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero-tagline {
+                font-size: 0.72rem;
+                letter-spacing: 2px;
+            }
+
+            .hero p {
+                font-size: 0.92rem;
+            }
+
+            .btn-primary {
+                padding: 0.85rem 2rem;
+                font-size: 0.82rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1.2rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .about-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-heading {
+                font-size: 1.4rem;
+            }
+
+            .service-image {
+                min-height: 180px;
+            }
+
+            .service-row {
+                margin-bottom: 2.5rem;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .testimonial-card::before {
+                font-size: 4rem;
+                top: -5px;
+                left: 10px;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">The Cut <span>Gym</span></div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Results</a></li>
+                    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tagline">London City Personal Training</div>
+                <h1>Transform Your Body.<br><em>Transform Your Life.</em></h1>
+                <p>Expert-led personal training in the heart of London City. Achieve real results with proven methods and dedicated coaching that keeps you accountable.</p>
+                <a href="#contact" class="btn-primary">Book Free Consultation</a>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">500+</div>
+                        <div class="hero-stat-label">Clients Trained</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">10+</div>
+                        <div class="hero-stat-label">Years Experience</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">98%</div>
+                        <div class="hero-stat-label">Client Retention</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">What We Offer</div>
+                <h2 class="section-heading">Our Services</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Service 1 -->
+            <div class="service-row">
+                <div class="service-image">
+                    <span class="service-icon-lg">&#9883;</span>
+                </div>
+                <div class="service-text">
+                    <div class="service-number">01</div>
+                    <h3>1-to-1 Personal Training</h3>
+                    <p>Fully bespoke sessions tailored to your goals, fitness level, and schedule. Every rep, every set, every session is designed to push you closer to the body you want.</p>
+                    <span class="service-tag">Most Popular</span>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-row reverse">
+                <div class="service-image">
+                    <span class="service-icon-lg">&#9993;</span>
+                </div>
+                <div class="service-text">
+                    <div class="service-number">02</div>
+                    <h3>Online Coaching</h3>
+                    <p>Train anywhere in the world with fully programmed workouts, weekly video check-ins, and real-time form corrections. All the expertise, none of the commute.</p>
+                    <span class="service-tag">Remote</span>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-row">
+                <div class="service-image">
+                    <span class="service-icon-lg">&#9876;</span>
+                </div>
+                <div class="service-text">
+                    <div class="service-number">03</div>
+                    <h3>Group Sessions</h3>
+                    <p>High-energy small group training (max 6 people) that combines personal attention with the motivation of a team. Push harder together.</p>
+                    <span class="service-tag">Community</span>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-row reverse">
+                <div class="service-image">
+                    <span class="service-icon-lg">&#9734;</span>
+                </div>
+                <div class="service-text">
+                    <div class="service-number">04</div>
+                    <h3>Nutrition Plans</h3>
+                    <p>Customised meal plans and macro coaching that fuels your training and accelerates results. Sustainable nutrition strategies — not crash diets.</p>
+                    <span class="service-tag">Nutrition</span>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-row">
+                <div class="service-image">
+                    <span class="service-icon-lg">&#9955;</span>
+                </div>
+                <div class="service-text">
+                    <div class="service-number">05</div>
+                    <h3>Body Transformation</h3>
+                    <p>Intensive 12-week programmes combining training, nutrition, and lifestyle coaching. Designed for serious change with before-and-after accountability.</p>
+                    <span class="service-tag">12-Week Programme</span>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-row reverse">
+                <div class="service-image">
+                    <span class="service-icon-lg">&#9889;</span>
+                </div>
+                <div class="service-text">
+                    <div class="service-number">06</div>
+                    <h3>Boxing Fitness</h3>
+                    <p>Explosive pad-work sessions that torch calories and build functional strength. Perfect for stress relief and conditioning without the contact.</p>
+                    <span class="service-tag">Cardio</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">10+</div>
+                        <div class="stat-desc">Years Training</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">500+</div>
+                        <div class="stat-desc">Clients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">15k+</div>
+                        <div class="stat-desc">Sessions Delivered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-desc">Dedicated Support</div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="section-label">Why Choose Us</div>
+                    <h2>Built on <em>Results</em>, Not Promises</h2>
+                    <p>The Cut Gym was founded on one principle: every client deserves a coach who is as invested in their results as they are. We bring science-backed programming, relentless accountability, and genuine care to every session.</p>
+                    <p>Whether you are training for your first 5K, preparing for a wedding, or simply want to feel stronger and more confident — we have the expertise and the track record to get you there.</p>
+                    <a href="#contact" class="btn-primary">Start Your Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Client Stories</div>
+                <h2 class="section-heading">Real People, Real Results</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="testimonial-stack">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I lost 18kg in 16 weeks and kept it off. The programme was tough but completely sustainable. For the first time in my life, I actually look forward to training. The Cut changed everything for me.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JR</div>
+                        <div class="testimonial-info">
+                            <strong>James R.</strong>
+                            <span>Body Transformation Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">As a busy professional working in the City, I thought personal training wasn't for me. The sessions fit perfectly around my schedule — and I'm in the best shape of my life.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SP</div>
+                        <div class="testimonial-info">
+                            <strong>Sarah P.</strong>
+                            <span>1-to-1 Training Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">The group sessions are incredible. The energy is unmatched, and the programming is seriously smart. I've gained muscle, lost fat, and made friends for life. Best investment I've ever made.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DM</div>
+                        <div class="testimonial-info">
+                            <strong>David M.</strong>
+                            <span>Group Training Client</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-heading section-heading-light">Ready to Start?</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">&#128205;</div>
+                    <h3>Visit Us</h3>
+                    <p>Austin Friars House<br>London, EC2R 7DB<br>United Kingdom</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">&#128222;</div>
+                    <h3>Call Us</h3>
+                    <p><a href="tel:+442076289995">020 7628 9995</a><br><br>Mon-Fri: 6am - 9pm<br>Sat: 7am - 5pm<br>Sun: 8am - 2pm</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">&#9993;</div>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:info@thecutgym.co.uk">info@thecutgym.co.uk</a><br><br>Free consultations available.<br>We reply within 2 hours.</p>
+                </div>
+            </div>
+
+            <div class="contact-cta">
+                <p><strong>Your first consultation is completely free.</strong><br>No pressure, no hard sell — just a conversation about your goals and how we can help you achieve them.</p>
+                <a href="mailto:info@thecutgym.co.uk" class="btn-primary">Book Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">The Cut <span>Gym</span></div>
+                <p>&copy; 2026 The Cut Gym London. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Results</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+<!-- jay-web-services-cta -->
+<section style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; text-align: center; padding: 48px 24px; margin-top: 48px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+  <h2 style="font-size: 28px; margin: 0 0 12px 0; font-weight: 700;">Like what you see?</h2>
+  <p style="font-size: 17px; margin: 0 0 24px 0; opacity: 0.9;">Want this as your live site? It's £299 one-time to build — £99 to get started, and the remaining £200 only when you're happy with the finished site. Just reply to my email.</p>
+  <a href="https://jaywebservices.co.uk" style="display: inline-block; background: white; color: #2563eb; padding: 16px 36px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 17px; box-shadow: 0 4px 14px rgba(0,0,0,0.15);">Jay Web Services</a>
+  <p style="font-size: 13px; margin-top: 16px; opacity: 0.7;">One-time build, no subscription — you only pay the £200 balance once it's done and you're happy.</p>
+</section>
+</body>
+</html>
